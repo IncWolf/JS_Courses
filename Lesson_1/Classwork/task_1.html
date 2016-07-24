@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задача 1</title>
+</head>
+<body>
+<script>
+    var user = new Object();
+    document.write('Создан объект user: <br />');
+    user.name="Вася";
+    document.write('Значение свойства name объекта user:'+user.name+'<br />');
+    user.surname="Петров";
+    document.write('Значение свойства surname объекта user:'+user.surname+'<br />');
+    user.name="Сергей";
+    document.write('Значение свойства name объекта user после переопределения:'+user.name+'<br />');
+    delete user.name;
+    document.write('Значение свойства name объекта user после удаления:'+user.name+'<br />');
+</script>
+</body>
+</html>
