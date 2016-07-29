@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+    <script>
+        var leader = {
+            name: "Василий Иванович",
+            age: 35
+        };
+        json_str = JSON.stringify(leader);
+        json_str_reverse = JSON.parse(json_str);
+        document.write(json_str+"<br />"+json_str_reverse);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
