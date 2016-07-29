@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error & typeOf</title>
+    <script>
+        function typeOfData(a) {
+            try {
+                if (arguments.length > 1) {
+                    throw 'Error: Too many arguments. Please enter only one argument';
+                }
+                var toString = {}.toString;
+                return alert(toString.call(a));
+            }
+            catch(e) {
+                alert(e);
+            }
+        }
+        typeOfData(10);
+        typeOfData(false);
+        typeOfData("Hello");
+        typeOfData(undefined);
+        typeOfData(null);
+        typeOfData(document.write);
+        typeOfData({});
+        typeOfData([]);
+        typeOfData(new Date);
+        typeOfData(10, "string");
+    </script>
+</head>
+<body>
+
+</body>
+</html>
