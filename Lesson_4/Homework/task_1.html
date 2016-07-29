@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Call & Apply</title>
+    <script>
+        Function.prototype.call = function(context) {
+            return this.apply(context, arguments);
+        };
+
+        function sayHi() {
+            alert('Hello, my name is ' + this.name + ' and I am ' + this.age + ' years old!');
+        }
+        var user = {
+            name: 'Vasya',
+            age: 25
+        };
+        sayHi.call(user);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
