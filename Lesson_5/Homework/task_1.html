@@ -8,8 +8,7 @@
             var math_body = prompt("Введите математическое выражение");
             try {
                 var result = eval(math_body);
-                var toString = {}.toString;
-                if (toString.call(result) != Number) {
+                if (isNaN(result)) {
                     throw "Вы ввели неверное математическое выражение. Введите еще раз";
                 }
                 return alert(result);
