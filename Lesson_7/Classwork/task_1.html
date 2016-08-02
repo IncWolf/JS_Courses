@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var old_element = document.getElementsByTagName('div')[0];
+            var new_element = document.createElement('span');
+            new_element.className = 'red';
+            new_element.innerHTML = 'СУПЕР!';
+            var count = 0;
+            var func = function() {
+                switch(count) {
+                    case 0:
+                        old_element.insertAdjacentHTML("beforeBegin", new_element.outerHTML);
+                        break;
+                    case 1:
+                        old_element.insertAdjacentHTML("afterBegin", new_element.outerHTML);
+                        break;
+                    case 2:
+                        old_element.insertAdjacentHTML("beforeEnd", new_element.outerHTML);
+                        break;
+                    case 3:
+                        old_element.insertAdjacentHTML("afterEnd", new_element.outerHTML);
+                        break;
+                }
+                count++;
+            };
+            var inter = setInterval(func,400);
+            setTimeout(function() {
+                clearInterval(inter);
+            }, 1600);
+        }
+    </script>
+</head>
+<body>
+<div style="background-color:grey; color:white;">
+    Просто какой-нибудь текст
+</div>
+</body>
+</html>
