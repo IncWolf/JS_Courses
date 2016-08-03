@@ -9,12 +9,13 @@
             try {
                 var result = eval(math_body);
                 if (isNaN(result)) {
-                    throw "Вы ввели неверное математическое выражение. Введите еще раз";
+                    throw new Error();
                 }
                 return alert(result);
             }
             catch (e) {
-                alert(e);
+                alert("Вы ввели неверное математическое выражение. Введите еще раз");
+                programm();
             }
         };
         programm();
