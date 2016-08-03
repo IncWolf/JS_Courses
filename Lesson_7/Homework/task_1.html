@@ -41,8 +41,8 @@
             var divs = document.getElementsByTagName('div');
             setInterval(function() {
                 for (var i=0; i<divs.length; i++) {
-                    divs[i].style.top = randomCoord(max_height-parseInt(window.getComputedStyle(divs[0]).getPropertyValue('height')))+'px';
-                    divs[i].style.left = randomCoord(max_width-parseInt(window.getComputedStyle(divs[0]).getPropertyValue('width')))+'px';
+                    divs[i].style.top = randomCoord(max_height-parseInt(window.getComputedStyle(divs[i]).getPropertyValue('height')))+'px';
+                    divs[i].style.left = randomCoord(max_width-parseInt(window.getComputedStyle(divs[i]).getPropertyValue('width')))+'px';
                 }
             }, 1000);
         }
