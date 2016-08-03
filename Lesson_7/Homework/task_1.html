@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_1</title>
+    <script>
+        setInterval(function() {
+            var divs = document.getElementsByTagName('div');
+            var indexes = [0,1,2];
+
+            function compareRandom() {
+                return Math.random() - 0.5;
+            }
+            indexes.sort(compareRandom);
+
+            document.body.innerHTML = divs[indexes[0]].outerHTML + divs[indexes[1]].outerHTML + divs[indexes[2]].outerHTML;
+        }, 1000);
+    </script>
+</head>
+<body>
+<div style="background-color:red; height: 50px; width: 50px;"></div>
+<div style="background-color:black; height: 50px; width: 50px;"></div>
+<div style="background-color:green; height: 50px; width: 50px;"></div>
+</body>
+</html>
