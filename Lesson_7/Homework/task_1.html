@@ -3,23 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Task_1</title>
+    <style type="text/css">
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #div2 {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+        #div3 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+        }
+    </style>
     <script>
-        setInterval(function() {
-            var divs = document.getElementsByTagName('div');
-            var indexes = [0,1,2];
-
-            function compareRandom() {
-                return Math.random() - 0.5;
+        window.onload = function() {
+            function randomCoord(max) {
+                var rand = Math.random() * (max + 1);
+                rand = Math.floor(rand);
+                return rand;
             }
-            indexes.sort(compareRandom);
-
-            document.body.innerHTML = divs[indexes[0]].outerHTML + divs[indexes[1]].outerHTML + divs[indexes[2]].outerHTML;
-        }, 1000);
+            var max_width = document.documentElement.clientWidth;
+            var max_height = document.documentElement.clientHeight;
+            var divs = document.getElementsByTagName('div');
+            setInterval(function() {
+                for (var i=0; i<divs.length; i++) {
+                    divs[i].style.top = randomCoord(max_height-parseInt(window.getComputedStyle(divs[0]).getPropertyValue('height')))+'px';
+                    divs[i].style.left = randomCoord(max_width-parseInt(window.getComputedStyle(divs[0]).getPropertyValue('width')))+'px';
+                }
+            }, 1000);
+        }
     </script>
 </head>
 <body>
-<div style="background-color:red; height: 50px; width: 50px;"></div>
-<div style="background-color:black; height: 50px; width: 50px;"></div>
-<div style="background-color:green; height: 50px; width: 50px;"></div>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
 </body>
 </html>
