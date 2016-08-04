@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1</title>
+    <script>
+        window.onload = function() {
+            document.forms[0].addEventListener("submit", function(e) {
+                if(document.getElementById("login").value.match(/\d/)) {
+                    e.preventDefault();
+                    document.getElementById("login").style.backgroundColor = "red";
+                }
+                if(document.getElementById("password").value.match(/\$/)) {
+                    e.preventDefault();
+                    document.getElementById("password").style.backgroundColor = "red";
+                }
+                if(document.getElementById("tel").value.match(/\D/)) {
+                    e.preventDefault();
+                    document.getElementById("tel").style.backgroundColor = "red";
+                }
+            });
+            var inputs = document.forms[0].getElementsByTagName('input');
+            for(var i=0; i<inputs.length; i++) {
+                inputs[i].addEventListener("focus", function() {
+                    this.style.backgroundColor = "white";
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+<form>
+    Логин: <input type="text" id="login"><br />
+    Пароль: <input type="password" id="password"><br />
+    Телефон: <input type="text" id="tel"><br />
+    <input type="submit" value="Отправить">
+</form>
+</body>
+</html>
