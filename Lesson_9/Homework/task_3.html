@@ -7,11 +7,14 @@
             function setCoord() {
                 var x = document.getElementById('xcoord').value;
                 var y = document.getElementById('ycoord').value;
-                if (!x || !y) { return alert("Поля обязательны для заполнения");}
+                if (!x || !y) {
+                    alert("Поля обязательны для заполнения");
+                    return false;
+                }
                 var element = document.getElementById('elem');
                 element.style.position = 'absolute';
-                element.style.top = x+'px';
-                element.style.left = y+'px';
+                element.style.left = x+'px';
+                element.style.top = y+'px';
             }
         </script>
     </head>
