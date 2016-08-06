@@ -8,7 +8,7 @@
     </style>
     <script>
         window.addEventListener('load', function() {
-            document.body.children[2].addEventListener('click', function(e) {
+            document.getElementById('buttons').addEventListener('click', function(e) {
                 if(e.target.className = 'button') {
                     var a = parseInt(document.getElementById('a').value);
                     var b = parseInt(document.getElementById('b').value);
@@ -44,7 +44,7 @@
 <body>
 <input type="text" id="a">
 <input type="text" id="b">
-<div>
+<div id="buttons">
     <div class="button" id="plus">+</div>
     <div class="button" id="minus">-</div>
     <div class="button" id="umnog">*</div>
