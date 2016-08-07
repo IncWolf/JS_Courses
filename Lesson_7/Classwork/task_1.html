@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.polyfill.io/v1/polyfill.js?features=Element.prototype.append,Element.prototype.after"></script>
     <title>Task 1</title>
     <style>
         .red {
@@ -18,16 +19,16 @@
             var func = function() {
                 switch(count) {
                     case 0:
-                        old_element.insertAdjacentHTML("beforeBegin", new_element.outerHTML);
+                        old_element.parentNode.insertBefore(new_element, old_element);
                         break;
                     case 1:
-                        old_element.insertAdjacentHTML("afterBegin", new_element.outerHTML);
+                        old_element.insertBefore(new_element, old_element.firstChild);
                         break;
                     case 2:
-                        old_element.insertAdjacentHTML("beforeEnd", new_element.outerHTML);
+                        old_element.append(new_element);
                         break;
                     case 3:
-                        old_element.insertAdjacentHTML("afterEnd", new_element.outerHTML);
+                        old_element.parentNode.insertBefore(new_element, old_element.nextSibling);
                         break;
                 }
                 count++;
