@@ -1,21 +1,39 @@
+body {
+    font-family: Oswald;
+}
 .wrapper {
     max-width:1200px;
     margin:auto;
 }
 
+.reverse {
+    background-color: #000000;
+}
+
 .circle {
     border-radius: 50%;
     background-color: #ffe600;
+}
+
+.icon-wrapper {
     width: 108px;
     height: 108px;
     margin:auto;
 }
 
-.circle:before {
+.icon-wrapper:before {
     content: '';
     display: inline-block;
     height: 100%;
     vertical-align: middle;
+}
+
+.description {
+    margin: 0 100px 60px;
+}
+
+.color-desc {
+    color: #707070;
 }
 
 .icon {
@@ -25,22 +43,45 @@
     vertical-align: middle;
 }
 
-.html-icon {
-    background-image: url('../img/icons/html5.png');
-    background-repeat: no-repeat;
+.css-icon {
+    background: transparent url('../img/icons/css3.png') no-repeat;
+    height: 36px;
 }
 
 .pen-icon {
-    background-image: url('../img/icons/pen.png');
-    background-repeat: no-repeat;
+    background: transparent url('../img/icons/pen.png') no-repeat;
 }
 
 .camera-icon {
-    background-image: url('../img/icons/camera.png');
-    background-repeat: no-repeat;
+    background: transparent url('../img/icons/camera.png') no-repeat;
+    width: 39px;
+    height: 31px;
 }
 
 .cog-icon {
-    background-image: url('../img/icons/cog.png');
-    background-repeat: no-repeat;
+    background: transparent url('../img/icons/cog.png') no-repeat;
+    width: 42px;
+}
+
+hr {
+    border: 2px solid #ffe600;
+    width: 170px;
+}
+
+h1 {
+    font-family: Oswald;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.reverse h1 {
+    color: #ffe600;
+}
+
+.row {
+    padding: 64px 0;
+}
+
+.title {
+    color: #515151;
 }
