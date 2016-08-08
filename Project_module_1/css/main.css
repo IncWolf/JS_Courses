@@ -1,0 +1,46 @@
+.wrapper {
+    max-width:1200px;
+    margin:auto;
+}
+
+.circle {
+    border-radius: 50%;
+    background-color: #ffe600;
+    width: 108px;
+    height: 108px;
+    margin:auto;
+}
+
+.circle:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.icon {
+    width:40px;
+    height:40px;
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.html-icon {
+    background-image: url('../img/icons/html5.png');
+    background-repeat: no-repeat;
+}
+
+.pen-icon {
+    background-image: url('../img/icons/pen.png');
+    background-repeat: no-repeat;
+}
+
+.camera-icon {
+    background-image: url('../img/icons/camera.png');
+    background-repeat: no-repeat;
+}
+
+.cog-icon {
+    background-image: url('../img/icons/cog.png');
+    background-repeat: no-repeat;
+}
