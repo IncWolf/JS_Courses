@@ -106,22 +106,22 @@ hr {
     height: 40px;
 }
 
-.css-icon {
+.icon.css-icon {
     background: transparent url('../img/icons/css3.png') no-repeat;
     height: 36px;
 }
 
-.pen-icon {
+.icon.pen-icon {
     background: transparent url('../img/icons/pen.png') no-repeat;
 }
 
-.camera-icon {
+.icon.camera-icon {
     background: transparent url('../img/icons/camera.png') no-repeat;
     width: 39px;
     height: 31px;
 }
 
-.cog-icon {
+.icon.cog-icon {
     background: transparent url('../img/icons/cog.png') no-repeat;
     width: 42px;
 }
