@@ -1,23 +1,60 @@
 body {
-    font-family: Oswald;
+    font-family: Oswald, sans-serif;
 }
+
+.container-fluid {
+    padding-top: 50px;
+    padding-bottom: 60px;
+}
+
 .wrapper {
-    max-width:1200px;
+    max-width:1175px;
     margin:auto;
 }
 
-.reverse {
-    background-color: #000000;
+.jumbotron {
+    margin-bottom: 0;
 }
 
-.circle {
-    border-radius: 50%;
-    background-color: #ffe600;
+.title {
+    margin-bottom: 60px;
+    margin-left: 105px;
+    margin-right: 105px;
 }
+
+.title h5 {
+    color: #515151;
+}
+
+hr {
+    border: 1px solid #ffe600;
+    width: 170px;
+    margin-bottom: 24px;
+}
+
+.reverse {
+    background-color: #12191d;
+    color: #ffffff;
+}
+
+.description {
+    color: #707070;
+    font-weight:300;
+}
+
+.reverse .description {
+    color: #ffffff;
+}
+
+.sub-heading {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+/* -------- */
 
 .icon-wrapper {
-    width: 108px;
-    height: 108px;
+    height: 48px;
     margin:auto;
 }
 
@@ -28,19 +65,45 @@ body {
     vertical-align: middle;
 }
 
-.description {
-    margin: 0 100px 60px;
+.circle {
+    border-radius: 50%;
+    background-color: #ffe600;
 }
 
-.color-desc {
-    color: #707070;
+.big.circle {
+    width: 108px;
+    height: 108px;
 }
 
 .icon {
-    width:40px;
-    height:40px;
+    width:48px;
+    height:48px;
     display:inline-block;
     vertical-align: middle;
+}
+
+.separator {
+    display: inline-block;
+    margin: auto 23px;
+    width:5px;
+    height: 5px;
+    background-color: #ffe600;
+    vertical-align: middle;
+}
+
+.btn-custom {
+    color: #fff;
+    background-color: #ffe600;
+    border-radius: 0;
+}
+
+#contact {
+    padding: 20px 48px;
+}
+
+.circle .icon {
+    width: 40px;
+    height: 40px;
 }
 
 .css-icon {
@@ -63,25 +126,36 @@ body {
     width: 42px;
 }
 
-hr {
-    border: 2px solid #ffe600;
-    width: 170px;
+.analyse-icon {
+    background: transparent url('../img/icons/analyse.png') no-repeat;
+}
+
+.preparing-icon {
+    background: transparent url('../img/icons/preparing.png') no-repeat;
+}
+
+.working-icon {
+    background: transparent url('../img/icons/working.png') no-repeat;
+}
+
+.finalyse-icon {
+    background: transparent url('../img/icons/finalyse.png') no-repeat;
+}
+
+.testing-icon {
+    background: transparent url('../img/icons/testing.png') no-repeat;
+}
+
+.deliver-icon {
+    background: transparent url('../img/icons/deliver.png') no-repeat;
 }
 
 h1 {
-    font-family: Oswald;
+    font-family: Oswald, sans-serif;
     font-size: 26px;
     font-weight: 400;
 }
 
 .reverse h1 {
     color: #ffe600;
-}
-
-.row {
-    padding: 64px 0;
-}
-
-.title {
-    color: #515151;
 }
