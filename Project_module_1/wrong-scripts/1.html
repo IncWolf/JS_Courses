@@ -51,9 +51,8 @@
                 for (var i = 0; i < bars.length; i++) {
                     var func = (function(elem) {
                         var percentage = elem.parentNode.dataset.percentage;
-                        //var values = getComputedStyle(elem).transform.split('(')[1].split(')')[0].split(',');
-                        //var angle = Math.round(Math.atan2(values[1], values[0]) * (180 / Math.PI));
-                        var angle = 0;
+                        var values = getComputedStyle(elem).transform.split('(')[1].split(')')[0].split(',');
+                        var angle = Math.round(Math.atan2(values[1], values[0]) * (180 / Math.PI));
                         console.log("1");
                         if (angle < 360 / 100 * percentage) {
                             console.log("2");
