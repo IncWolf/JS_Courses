@@ -76,7 +76,7 @@ hr {
     background-color: #ffe600;
 }
 
-.big.circle {
+#services .circle {
     width: 108px;
     height: 108px;
 }
@@ -211,7 +211,7 @@ h1 {
     background: #fbfbfb
 }
 
-#team h4{
+#team h4, #skills h4{
     font-size: 20px;
     margin-top: 15px;
 }
@@ -219,4 +219,79 @@ h1 {
 #team .general_information {
     background-color: #ffffff;
     border-bottom: 1px solid #dfe4e5;
+}
+
+#skills .outer.circle {
+    width: 142px;
+    height: 142px;
+    display:inline-block;
+    overflow: hidden;
+    position:relative;
+}
+
+/*#skills .outer.circle:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}*/
+
+#skills .inner.circle {
+    width: 130px;
+    height: 130px;
+    background-color: #000000;
+    display:inline-block;
+    vertical-align: middle;
+    position:relative;
+    z-index:5;
+}
+
+#skills .inner.circle span {
+    line-height: 130px;
+    font-weight: 300;
+    font-size: 35px;
+}
+
+#feedback input, #feedback textarea {
+    width: 100%;
+    padding: 10px 5px;
+    background-color: transparent;
+}
+
+#feedback .row {
+    margin-top: 30px;
+}
+
+.item {
+    background: #eee;
+    position: absolute;
+    width: 71px;
+    height: 71px;
+    transform-origin: 100% 100%;
+    -moz-transform-origin: 100% 100%;
+    -webkit-transform-origin: 100% 100%;
+}
+
+.sec_sqr {
+    top: 0;
+    left:50%;
+}
+
+.third_sqr {
+    top: 50%;
+    left:50%;
+}
+
+.forth_sqr {
+    top: 50%;
+    left: 0%;
+    background: #ffe600;
+}
+
+.progress_bar {
+    z-index: 1;
+    transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    background: #eee;
 }
