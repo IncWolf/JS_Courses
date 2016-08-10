@@ -1,5 +1,7 @@
 body {
     font-family: Oswald, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .container-fluid {
@@ -40,6 +42,7 @@ hr {
 .description {
     color: #707070;
     font-weight:300;
+    font-size: 16px;
 }
 
 .reverse .description {
@@ -49,12 +52,15 @@ hr {
 .sub-heading {
     margin-top: 24px;
     margin-bottom: 24px;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 /* -------- */
 
 .icon-wrapper {
-    height: 48px;
+    height: 72px;
+    width: 72px;
     margin:auto;
 }
 
@@ -95,6 +101,8 @@ hr {
     color: #fff;
     background-color: #ffe600;
     border-radius: 0;
+    font-weight:700;
+    font-size: 15px;
 }
 
 #contact {
@@ -151,11 +159,64 @@ hr {
 }
 
 h1 {
-    font-family: Oswald, sans-serif;
-    font-size: 26px;
-    font-weight: 400;
+    font-size: 30px;
+    font-weight: 700;
 }
 
-.reverse h1 {
+.padding-v-25 {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.margin-h-15px {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.border-yellow {
+    border: 1px solid #ffe600;
+    background-color: #131316;
+}
+
+.color-yel {
     color: #ffe600;
+}
+
+.numbers {
+    font-weight: 700;
+    font-size: 40px;
+}
+
+#about .circle {
+    margin-top:10px;
+    float: left;
+    margin-right: 30px;
+}
+
+#about .row {
+    margin-top: 60px;
+}
+
+#about .row .description {
+    padding-left: 102px;
+}
+
+.image-wrapper {
+    width:270px;
+    height: 250px;
+    background-color: #11343a;
+}
+
+.light-gray {
+    background: #fbfbfb
+}
+
+#team h4{
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+#team .general_information {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dfe4e5;
 }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!-- В общем, я решил написать скриптик, который поможет мне реализовать круговое заполнение полосы "скилла".
+Идея в том, чтобы создать круг сверху которого должен с интервалом в 1 секунду крутиться по часовой стрелке квадрат на значение,
+которое равно 4 градуса до определенного момента. В итоге, я запустил таймер, который почему-то заканчивает свою обработку на первой же отработке функции.
+Проверка показала, что до момента очищения таймера скрипт не доходит, а просто обрывает свою работу на первой же итерации.-->
+<head>
+    <meta charset="utf-8">
+    <title>Something odd</title>
+    <style>
+        #skill {
+            background: #aaa;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 100px;
+            -moz-border-radius: 100px;
+            -webkit-border-radius: 100px;
+        }
+
+        .item {
+            background: #aaa;
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            transform-origin: 100% 100%;
+            -moz-transform-origin: 100% 100%;
+            -webkit-transform-origin: 100% 100%;
+        }
+
+        .item6 {
+            background: #eee
+        }
+
+        .progress_bar {
+            z-index: 1;
+            transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+        }
+
+    </style>
+    <script>
+        window.onload = function() {
+
+            function activateBars() {
+                var bars = document.getElementsByClassName('progress_bar');
+                for (var i = 0; i < bars.length; i++) {
+                    var func = (function(elem) {
+                        var percentage = elem.parentNode.dataset.percentage;
+                        //var values = getComputedStyle(elem).transform.split('(')[1].split(')')[0].split(',');
+                        //var angle = Math.round(Math.atan2(values[1], values[0]) * (180 / Math.PI));
+                        var angle = 0;
+                        console.log("1");
+                        if (angle < 360 / 100 * percentage) {
+                            console.log("2");
+                            angle += 4;
+                            elem.style.transform = "rotate(" + angle + "deg)";
+                            //elem.style.mozTransform = "rotate("+angle+"deg)";
+                            //elem.style.webkitTransform = "rotate("+angle+"deg)";
+                        } else {
+                            console.log("3");
+                            clearInterval(interval);
+                        }
+                    })(bars[i]);
+                    var interval = setInterval(func, 1000);
+                }
+            }
+            //document.body.onscroll = function() {
+            //if (window.pageYOffset > document.getElementById('skill').offsetTop - 500) {
+            activateBars();
+            // }
+        }
+    </script>
+</head>
+<body>
+
+<div id="skill" data-percentage="90">
+    <div class="item progress_bar">
+    </div>
+    <div class="item6 item">
+    </div>
+</div>
+
+</body>
+</html>
