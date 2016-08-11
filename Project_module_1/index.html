@@ -50,22 +50,22 @@
         </div>
         <div class="row">
             <div class="col-md-3 col-sm-6">
-                <div class="icon-wrapper big circle"><span class="icon css-icon"></span></div>
+                <div class="icon-wrapper big circle js-get-bigger"><span class="icon css-icon"></span></div>
                 <h4 class="sub-heading">WEB DESIGN</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor</p>
             </div>
             <div class="col-md-3 col-sm-6">
-                <div class="icon-wrapper big circle"><span class="icon pen-icon"></span></div>
+                <div class="icon-wrapper big circle js-get-bigger"><span class="icon pen-icon"></span></div>
                 <h4 class="sub-heading">GRAPHIC DESIGN</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor</p>
             </div>
             <div class="col-md-3 col-sm-6">
-                <div class="icon-wrapper big circle"><span class="icon camera-icon"></span></div>
+                <div class="icon-wrapper big circle js-get-bigger"><span class="icon camera-icon"></span></div>
                 <h4 class="sub-heading">PHOTOGRAPHY</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor</p>
             </div>
             <div class="col-md-3 col-sm-6">
-                <div class="icon-wrapper big circle"><span class="icon cog-icon"></span></div>
+                <div class="icon-wrapper big circle js-get-bigger"><span class="icon cog-icon"></span></div>
                 <h4 class="sub-heading">DEVELOPING</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor</p>
             </div>
@@ -120,15 +120,26 @@
             <hr>
             <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
         </div>
-        <div class="row">
+        <div class="row" id="filter">
             <div class="col-md-12 col-sm-6">
-                <a href="#">ALL</a><div class="separator"></div><a href="#">WEB DESIGN</a><div class="separator"></div><a href="#">GRAPHIC DESIGN</a><div class="separator"></div><a href="#">PHOTOGRAPHY</a><div class="separator"></div><a href="#">ILLUSTRATION</a>
+                <a class="selected">ALL</a><div class="separator"></div><a>WEB DESIGN</a><div class="separator"></div><a>GRAPHIC DESIGN</a><div class="separator"></div><a>PHOTOGRAPHY</a><div class="separator"></div><a>ILLUSTRATION</a>
             </div>
         </div>
     </div>
 </div>
 <div class="container-fluid text-center">
-    <div id="photo_container">ЗДЕСЬ БУДУТ ФОТО</div>
+    <div id="photo_container">
+        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="all"></div>
+        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="web design"></div>
+        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="graphic design"></div>
+        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="photography"></div>
+        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="illustration"></div>
+        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="all"></div>
+        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="web design"></div>
+        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="graphic design"></div>
+        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="photography"></div>
+        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="illustration"></div>
+    </div>
 </div>
 <div class="container-fluid text-center">
     <div class="wrapper">
@@ -139,7 +150,7 @@
         <button type="button" class="btn btn-custom" id="contact">CONTACT US</button>
     </div>
 </div>
-<div class="container-fluid reverse text-center">
+<div class="container-fluid reverse text-center" id="proud_numbers">
     <div class="wrapper">
         <div class="title">
             <h1>WE ARE PROUD OF THESE NUMBERS</h1>
@@ -148,25 +159,25 @@
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="padding-v-25 border-yellow margin-h-15px">
-                    <h4 class="numbers">1600</h4>
+                    <h4 class="numbers" data-maxval="1600">0</h4>
                     <p class="color-yel">HAPPY CLIENTS</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="padding-v-25 border-yellow margin-h-15px">
-                    <h4 class="numbers">3200</h4>
+                    <h4 class="numbers" data-maxval="3200">0</h4>
                     <p class="color-yel">COMPLETED PROJECTS</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="padding-v-25 border-yellow margin-h-15px">
-                    <h4 class="numbers">40</h4>
+                    <h4 class="numbers" data-maxval="40">0</h4>
                     <p class="color-yel">AWARDS</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="padding-v-25 border-yellow margin-h-15px">
-                    <h4 class="numbers">20 000</h4>
+                    <h4 class="numbers" data-maxval="20000">0</h4>
                     <p class="color-yel">COFFEE DRINKS</p>
                 </div>
             </div>
@@ -183,24 +194,24 @@
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center"><span class="icon camera-icon"></span></div>
+                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon camera-icon"></span></div>
                 <h4>ON TIME PROJECTS</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             </div>
             <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center"><span class="icon camera-icon"></span></div>
+                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon camera-icon"></span></div>
                 <h4>FULLY SUPPORT</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center"><span class="icon camera-icon"></span></div>
+                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon camera-icon"></span></div>
                 <h4>PROFESSIONAL EXPIERIENCE</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             </div>
             <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center"><span class="icon camera-icon"></span></div>
+                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon camera-icon"></span></div>
                 <h4>COMMUNICATIVE TEAM</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             </div>
@@ -326,13 +337,16 @@
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-6">
-                <input type="text" placeholder="Your Name">
+                <input type="text" id="username" placeholder="Your Name">
+                <div class="error-msg">Only Latin</div>
             </div>
             <div class="col-md-4 col-sm-6">
-                <input type="text" placeholder="Your Mail">
+                <input type="text" id="useremail" placeholder="Your Mail">
+                <div class="error-msg">Only Latin, numbers, _ and @</div>
             </div>
             <div class="col-md-4 col-sm-6">
-                <input type="text" placeholder="Subject">
+                <input type="text" id="usersubject" placeholder="Subject">
+                <div class="error-msg">Only Latin and numbers</div>
             </div>
         </div>
         <div class="row">
@@ -346,7 +360,7 @@
 <footer class="container-fluid text-center">
     <p>©Copyright 2013 Smak. All Rights Reserved.</p>
     <p>Кнопки социальных сетей</p>
-    <div class="button">Вверх</div>
+    <button type="button" class="btn btn-custom" id="up_button">Вверх</button>
 </footer>
 </body>
 </html>

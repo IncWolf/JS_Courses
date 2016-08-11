@@ -288,3 +288,32 @@ h1 {
     -webkit-transform: rotate(-90deg);
     background: #fff;
 }
+
+#photo_container .photo-wrapper {
+    position:relative;
+    display:none;
+}
+
+#photo_container .photo-wrapper img {
+    width: 320px;
+    height: 250px;
+}
+
+#photo_container .photo-wrapper:hover img {
+    opacity: .7;
+}
+
+#filter a {
+    color: #515151;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#filter a.selected {
+    color: #ffe600;
+}
+
+.error-msg {
+    color: red;
+    display: none;
+}

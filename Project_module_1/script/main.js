@@ -1,25 +1,28 @@
 window.onload = function() {
-    var circles = document.getElementById('services').getElementsByClassName('icon-wrapper');
+    var circles = document.getElementsByClassName('js-get-bigger');
     for (var i=0; i<circles.length; i++) {
-        var diam = parseInt(getComputedStyle(circles[i]).height);
-        circles[i].addEventListener("mouseover", function(e) {
-            if (e.target.tagName == 'DIV') {
+        var biggerWrapper = function me(e) {
+            //if (e.target.tagName == 'DIV') {
                 var j = 0.01;
                 var getBigger = function() {
                     if (j<0.11) {
-                        e.target.style.width = e.target.style.height = diam*(1+j)+'px';
+                        e.target.style.width = e.target.style.height = me.diam*(1+j)+'px';
                         j += 0.01;
                     } else {
                         clearInterval(interval);
                     }
                 };
                 var interval = setInterval(getBigger, 10);
-            }
-        });
-        circles[i].addEventListener("mouseout", function(e) {
+            //}
+        };
+        biggerWrapper.diam = parseInt(getComputedStyle(circles[i]).height);
+        circles[i].addEventListener("mouseenter", biggerWrapper);
+        circles[i].addEventListener("mouseleave", function(e) {
             e.target.style.width = e.target.style.height = '';
         })
     }
+
+
 
     function activateBars() {
         var bars = document.getElementsByClassName('progress_bar');
@@ -55,9 +58,111 @@ window.onload = function() {
             func.interval = setInterval(func, 50);
         }
     }
-    document.body.onscroll = function() {
-        if (window.pageYOffset > document.getElementById('skills').offsetTop - 300 && window.pageYOffset < document.getElementById('skills').offsetTop + 100) {
-            activateBars();
+
+    activateBars();
+
+    function getProudNumbers() {
+        var numbers = document.getElementById('proud_numbers').getElementsByClassName('numbers');
+        var cycle_step = 100;
+        for (var i=0; i < numbers.length; i++) {
+            var counter = function me() {
+                if(parseInt(me.elem.innerHTML) < me.elem.dataset.maxval - (me.elem.dataset.maxval % (3000/cycle_step))) {
+                    me.elem.innerHTML = parseInt(me.elem.innerHTML)+Math.round(me.elem.dataset.maxval/(3000/cycle_step));
+                } else {
+                    me.elem.innerHTML = me.elem.dataset.maxval;
+                    clearInterval(me.start_counter);
+                }
+            };
+            counter.elem = numbers[i];
+            counter.start_counter = setInterval(counter, cycle_step);
         }
     }
+
+    document.body.onscroll = function() {
+        if (window.pageYOffset > document.getElementById('proud_numbers').offsetTop - 300 && window.pageYOffset < document.getElementById('proud_numbers').offsetTop + 100) {
+            getProudNumbers();
+        }
+    };
+
+    document.getElementById('contact').onclick = function() {
+        var pos = function me() {
+            if (window.pageYOffset < document.getElementById('contacts').offsetTop - 200) {
+                window.scrollBy(0, 100);
+            } else {
+                clearInterval(me.inter);
+            }
+        };
+        pos.inter = setInterval(pos, 35);
+    };
+
+    document.getElementById('up_button').onclick = function() {
+        var pos = function me() {
+            if (window.pageYOffset > 0) {
+                window.scrollBy(0, -100);
+            } else {
+                clearInterval(me.inter);
+            }
+        };
+        pos.inter = setInterval(pos, 35);
+    };
+
+    var photos = document.getElementById('photo_container').getElementsByTagName('img');
+    for (i=0; i<photos.length; i++) {
+        var onHover = function me() {
+            var new_div = document.createElement('div');
+            new_div.style.position = "absolute";
+            new_div.style.top = "0";
+            new_div.style.left = "0";
+            new_div.style.right = "0";
+            new_div.style.height = "250px";
+            new_div.style.weight = "320px";
+            new_div.className = "mask";
+            new_div.style.backgroundColor = "rgba(255, 230, 0,.41)";
+            new_div.style.padding = parseInt(getComputedStyle(me.elem).height)/2-15+"px 0";
+            new_div.style.color = "#ffffff";
+            new_div.innerHTML = "<span style='font-size:25px;font-weight:700;'>SIMPLE IMAGE</span><br><span style='text-transform: uppercase;'>"+me.elem.dataset.category+"</span>";
+            me.elem.parentNode.appendChild(new_div);
+        };
+        var onHoverOut = function me() {
+            me.elem.parentNode.removeChild(me.elem.parentNode.getElementsByClassName('mask')[0]);
+        };
+        onHover.elem = onHoverOut.elem = photos[i];
+        photos[i].parentNode.addEventListener("mouseenter", onHover);
+        photos[i].parentNode.addEventListener("mouseleave", onHoverOut);
+    }
+
+    function getFiltered(text) {
+        for (i=0; i<photos.length; i++) {
+            photos[i].parentNode.style.display="none";
+            if (photos[i].dataset.category.toUpperCase() == text || text == 'ALL') {
+                photos[i].parentNode.style.display="inline-block";
+            }
+        }
+    }
+
+    var filter_options = document.getElementById('filter').getElementsByTagName('a');
+    for (i=0; i<filter_options.length; i++) {
+        filter_options[i].onclick = function() {
+            this.parentNode.getElementsByClassName('selected')[0].classList.remove('selected');
+            this.classList.add('selected');
+            getFiltered(this.outerText);
+        }
+    }
+    getFiltered('ALL');
+
+    document.getElementById('feedback').addEventListener("keydown", function(e) {
+        var errors = document.getElementById('feedback').getElementsByClassName('error-msg');
+        for (i=0; i<errors.length; i++) {
+            errors[i].style.display = "none";
+        }
+        if(document.getElementById("username").value.match(/\d/)) {
+            document.getElementById("username").parentNode.getElementsByClassName('error-msg')[0].style.display = 'block';
+        }
+        if(!document.getElementById("useremail").value.match(/\$/)) {
+            document.getElementById("useremail").parentNode.getElementsByClassName('error-msg')[0].style.display = 'block';
+        }
+        if(document.getElementById("usersubject").value.match(/\D/)) {
+            document.getElementById("usersubject").parentNode.getElementsByClassName('error-msg')[0].style.display = 'block';
+        }
+    });
 };
