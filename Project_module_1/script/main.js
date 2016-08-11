@@ -24,37 +24,39 @@ window.onload = function() {
     function activateBars() {
         var bars = document.getElementsByClassName('progress_bar');
         for (var i = 0; i < bars.length; i++) {
-            var bar = bars[i];
-            var func = function() {
-                var percentage = bar.parentNode.dataset.percentage;
-                var style_of_bar = window.getComputedStyle(bar, null);
+            var func = function me() {
+                var percentage = me.bar.parentNode.dataset.percentage;
+                var numbers = me.bar.parentNode.getElementsByClassName('inner')[0].getElementsByTagName('span')[0];
+                var style_of_bar = window.getComputedStyle(me.bar, null);
                 var trans = style_of_bar.getPropertyValue("-webkit-transform") ||
                     style_of_bar.getPropertyValue("-moz-transform") ||
                     style_of_bar.getPropertyValue("-ms-transform") ||
                     style_of_bar.getPropertyValue("-o-transform") ||
                     style_of_bar.getPropertyValue("transform");
                 var values = trans.split('(')[1].split(')')[0].split(',');
-                var angle = Math.round(Math.atan2(values[1], values[0]) * (180 / Math.PI));
-                console.log(angle);
+                var angle = Math.atan2(values[1], values[0]) * (180 / Math.PI);
                 if (angle < -90) {angle+=360;}
-                if (angle + 90 >= 90) {bar.parentNode.getElementsByClassName('first_sqr')[0].style.background = "#ffe600"; bar.parentNode.getElementsByClassName('forth_sqr')[0].style.zIndex = "2";}
-                if (angle + 90 >= 180) {bar.parentNode.getElementsByClassName('sec_sqr')[0].style.background = "#ffe600";}
-                if (angle + 90 >= 270) {bar.parentNode.getElementsByClassName('third_sqr')[0].style.background = "#ffe600";}
-                if (angle + 90 < 360 / 100 * percentage) {
-                    angle += 4;
-                    bar.style.transform = "rotate(" + angle + "deg)";
-                    bar.style.mozTransform = "rotate("+angle+"deg)";
-                    bar.style.webkitTransform = "rotate("+angle+"deg)";
+                if (angle + 90 >= 90) {me.bar.parentNode.getElementsByClassName('first_sqr')[0].style.background = "#ffe600"; me.bar.parentNode.getElementsByClassName('forth_sqr')[0].style.zIndex = "2";}
+                if (angle + 90 >= 180) {me.bar.parentNode.getElementsByClassName('sec_sqr')[0].style.background = "#ffe600";}
+                if (angle + 90 >= 270) {me.bar.parentNode.getElementsByClassName('third_sqr')[0].style.background = "#ffe600";}
+                if (angle + 90 < 360 * percentage / 100) {
+                    angle += 3.75*percentage/100;
+                    if (parseInt(numbers.innerHTML)<percentage) {numbers.innerHTML = parseInt(numbers.innerHTML)+1+'%';}
+                    me.bar.style.transform = "rotate(" + angle + "deg)";
+                    me.bar.style.mozTransform = "rotate("+angle+"deg)";
+                    me.bar.style.webkitTransform = "rotate("+angle+"deg)";
                 } else {
-                    clearInterval(interval);
+                    numbers.innerHTML = percentage+'%';
+                    clearInterval(me.interval);
                 }
 
             };
-            var interval = setInterval(func, 100);
+            func.bar = bars[i];
+            func.interval = setInterval(func, 50);
         }
     }
     document.body.onscroll = function() {
-        if (window.pageYOffset > document.getElementById('skills').offsetTop - 500) {
+        if (window.pageYOffset > document.getElementById('skills').offsetTop - 300 && window.pageYOffset < document.getElementById('skills').offsetTop + 100) {
             activateBars();
         }
     }

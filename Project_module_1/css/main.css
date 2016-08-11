@@ -229,21 +229,14 @@ h1 {
     position:relative;
 }
 
-/*#skills .outer.circle:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-}*/
-
 #skills .inner.circle {
     width: 130px;
     height: 130px;
     background-color: #000000;
     display:inline-block;
-    vertical-align: middle;
     position:relative;
     z-index:5;
+    top: 6px;
 }
 
 #skills .inner.circle span {
@@ -263,7 +256,7 @@ h1 {
 }
 
 .item {
-    background: #eee;
+    background: #fff;
     position: absolute;
     width: 71px;
     height: 71px;
@@ -293,5 +286,5 @@ h1 {
     transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
-    background: #eee;
+    background: #fff;
 }
