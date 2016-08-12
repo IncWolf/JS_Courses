@@ -79,14 +79,14 @@ window.onload = function() {
     }
 
     document.body.onscroll = function() {
-        if (window.pageYOffset > document.getElementById('proud_numbers').offsetTop - 300 && window.pageYOffset < document.getElementById('proud_numbers').offsetTop + 100) {
+        if (window.pageYOffset > document.getElementById('proud_numbers').getBoundingClientRect().top + pageYOffset - 300 && window.pageYOffset < document.getElementById('proud_numbers').getBoundingClientRect().top + pageYOffset + 100) {
             getProudNumbers();
         }
     };
 
     document.getElementById('contact').onclick = function() {
         var pos = function me() {
-            if (window.pageYOffset < document.getElementById('contacts').offsetTop - 200) {
+            if (window.pageYOffset < document.getElementById('contacts').getBoundingClientRect().top + pageYOffset - 200) {
                 window.scrollBy(0, 100);
             } else {
                 clearInterval(me.inter);
@@ -150,19 +150,41 @@ window.onload = function() {
     }
     getFiltered('ALL');
 
-    document.getElementById('feedback').addEventListener("keydown", function(e) {
+    document.getElementById('feedback').addEventListener("keyup", function() {
         var errors = document.getElementById('feedback').getElementsByClassName('error-msg');
         for (i=0; i<errors.length; i++) {
             errors[i].style.display = "none";
         }
-        if(document.getElementById("username").value.match(/\d/)) {
+        if(document.getElementById("username").value.match(/\W|[0-9_]/)) {
             document.getElementById("username").parentNode.getElementsByClassName('error-msg')[0].style.display = 'block';
         }
-        if(!document.getElementById("useremail").value.match(/\$/)) {
+        if(document.getElementById("useremail").value.match(/[^\d_A-Za-z.@]/)) {
             document.getElementById("useremail").parentNode.getElementsByClassName('error-msg')[0].style.display = 'block';
         }
-        if(document.getElementById("usersubject").value.match(/\D/)) {
+        if(document.getElementById("usersubject").value.match(/[^\d_A-Za-z]/)) {
             document.getElementById("usersubject").parentNode.getElementsByClassName('error-msg')[0].style.display = 'block';
         }
     });
+
+    var carousel = document.getElementById('quotations');
+    var indicators = carousel.querySelectorAll('.carousel-indicators li');
+    var items = carousel.querySelectorAll('.quotation-wrapper .car-item');
+    for (i=0; i< indicators.length; i++) {
+        indicators[i].addEventListener("click", function(e) {
+            if (carousel.querySelector('.carousel-indicators li.active').dataset.slideTo < e.target.dataset.slideTo) {
+                for (j=carousel.querySelector('.carousel-indicators li.active').dataset.slideTo; j< e.target.dataset.slideTo; j++) {
+                    items[j].style.left = "-100%";
+                }
+            } else {
+                for (j=carousel.querySelector('.carousel-indicators li.active').dataset.slideTo; j> e.target.dataset.slideTo; j--) {
+                    items[j].style.left = "100%";
+                }
+            }
+            carousel.querySelector('.carousel-indicators li.active').classList.remove('active');
+            e.target.classList.add('active');
+            carousel.querySelector('.quotation-wrapper .car-item.active').classList.remove('active');
+            items[e.target.dataset.slideTo].classList.add('active');
+            items[e.target.dataset.slideTo].style.left="";
+        });
+    }
 };
