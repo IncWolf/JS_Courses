@@ -166,27 +166,6 @@ window.onload = function() {
         }
     });
 
-    /*var carousel = document.getElementsByClassName('car-container')[0];
-    var indicators = carousel.querySelectorAll('.carousel-indicators li');
-    var items = carousel.querySelectorAll('.car-wrapper .car-item');
-    for (i=0; i< indicators.length; i++) {
-        indicators[i].addEventListener("click", function(e) {
-            if (carousel.querySelector('.carousel-indicators li.active').dataset.slideTo < e.target.dataset.slideTo) {
-                for (j=carousel.querySelector('.carousel-indicators li.active').dataset.slideTo; j< e.target.dataset.slideTo; j++) {
-                    items[j].style.left = "-100%";
-                }
-            } else {
-                for (j=carousel.querySelector('.carousel-indicators li.active').dataset.slideTo; j> e.target.dataset.slideTo; j--) {
-                    items[j].style.left = "100%";
-                }
-            }
-            carousel.querySelector('.carousel-indicators li.active').classList.remove('active');
-            e.target.classList.add('active');
-            carousel.querySelector('.car-wrapper .car-item.active').classList.remove('active');
-            items[e.target.dataset.slideTo].classList.add('active');
-            items[e.target.dataset.slideTo].style.left="";
-        });
-    }*/
     function setSlider (container, isControlledByDots, isAutoPlayed) {
         var auto_slide;
         var items = container.querySelectorAll('.car-item');
@@ -218,7 +197,8 @@ window.onload = function() {
                 container.querySelector('.carousel-indicators li[data-slide-to="'+new_element_pos+'"]').classList.add('active');
             }
             if (isAutoPlayed) {
-                changePositionOfElements.prev_element_pos = container.querySelector('.carousel-indicators li.active').dataset.slideTo;
+                //changePositionOfElements.prev_element_pos = container.querySelector('.carousel-indicators li.active').dataset.slideTo;
+                changePositionOfElements.prev_element_pos = new_element_pos;
                 if (me.prevented_auto) {
                     auto_slide = setTimeout(changePositionOfElements,5000);
                     changePositionOfElements.prevented_auto = false;
@@ -230,7 +210,7 @@ window.onload = function() {
         };
 
         if (isAutoPlayed) {
-            changePositionOfElements.prev_element_pos = container.querySelector('.carousel-indicators li.active').dataset.slideTo;
+            changePositionOfElements.prev_element_pos = 0;
             auto_slide = setTimeout(changePositionOfElements, 3000);
         }
         if (isControlledByDots) {
@@ -248,7 +228,7 @@ window.onload = function() {
         }
     }
     var sliders = document.getElementsByClassName('car-container');
-    //for (i=0; i<sliders.length; i++) {
-        setSlider(sliders[0],sliders[0].dataset.isControlledByDots, sliders[0].dataset.isAutoPlayed);
-    //}
+    for (i=0; i<sliders.length; i++) {
+        setSlider(sliders[i],sliders[i].dataset.isControlledByDots, sliders[i].dataset.isAutoPlayed);
+    }
 };
