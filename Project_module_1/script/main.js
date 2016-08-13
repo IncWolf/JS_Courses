@@ -166,7 +166,7 @@ window.onload = function() {
         }
     });
 
-    function setSlider (container, isControlledByDots, isAutoPlayed) {
+    function setSlider (container, isControlledByDots, isAutoPlayed, isControlledByArrows) {
         var auto_slide;
         var items = container.querySelectorAll('.car-item');
         var changePositionOfElements = function me() {
@@ -178,7 +178,13 @@ window.onload = function() {
                     new_element_pos = 0;
                 }
             } else {
-                new_element_pos = me.new_element_pos;
+                if (me.new_element_pos < 0) {
+                    new_element_pos = items.length - 1;
+                } else if (items.length > me.new_element_pos){
+                    new_element_pos = me.new_element_pos;
+                } else {
+                    new_element_pos = 0;
+                }
             }
             if (me.prev_element_pos < new_element_pos) {
                 for (j=me.prev_element_pos; j< new_element_pos; j++) {
@@ -226,9 +232,22 @@ window.onload = function() {
                 }
             });
         }
+        if (isControlledByArrows) {
+            container.getElementsByClassName('car-arrows')[0].addEventListener("click", function(e) {
+                if (e.target.tagName == 'A') {
+                    if (isAutoPlayed) {
+                        clearTimeout(auto_slide);
+                        changePositionOfElements.prevented_auto = true;
+                    }
+                    changePositionOfElements.prev_element_pos = container.querySelector('.car-item.active').dataset.slidePos;
+                    changePositionOfElements.new_element_pos = parseInt(container.querySelector('.car-item.active').dataset.slidePos)+parseInt(e.target.dataset.slideTo)+'';
+                    changePositionOfElements();
+                }
+            });
+        }
     }
     var sliders = document.getElementsByClassName('car-container');
     for (i=0; i<sliders.length; i++) {
-        setSlider(sliders[i],sliders[i].dataset.isControlledByDots, sliders[i].dataset.isAutoPlayed);
+        setSlider(sliders[i],sliders[i].dataset.isControlledByDots, sliders[i].dataset.isAutoPlayed, sliders[i].dataset.isControlledByArrows);
     }
 };
