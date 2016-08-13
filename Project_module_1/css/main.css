@@ -337,11 +337,11 @@ h1 {
     left:0;
 }
 
-#quotations {
+.car-container  {
     position: relative;
 }
 
-.quotation-wrapper {
+.car-wrapper {
     position:relative;
     width: 100%;
     overflow: hidden;
