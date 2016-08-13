@@ -190,48 +190,59 @@ window.onload = function() {
     function setSlider (container, isControlledByDots, isAutoPlayed) {
         var auto_slide;
         var items = container.querySelectorAll('.car-item');
-        function changePositionOfElements(prev_element_pos) {
-            if (arguments[1]) {
-                var new_element_pos = arguments[1];
-            } else {
-                console.log(+prev_element_pos+1);
-                if (items[+prev_element_pos+1]) {
-                    new_element_pos = +prev_element_pos + 1;
+        var changePositionOfElements = function me() {
+
+            if (!me.new_element_pos) {
+                if (items[+me.prev_element_pos+1]) {
+                    var new_element_pos = +me.prev_element_pos + 1;
                 } else {
                     new_element_pos = 0;
                 }
+            } else {
+                new_element_pos = me.new_element_pos;
             }
-            if (prev_element_pos < new_element_pos) {
-                for (j=prev_element_pos; j< new_element_pos; j++) {
+            if (me.prev_element_pos < new_element_pos) {
+                for (j=me.prev_element_pos; j< new_element_pos; j++) {
                     items[j].style.left = "-100%";
                 }
             } else {
-                for (j=prev_element_pos; j> new_element_pos; j--) {
+                for (j=me.prev_element_pos; j> new_element_pos; j--) {
                     items[j].style.left = "100%";
                 }
             }
             container.querySelector('.car-wrapper .car-item.active').classList.remove('active');
             items[new_element_pos].classList.add('active');
             items[new_element_pos].style.left="";
-            //if (isAutoPlayed) {
-             //  auto_slide = setTimeout(changePositionOfElements(new_element_pos),3000);
-            //}
-        }
+            if(isControlledByDots) {
+                container.querySelector('.carousel-indicators li.active').classList.remove('active');
+                container.querySelector('.carousel-indicators li[data-slide-to="'+new_element_pos+'"]').classList.add('active');
+            }
+            if (isAutoPlayed) {
+                changePositionOfElements.prev_element_pos = container.querySelector('.carousel-indicators li.active').dataset.slideTo;
+                if (me.prevented_auto) {
+                    auto_slide = setTimeout(changePositionOfElements,5000);
+                    changePositionOfElements.prevented_auto = false;
+                    changePositionOfElements.new_element_pos = '';
+                } else {
+                    auto_slide = setTimeout(changePositionOfElements,3000);
+                }
+            }
+        };
 
         if (isAutoPlayed) {
-            console.log("auto");
-            auto_slide = setTimeout(changePositionOfElements(container.querySelector('.carousel-indicators li.active').dataset.slideTo), 3000);
+            changePositionOfElements.prev_element_pos = container.querySelector('.carousel-indicators li.active').dataset.slideTo;
+            auto_slide = setTimeout(changePositionOfElements, 3000);
         }
         if (isControlledByDots) {
             container.getElementsByClassName('carousel-indicators')[0].addEventListener("click", function(e) {
                 if (e.target.tagName == 'LI') {
-                    changePositionOfElements(container.querySelector('.carousel-indicators li.active').dataset.slideTo, e.target.dataset.slideTo);
-                    container.querySelector('.carousel-indicators li.active').classList.remove('active');
-                    e.target.classList.add('active');
                     if (isAutoPlayed) {
                         clearTimeout(auto_slide);
-                        auto_slide = setTimeout(changePositionOfElements(container.querySelector('.carousel-indicators li.active').dataset.slideTo),5000);
+                        changePositionOfElements.prevented_auto = true;
                     }
+                    changePositionOfElements.prev_element_pos = container.querySelector('.carousel-indicators li.active').dataset.slideTo;
+                    changePositionOfElements.new_element_pos = e.target.dataset.slideTo;
+                    changePositionOfElements();
                 }
             });
         }
