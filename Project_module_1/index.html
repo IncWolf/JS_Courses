@@ -17,11 +17,7 @@
 <nav class="navbar navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"><img src="img/icons/menu.png"></button>
             <a class="navbar-brand" href="#"><img src="img/logo.png"><div class="logo"><div>MAK</div><div>THEME</div></div></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
@@ -40,8 +36,8 @@
     <div class="car-container" data-is-auto-played="true" data-is-controlled-by-arrows="true">
         <div class="car-wrapper">
             <div class="car-arrows">
-                <a data-slide-to="-1">Prev</a>
-                <a data-slide-to="1">Next</a>
+                <a data-slide-to="-1" class="icon arrowsleft-icon"></a>
+                <a data-slide-to="1" class="icon arrowsright-icon"></a>
             </div>
             <div class="car-item active" data-slide-pos="0">
                 <div class="car-caption">
@@ -97,7 +93,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid reverse text-center">
+<div class="container-fluid reverse text-center" id="howwedoit">
     <div class="wrapper">
         <div class="title">
             <h1 class="color-yel">HOW WE DO IT</h1>
@@ -219,24 +215,24 @@
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon camera-icon"></span></div>
+                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon clock-icon"></span></div>
                 <h4>ON TIME PROJECTS</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             </div>
             <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon camera-icon"></span></div>
+                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon support-icon"></span></div>
                 <h4>FULLY SUPPORT</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon camera-icon"></span></div>
+                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon thumbsup-icon"></span></div>
                 <h4>PROFESSIONAL EXPIERIENCE</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             </div>
             <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon camera-icon"></span></div>
+                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon clouds-icon"></span></div>
                 <h4>COMMUNICATIVE TEAM</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             </div>
@@ -250,34 +246,43 @@
             <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
         </div>
         <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <div class="general_information">
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="general_information" data-user-name="JOHN DOE" data-general="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa" data-html-css="90" data-ai-ps="73" data-js-php="55" data-photography="77">
                     <div class="image-wrapper"></div>
                     <h4 class="color-yel">JOHN DOE</h4>
                     <p>CREATIVE DIRECTOR</p>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="general_information">
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="general_information" data-user-name="JOHN DOE" data-general="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem" data-html-css="45" data-ai-ps="64" data-js-php="25" data-photography="77">
                     <div class="image-wrapper"></div>
                     <h4 class="color-yel">JOHN DOE</h4>
                     <p>ART DIRECTOR</p>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="general_information">
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="general_information" data-user-name="JOHN DOE" data-general="Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?" data-html-css="99" data-ai-ps="93" data-js-php="75" data-photography="67">
                     <div class="image-wrapper"></div>
                     <h4 class="color-yel">JOHN DOE</h4>
                     <p>WEB DEVELOPER</p>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="general_information">
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="general_information" data-user-name="JOHN DOE" data-general="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful." data-html-css="60" data-ai-ps="93" data-js-php="65" data-photography="87">
                     <div class="image-wrapper"></div>
                     <h4 class="color-yel">JOHN DOE</h4>
                     <p>PHOTOGRAPHER</p>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid reverse" id="info" style="position:relative;">
+    <div class="point-arrow"></div>
+    <div class="wrapper">
+        <div class="title">
+            <h4 class="color-yel user_name"></h4>
+            <p class="description"></p>
         </div>
     </div>
 </div>
@@ -288,20 +293,20 @@
             <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
         </div>
         <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <div class="outer circle" data-percentage="90"><div class="item progress_bar"></div><div class="first_sqr item"></div><div class="sec_sqr item"></div><div class="third_sqr item"></div><div class="forth_sqr item"></div><div class="inner circle"><span class="color-yel">0%</span></div></div>
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="outer circle"><div class="item progress_bar"></div><div class="first_sqr item"></div><div class="sec_sqr item"></div><div class="third_sqr item"></div><div class="forth_sqr item"></div><div class="inner circle"><span class="color-yel">0%</span></div></div>
                 <h4 class="color-yel">HTML & CSS</h4>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="outer circle" data-percentage="96"><div class="item progress_bar"></div><div class="first_sqr item"></div><div class="sec_sqr item"></div><div class="third_sqr item"></div><div class="forth_sqr item"></div><div class="inner circle"><span class="color-yel">0%</span></div></div>
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="outer circle"><div class="item progress_bar"></div><div class="first_sqr item"></div><div class="sec_sqr item"></div><div class="third_sqr item"></div><div class="forth_sqr item"></div><div class="inner circle"><span class="color-yel">0%</span></div></div>
                 <h4 class="color-yel">AI & PS</h4>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="outer circle" data-percentage="85"><div class="item progress_bar"></div><div class="first_sqr item"></div><div class="sec_sqr item"></div><div class="third_sqr item"></div><div class="forth_sqr item"></div><div class="inner circle"><span class="color-yel">0%</span></div></div>
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="outer circle"><div class="item progress_bar"></div><div class="first_sqr item"></div><div class="sec_sqr item"></div><div class="third_sqr item"></div><div class="forth_sqr item"></div><div class="inner circle"><span class="color-yel">0%</span></div></div>
                 <h4 class="color-yel">JS & PHP</h4>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="outer circle" data-percentage="94"><div class="item progress_bar"></div><div class="first_sqr item"></div><div class="sec_sqr item"></div><div class="third_sqr item"></div><div class="forth_sqr item"></div><div class="inner circle"><span class="color-yel">0%</span></div></div>
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="outer circle"><div class="item progress_bar"></div><div class="first_sqr item"></div><div class="sec_sqr item"></div><div class="third_sqr item"></div><div class="forth_sqr item"></div><div class="inner circle"><span class="color-yel">0%</span></div></div>
                 <h4 class="color-yel">PHOTOGRAPHY</h4>
             </div>
         </div>
@@ -407,18 +412,18 @@
             <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <div class="icon-wrapper"><span class="icon css-icon"></span></div>
+            <div class="col-md-4 col-xs-4">
+                <div class="icon-wrapper"><span class="icon home-icon"></span></div>
                 <h4>OUR ADDRESS</h4>
                 <p class="description">214 Awesome Street, NY</p>
             </div>
-            <div class="col-md-4">
-                <div class="icon-wrapper"><span class="icon pen-icon"></span></div>
+            <div class="col-md-4 col-xs-4">
+                <div class="icon-wrapper"><span class="icon cloud-icon"></span></div>
                 <h4>OUR MAIL</h4>
                 <p class="description">awesome@ourmail.com</p>
             </div>
-            <div class="col-md-4">
-                <div class="icon-wrapper"><span class="icon camera-icon"></span></div>
+            <div class="col-md-4 col-xs-4">
+                <div class="icon-wrapper"><span class="icon phone-icon"></span></div>
                 <h4>OUR PHONE</h4>
                 <p class="description">(0)123-456-789-00</p>
             </div>
@@ -456,7 +461,7 @@
 <footer class="container-fluid text-center">
     <p>©Copyright 2013 Smak. All Rights Reserved.</p>
     <p>Кнопки социальных сетей</p>
-    <button type="button" class="btn btn-custom" id="up_button">Вверх</button>
+    <button type="button" class="btn btn-custom" id="up_button"><span class="icon arrowsup-icon"></span></button>
 </footer>
 </body>
 </html>

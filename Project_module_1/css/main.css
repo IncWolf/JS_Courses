@@ -9,6 +9,14 @@ body {
     padding: 26px;
 }
 
+.navbar-toggle {
+    padding: 0;
+}
+
+.navbar-toggle img{
+    width:30px;
+}
+
 .navbar-nav>li>a {
     color: #fff;
     font-size: 14px;
@@ -138,10 +146,15 @@ hr {
 }
 
 .icon {
-    width:48px;
-    height:48px;
+    width:35px;
+    height:35px;
     display:inline-block;
     vertical-align: middle;
+}
+
+#howwedoit .icon {
+    width: 48px;
+    height:48px;
 }
 
 .separator {
@@ -166,17 +179,20 @@ hr {
 }
 
 .circle .icon {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
 }
 
 .icon.css-icon {
     background: transparent url('../img/icons/css3.png') no-repeat;
     height: 36px;
+    width: 39px;
 }
 
 .icon.pen-icon {
     background: transparent url('../img/icons/pen.png') no-repeat;
+    height: 42px;
+    width: 40px;
 }
 
 .icon.camera-icon {
@@ -188,6 +204,7 @@ hr {
 .icon.cog-icon {
     background: transparent url('../img/icons/cog.png') no-repeat;
     width: 42px;
+    height: 42px;
 }
 
 .analyse-icon {
@@ -212,6 +229,46 @@ hr {
 
 .deliver-icon {
     background: transparent url('../img/icons/deliver.png') no-repeat;
+}
+
+.clock-icon {
+    background: transparent url('../img/icons/clock.png') no-repeat;
+}
+
+.support-icon {
+    background: transparent url('../img/icons/support.png') no-repeat;
+}
+
+.thumbsup-icon {
+    background: transparent url('../img/icons/thumbs_up.png') no-repeat;
+}
+
+.clouds-icon {
+    background: transparent url('../img/icons/clouds.png') no-repeat;
+}
+
+.home-icon {
+    background: transparent url('../img/icons/home.png') no-repeat;
+}
+
+.cloud-icon {
+    background: transparent url('../img/icons/cloud.png') no-repeat;
+}
+
+.phone-icon {
+    background: transparent url('../img/icons/phone.png') no-repeat;
+}
+
+.arrowsup-icon {
+    background: transparent url('../img/icons/arrows_up.png') no-repeat 50%;
+}
+
+.arrowsleft-icon {
+    background: transparent url('../img/icons/arrow_left.png') no-repeat;
+}
+
+.arrowsright-icon {
+    background: transparent url('../img/icons/arrow_right.png') no-repeat;
 }
 
 h1 {
@@ -258,7 +315,6 @@ h1 {
 }
 
 .image-wrapper {
-    width:270px;
     height: 250px;
     background-color: #11343a;
 }
@@ -468,4 +524,106 @@ h1 {
 #photo_container {
     height: 500px;
     overflow: hidden;
+}
+.navbar>.container .navbar-brand {
+    margin-top: -15px;
+}
+
+#info {
+    background-color: #000000;
+}
+
+.point-arrow {
+    position: absolute;
+    top: -14px;
+    border-bottom: 14px solid #000000;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+@media only screen and (max-width: 992px) {
+    #clients .car-item {
+        width:992px;
+    }
+    .jumbotron .car-caption .sub-heading {
+        font-size: 34px;
+    }
+    .jumbotron {
+        height: 891px;
+    }
+}
+
+@media only screen and (max-width: 687px) {
+    #clients .car-item {
+        width:687px;
+    }
+    .jumbotron .car-caption .sub-heading {
+        font-size: 34px;
+    }
+    .jumbotron {
+        height: 891px;
+    }
+
+    .car-caption {
+        padding: 93px 166px;
+    }
+
+    .car-arrows {
+        padding: 28px 80px;
+    }
+
+    .navbar-collapse {
+        float:right;
+    }
+
+    .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+        padding-bottom:15px;
+    }
+
+    #about .row {
+        margin-top: 0px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .jumbotron .car-caption .sub-heading {
+        font-size: 17px;
+    }
+    .car-caption {
+        padding: 70px 71px;
+    }
+    .car-arrows {
+        padding: 0px 21px;
+    }
+    .jumbotron {
+        height: 570px;
+    }
+    .title {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .container-fluid {
+        padding-bottom: 40px;
+    }
+
+    #filter a {
+        display: block;
+    }
+
+    #team .col-xs-6 {
+        width: 100%;
+    }
+
+    #clients .car-item {
+        width: 320px;
+    }
+
+    .carousel-indicators {
+        bottom: -20px;
+    }
+
+    #contacts .col-xs-4 {
+        width:100%;
+    }
 }

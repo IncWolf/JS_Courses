@@ -22,13 +22,11 @@ window.onload = function() {
         })
     }
 
-
-
-    function activateBars() {
-        var bars = document.getElementsByClassName('progress_bar');
+    var bars = document.getElementsByClassName('progress_bar');
+    function activateBars(percentages) {
         for (var i = 0; i < bars.length; i++) {
             var func = function me() {
-                var percentage = me.bar.parentNode.dataset.percentage;
+                var percentage = percentages[me.i];
                 var numbers = me.bar.parentNode.getElementsByClassName('inner')[0].getElementsByTagName('span')[0];
                 var style_of_bar = window.getComputedStyle(me.bar, null);
                 var trans = style_of_bar.getPropertyValue("-webkit-transform") ||
@@ -54,12 +52,39 @@ window.onload = function() {
                 }
 
             };
+            func.i = i;
             func.bar = bars[i];
             func.interval = setInterval(func, 50);
         }
     }
 
-    activateBars();
+    var info_block = document.querySelector('#info');
+    var skills_block = document.querySelector('#skills');
+    function showInfo(block) {
+        info_block.style.display = skills_block.style.display = 'block';
+        info_block.querySelector('.point-arrow').style.left = block.getBoundingClientRect().left+(block.getBoundingClientRect().right - block.getBoundingClientRect().left)/2+'px';
+        info_block.querySelector('.user_name').innerHTML = block.dataset.userName;
+        info_block.querySelector('.description').innerHTML = block.dataset.general;
+        activateBars([block.dataset.htmlCss, block.dataset.aiPs, block.dataset.jsPhp, block.dataset.photography]);
+    }
+
+    document.querySelector('#team .row').addEventListener("click", function (e) {
+        if (e.target.parentNode.className == 'general_information') {
+            for (i=0;i<bars.length;i++) {
+                bars[i].parentNode.getElementsByClassName('inner')[0].getElementsByTagName('span')[0].innerHTML = 0+'%';
+                bars[i].parentNode.querySelector('.first_sqr').style.background = "";
+                bars[i].parentNode.querySelector('.sec_sqr').style.background = "";
+                bars[i].parentNode.querySelector('.third_sqr').style.background = "";
+                bars[i].parentNode.querySelector('.forth_sqr').style.zIndex = "";
+                bars[i].style.transform = "rotate(-90deg)";
+                bars[i].style.mozTransform = "rotate(-90deg)";
+                bars[i].style.webkitTransform = "rotate(-90deg)";
+            }
+            showInfo(e.target.parentNode);
+        }
+    });
+
+    showInfo(document.querySelector('#team .general_information'));
 
     function getProudNumbers() {
         var numbers = document.getElementById('proud_numbers').getElementsByClassName('numbers');
@@ -84,27 +109,32 @@ window.onload = function() {
         }
     };
 
-    document.getElementById('contact').onclick = function() {
-        var pos = function me() {
-            if (window.pageYOffset < document.getElementById('contacts').getBoundingClientRect().top + pageYOffset - 200) {
-                window.scrollBy(0, 100);
-            } else {
-                clearInterval(me.inter);
-            }
-        };
-        pos.inter = setInterval(pos, 35);
+    var pos = function me() {
+        var step = 8;
+        if (window.pageYOffset > me.top_coord + me.top_coord%step) {
+            window.scrollBy(0, -step);
+        } else if (window.pageYOffset < me.top_coord - me.top_coord%step) {
+            window.scrollBy(0, step);
+        } else {
+            clearInterval(me.inter);
+        }
     };
 
-    document.getElementById('up_button').onclick = function() {
-        var pos = function me() {
-            if (window.pageYOffset > 0) {
-                window.scrollBy(0, -100);
-            } else {
-                clearInterval(me.inter);
-            }
-        };
-        pos.inter = setInterval(pos, 35);
+    document.getElementById('contact').onclick = function() {
+        pos.top_coord = document.getElementById('contacts').getBoundingClientRect().top + pageYOffset;
+        pos.inter = setInterval(pos, 2);
     };
+    document.getElementById('up_button').onclick = function() {
+        pos.top_coord = 0;
+        pos.inter = setInterval(pos, 2);
+    };
+    document.querySelector('.nav').addEventListener("click", function(e){
+        if (e.target.tagName == 'A') {
+            e.preventDefault();
+            if (e.target.getAttribute('href') == '#') {pos.top_coord = 0;} else {pos.top_coord = document.querySelector(e.target.getAttribute('href')).getBoundingClientRect().top + pageYOffset;}
+            pos.inter = setInterval(pos, 2);
+        }
+    });
 
     var photos = document.getElementById('photo_container').getElementsByTagName('img');
     for (i=0; i<photos.length; i++) {
@@ -250,4 +280,8 @@ window.onload = function() {
     for (i=0; i<sliders.length; i++) {
         setSlider(sliders[i],sliders[i].dataset.isControlledByDots, sliders[i].dataset.isAutoPlayed, sliders[i].dataset.isControlledByArrows);
     }
+
+    document.querySelector('.navbar-toggle').addEventListener("click", function(e) {
+        document.querySelector('.navbar-collapse').classList.toggle('collapse');
+    })
 };
