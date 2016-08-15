@@ -1,17 +1,39 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="ToDoApp">
 <head>
     <title>ToDo List (Task2)</title>
     <script src="../../Libraries/angular.js"></script>
     <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
     <link href="../../Libraries/bootstrap-theme.css" rel="stylesheet" />
-    <script src="todo.js"></script>
+    <!--<script src="todo.js"></script> -->
     <script>
-        // Добавьте AngularJS контроллер
+        var toDoApp = angular.module("ToDoApp",[]);
+        toDoApp.controller("ToDoController", function($scope) {
+            $scope.data = [];
+            $scope.position = '';
+
+            $scope.addData = function () {
+                if ($scope.position === '') {
+                    $scope.data.push({name: $scope.task_name, description: $scope.task_description, date: $scope.task_date, completed: $scope.task_completed});
+                } else {
+                    $scope.data[$scope.position] = {name: $scope.task_name, description: $scope.task_description, date: $scope.task_date, completed: $scope.task_completed};
+                    $scope.position = '';
+                }
+                $scope.task_name = $scope.task_description = $scope.task_date = $scope.task_completed = '';
+            };
+
+            $scope.editData = function (index) {
+                $scope.task_name = $scope.data[index].name;
+                $scope.task_description = $scope.data[index].description;
+                $scope.task_date = $scope.data[index].date;
+                $scope.task_completed = $scope.data[index].completed;
+                $scope.position = index;
+            }
+        });
     </script>
 
 </head>
-<body>
+<body ng-controller="ToDoController">
 
 <div class="container">
 
@@ -26,16 +48,34 @@
             <th>Completed</th>
         </tr>
         </thead>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr ng-repeat="task in data" ng-click="editData(data.indexOf(task))">
+            <td>{{task.name}}</td>
+            <td>{{task.description}}</td>
+            <td>{{task.date}}</td>
+            <td>{{task.completed}}</td>
         </tr>
     </table>
 
     <div>
-        <!-- Форма для добавления новых задач -->
+        <form role="form">
+            <div class="form-group">
+                <label for="task_name">Name</label>
+                <input type="text" class="form-control" id="task_name" ng-model="task_name">
+            </div>
+            <div class="form-group">
+                <label for="task_date">Due Date</label>
+                <input class="form-control" type="text" ng-model="task_date" id="task_date">
+            </div>
+            <div class="form-group">
+                <label for="task_description">Description</label>
+                <textarea class="form-control" ng-model="task_description" id="task_description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="task_completed">Completed</label>
+                <div><input type="checkbox" ng-model="task_completed" id="task_completed"></div>
+            </div>
+            <button type="submit" ng-click="addData()" class="btn btn-default">Add</button>
+        </form>
     </div>
 </div>
 </body>
