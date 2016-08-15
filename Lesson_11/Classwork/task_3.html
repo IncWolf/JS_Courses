@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 2</title>
+    <script src="angular.min.js"></script>
+    <script>
+        var model = "Hello world";
+
+        var myApp = angular.module("MyApp", []);
+
+        myApp.controller("MyAppCtrl", function($scope) {
+
+        });
+    </script>
+</head>
+<body ng-controller="MyAppCtrl">
+<input type="text" ng-model="text">
+<div id="output">{{text}}</div>
+</body>
+</html>
