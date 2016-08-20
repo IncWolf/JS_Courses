@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title>Task_2</title>
+    <script src="../../Libraries/angular.js"></script>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
     <script>
-        var app = angular.module('myApp', [])
+        angular.module('myApp', [])
             .controller('mainCtrl', function ($scope) {
                 $scope.items = [
                     { name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
@@ -17,10 +19,17 @@
     <body ng-controller="mainCtrl">
     <div class="form-group">
         <label for="sel1">Choose type:</label>
-        <select class="form-control" id="sel1">
-            <option>Table</option>
-            <option>List</option>
+        <select class="form-control" id="sel1" ng-model="selection">
+            <option value="table">Table</option>
+            <option value="list">List</option>
         </select>
+        <div ng-switch on="selection">
+            <table class="table" ng-switch-when="table">
+                <thead><th>Name</th><th>Price</th><th>Category</th><th>Count</th><th>Tax</th><th>Expiration</th></thead>
+                <tbody><tr ng-repeat="item in items"><td>{{item.name}}</td><td>{{item.price}}</td><td>{{item.category}}</td><td>{{item.count}}</td><td>{{item.tax}}</td><td>{{item.expiration}}</td></tr></tbody>
+            </table>
+            <ul ng-switch-when="list" ng-repeat="item in items"><li>Name: {{item.name}}</li><li>Price: {{item.price}}</li><li>Category: {{item.category}}</li><li>Count: {{item.count}}</li><li>Tax: {{item.tax}}</li><li>Expiration: {{item.expiration}}</li></ul>
+        </div>
     </div>
     </body>
 </html>
