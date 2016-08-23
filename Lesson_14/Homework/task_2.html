@@ -8,8 +8,11 @@
     <script>
         var toDoApp = angular.module("ToDoApp",[]);
         toDoApp.controller("ToDoController", ['$scope', 'sendJSONService', function($scope, sendJSONService) {
+            $scope.items = [];
             $scope.addData = function () {
+                $scope.items.push($scope.data);
                 sendJSONService($scope.data);
+                $scope.data = {};
             };
         }]);
         toDoApp.factory('sendJSONService', function($http) {
@@ -41,11 +44,11 @@
             <th>Completed</th>
         </tr>
         </thead>
-        <tr ng-repeat="task in data">
-            <td>{{task.name}}</td>
-            <td>{{task.description}}</td>
-            <td>{{task.date}}</td>
-            <td>{{task.completed}}</td>
+        <tr ng-repeat="item in items">
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.completed}}</td>
         </tr>
     </table>
 
