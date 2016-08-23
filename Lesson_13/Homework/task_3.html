@@ -5,56 +5,92 @@
     <title>Task_3</title>
     <script src="../../Libraries/angular.js"></script>
     <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <style>
+        form .ng-valid.ng-dirty {
+            background-color: lightgreen;
+        }
+        form .ng-invalid.ng-dirty {
+            background-color: lightcoral;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .warning {
+            font-style: italic;
+            color: burlywood;
+        }
+    </style>
     <script>
-        angular.module("TenDivsApp", [])
-                .controller("TenDivsController", function($scope) {
+        var compareTo = function() {
+            return {
+                require: "ngModel",
+                scope: {
+                    otherModelValue: "=compareTo"
+                },
+                link: function(scope, element, attributes, ngModel) {
+
+                    ngModel.$validators.compareTo = function(modelValue) {
+                        return modelValue == scope.otherModelValue;
+                    };
+
+                    scope.$watch("otherModelValue", function() {
+                        ngModel.$validate();
+                    });
+                }
+            };
+        };
+        angular.module("Task3App", [])
+                .controller("Task3Controller", function($scope) {
                     $scope.nameRegex = /^.{3,20}$/;
-                    //$scope.mailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]+$/;
                     $scope.phoneRegex = /^[0-9]*$/;
 
                     $scope.showError = function (err) {
                         if (angular.isDefined(err)) {
                             if (err.required) {
-                                return 'no data entered!'
+                                return 'This field is required to fill!'
                             }
                             else if (err.email) {
                                 return "invalid email!";
                             }
                         }
-                    }
-                });
+                    };
+                })
+                .directive("compareTo", compareTo);
     </script>
 </head>
 <body ng-controller="Task3Controller">
     <div class="panel">
         <div class="panel-body">
-            <form name="validation_form">
+            <form name="validationForm" novalidate>
                 <div class="form-group">
                     <label for="username">FIO:</label>
-                    <input type="text" class="form-control" name="username" id="username" required ng-pattern="nameRegex">
-                    <p class="error" ng-show="validation_form.username.$invalid && validation_form.username.$dirty">{{showError(validation_form.username.$error)}}</p>
+                    <input type="text" class="form-control" name="userName" id="username" ng-model="user.username" required ng-pattern="nameRegex">
+                    <p class="warning" ng-show="validationForm.userName.$error.pattern && validationForm.userName.$dirty">FIO must be 3 characters at least and no more than 20 characters</p>
+                    <p class="error" ng-show="validationForm.userName.$invalid && validationForm.userName.$dirty">{{showError(validationForm.userName.$error)}}</p>
                 </div>
                 <div class="form-group">
                     <label for="useremail">Email:</label>
-                    <input type="email" class="form-control" name="useremail" id="useremail" required>
-                    <p class="error" ng-show="validation_form.useremail.$invalid && validation_form.useremail.$dirty">{{showError(validation_form.useremail.$error)}}</p>
+                    <input type="email" class="form-control" name="useremail" id="useremail" ng-model="user.email" required>
+                    <p class="error" ng-show="validationForm.useremail.$invalid && validationForm.useremail.$dirty">{{showError(validationForm.useremail.$error)}}</p>
                 </div>
                 <div class="form-group">
                     <label for="tel">Telephone:</label>
-                    <input type="text" class="form-control" name="tel" id="tel" required ng-pattern="phoneRegex">
-                    <p class="error" ng-show="validation_form.tel.$invalid && validation_form.tel.$dirty">{{showError(validation_form.tel.$error)}}</p>
+                    <input type="text" class="form-control" name="tel" id="tel" ng-model="user.tel" required ng-pattern="phoneRegex">
+                    <p class="warning" ng-show="validationForm.tel.$error.pattern && validationForm.tel.$dirty">Only digitals acceptable</p>
+                    <p class="error" ng-show="validationForm.tel.$invalid && validationForm.tel.$dirty">{{showError(validationForm.tel.$error)}}</p>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" class="form-control" id="password" name="pass" required>
-                    <p class="error" ng-show="validation_form.pass.$invalid && validation_form.pass.$dirty">{{showError(validation_form.username.$error)}}</p>
+                    <input type="password" class="form-control" id="password" ng-model="user.password" name="pass" required>
+                    <p class="error" ng-show="validationForm.pass.$invalid && validationForm.pass.$dirty">{{showError(validationForm.pass.$error)}}</p>
                 </div>
                 <div class="form-group">
                     <label for="ret_pas">Retry password:</label>
-                    <input type="password" class="form-control" id="ret_pas" name="ret_pass" required>
-                    <p class="error" ng-show="validation_form.ret_pass != validation_form.pass && validation_form.ret_pass.$dirty">{{showError(validation_form.username.$error)}}</p>
+                    <input type="password" class="form-control" id="ret_pas" ng-model="user.ret_password" compare-to="user.password" name="retPass" required>
+                    <p class="warning" ng-show="validationForm.retPass.$invalid && validationForm.retPass.$dirty">Password must be edentical</p>
                 </div>
-                <button type="submit" class="btn btn-default" ng-disabled="validation_form.$invalid">Submit</button>
+                <button type="submit" class="btn btn-default" ng-disabled="validationForm.$invalid">Submit</button>
             </form>
         </div>
     </div>
