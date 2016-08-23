@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CounterApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_1</title>
+    <script src="../../Libraries/angular.js"></script>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("CounterApp", [])
+                .controller("CounterController", ['$scope', 'countClickService', function($scope, countClickService) {
+                    $scope.clickOnBtn = function() {
+                        countClickService();
+                    }
+                }])
+                .factory ("countClickService", function() {
+                    var c = 1;
+                    return function() {
+                        console.log("Count: "+c++);
+                    }
+                });
+    </script>
+</head>
+<body ng-controller="CounterController">
+    <button class="btn btn-default" ng-click="clickOnBtn()">Click me!</button>
+</body>
+</html>
