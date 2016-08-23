@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Task3App">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_3</title>
+    <script src="../../Libraries/angular.js"></script>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("Task3App", [])
+                .controller("Task3Controller", function($scope, $http) {
+                    function successHandle(response) {
+                        $scope.items = response.data;
+                    }
+                    function errorHandle(error) {
+                        console.error(error.status+" "+error.statusText);
+                    }
+                    $http.get("data/data.json").then(successHandle, errorHandle);
+                })
+    </script>
+</head>
+<body ng-controller="Task3Controller">
+    <table class="table">
+        <tr ng-repeat="item in items">
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+        </tr>
+    </table>
+</body>
+</html>
