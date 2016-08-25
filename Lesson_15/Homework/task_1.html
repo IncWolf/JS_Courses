@@ -12,8 +12,6 @@
                         var inter = $interval(function() {
                             if (angular.isDefined($scope.cache)) {
                                 for(var j=0; j<$scope.cache.length; j++) {
-                                    console.log($scope.cache[j].value.exp);
-                                    console.log(new Date());
                                     if ($scope.cache[j].value.exp <= new Date()) {
                                         CacheService.del($scope.cache[j].key);
                                         $scope.cache = CacheService.get();
@@ -45,7 +43,6 @@
                             return array;
                         },
                         del: function(id) {
-                            console.log("Destroyed");
                             this.cache.remove(id);
                             for (i=0; i<this.keys.length;i++) {
                                 if (this.keys[i] == id){this.keys.splice(i,1)};
