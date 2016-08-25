@@ -10,9 +10,7 @@
         angular.module("CookieServiceApp", ['ngCookies'])
                 .controller("CookieServiceController", ['$scope', 'setCookieService', function($scope, setCookieService) {
                     $scope.setCookieBtn = function() {
-                        console.log("isDefined problem");
                         if (angular.isDefined($scope.id) && angular.isDefined($scope.value)) {
-                            console.log("Here we are");
                             setCookieService($scope.id, $scope.value);
                         }
                     }
@@ -21,7 +19,6 @@
                     return function (id, value) {
                         var now = new Date();
                         var exp = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-                        console.log("id "+id+" value "+value);
                         $cookies.put(id, value, { expires: exp });
                     }
                 })
