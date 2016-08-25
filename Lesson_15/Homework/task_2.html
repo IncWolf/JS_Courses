@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TimerApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_2</title>
+    <script src="../../Libraries/angular.js"></script>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("TimerApp", [])
+                .controller("TimerController", ['$scope', '$interval', function($scope, $interval) {
+                    var counterInterval;
+                    $scope.counter = new Date(1970, 0, 1, 0, 0, 0);
+                    $scope.startTimer = function () {
+                        counterInterval = $interval(function() {
+                            $scope.counter = new Date(1970, 0, 1, $scope.counter.getHours(), $scope.counter.getMinutes(), $scope.counter.getSeconds()+1);
+                        }, 1000);
+                    };
+                    $scope.stopTimer = function() {
+                        if (angular.isDefined(counterInterval)) {
+                            $interval.cancel(counterInterval);
+                        }
+                    };
+                    $scope.resetTimer = function() {
+                        $scope.counter = new Date(1970, 0, 1, 0, 0, 0);
+                    }
+                }]);
+    </script>
+</head>
+<body ng-controller="TimerController">
+<button class="btn btn-success" ng-click="startTimer()">Start</button>
+<button class="btn btn-danger" ng-click="stopTimer()">Stop</button>
+<button class="btn btn-default" ng-click="resetTimer()">Reset</button>
+<div id="output">{{counter | date: "HH:mm:ss"}}</div>
+</body>
+</html>
