@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CacheServiceApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+    <script src="../../Libraries/angular.js"></script>
+    <script src="../../Libraries/angular-cookies.js"></script>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("CacheServiceApp", [])
+                .controller("CacheServiceController", ['$scope', '$interval', 'CacheService', function($scope, $interval, CacheService) {
+                        var inter = $interval(function() {
+                            if (angular.isDefined($scope.cache)) {
+                                for(var j=0; j<$scope.cache.length; j++) {
+                                    console.log($scope.cache[j].value.exp);
+                                    console.log(new Date());
+                                    if ($scope.cache[j].value.exp <= new Date()) {
+                                        CacheService.del($scope.cache[j].key);
+                                        $scope.cache = CacheService.get();
+                                    }
+                                }
+                            }
+                        }, 1000);
+                    $scope.setCacheBtn = function() {
+                        var now = new Date();
+                        CacheService.set($scope.id, {value: $scope.value, exp: new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes() + parseInt($scope.exp_time), now.getSeconds())});
+                        $scope.cache = CacheService.get();
+                    }
+                }])
+                .factory("CacheService", function($cacheFactory) {
+                    return  {
+                        cache: $cacheFactory('task_1ID'),
+                        keys: [],
+                        set: function(id, value) {
+                            if (angular.isDefined(id) && angular.isDefined(value)) {
+                                this.cache.put(id, value);
+                                this.keys.push(id);
+                            }
+                        },
+                        get: function() {
+                            var array = [];
+                            for (var i= 0; i<this.keys.length; i++) {
+                                array.push({key: this.keys[i], value: this.cache.get(this.keys[i])});
+                            }
+                            return array;
+                        },
+                        del: function(id) {
+                            console.log("Destroyed");
+                            this.cache.remove(id);
+                            for (i=0; i<this.keys.length;i++) {
+                                if (this.keys[i] == id){this.keys.splice(i,1)};
+                            }
+                        }
+                    }
+                })
+    </script>
+</head>
+<body ng-controller="CacheServiceController">
+<div class="form-group">
+    <label for="id">ID:</label>
+    <input type="text" id="id" ng-model="id">
+</div>
+<div class="form-group">
+    <label for="value">Value:</label>
+    <input type="text" id="value" ng-model="value">
+</div>
+<div class="form-group">
+    <label for="exp_time">Minutes:</label>
+    <input type="text" id="exp_time" ng-model="exp_time">
+</div>
+<p ng-repeat="(key, value) in cache">{{key+1}}: {{value}}</p>
+<button class="btn btn-success" ng-click="setCacheBtn()">Set Cache</button>
+</body>
+</html>
