@@ -13,13 +13,13 @@
                 .directive('listFromArray', function() {
                     return {
                         link: function(scope, element) {
-                            var ul = angular.element('<ul>');
                             if (angular.isDefined(scope.array)) {
+                                var ul = angular.element('<ul>');
                                 for (var i=0; i<scope.array.length; i++) {
                                     ul.append(angular.element('<li>').text(scope.array[i]));
                                 }
+                                element.append(ul);
                             }
-                            element.append(ul);
                         }
                     }
                 })
