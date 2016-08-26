@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="DirectiveApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_1</title>
+    <script src="../../Libraries/angular.js"></script>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("DirectiveApp", [])
+                .controller("DirectiveController", function($scope){
+                    $scope.array = ["First", "Second", "Third", "Fourth"];
+                })
+                .directive('listFromArray', function() {
+                    return {
+                        link: function(scope, element) {
+                            var ul = angular.element('<ul>');
+                            if (angular.isDefined(scope.array)) {
+                                for (var i=0; i<scope.array.length; i++) {
+                                    ul.append(angular.element('<li>').text(scope.array[i]));
+                                }
+                            }
+                            element.append(ul);
+                        }
+                    }
+                })
+    </script>
+</head>
+<body ng-controller="DirectiveController">
+<div class="panel">
+    <div list-from-array="array" class="well"></div>
+</div>
+</body>
+</html>
