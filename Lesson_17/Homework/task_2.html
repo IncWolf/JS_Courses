@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="DirectiveApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_2</title>
+    <script src="../../Libraries/angular.js"></script>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("DirectiveApp", [])
+                .controller("DirectiveController", function($scope){
+                    $scope.array = ['First', 'Second', 'Third', 'Fourth'];
+                })
+                .directive('paragraphsFromArray', function() {
+                    return {
+                        restrict: "A",
+                        replace: true,
+                        scope: { array: "=array"},
+                        template: '<p ng-repeat="paragraph in array track by $index">{{paragraph}}</p>'
+                    }
+                })
+    </script>
+</head>
+<body ng-controller="DirectiveController">
+<div class="panel">
+    <div paragraphs-from-array="array" array="array" class="well"></div>
+</div>
+</body>
+</html>
