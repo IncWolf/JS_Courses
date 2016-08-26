@@ -11,14 +11,11 @@
                 })
                 .directive('loginForm', function() {
                     return {
-                        link: function(scope, element) {
-                            var form_wrapper = angular.element('<form>')
-                                    .append(angular.element('<label for="username">Username:</label><div class="form-group"><input type="text" id="username"></div>'))
-                                    .append(angular.element('<label for="login">Login:</label><div class="form-group"><input type="text" id="login"></div>'))
-                                    .append(angular.element('<label for="pass">Password:</label><div class="form-group"><input type="password" id="pass"></div>'))
-                                    .append(angular.element('<label for="email">Email:</label><div class="form-group"><input type="email" id="email"></div>'));
-                            element.append(form_wrapper);
-                        }
+                        template: '<form name="form" novalidate>' +
+                        '<label for="username">Username:</label><div class="form-group"><input type="text" id="username"></div>' +
+                        '<label for="login">Login:</label><div class="form-group"><input type="text" id="login"></div>' +
+                        '<label for="pass">Password:</label><div class="form-group"><input type="password" id="pass"></div>' +
+                        '<label for="email">Email:</label><div class="form-group"><input type="email" ng-model="user.email" name="email" id="email">'
                     }
                 })
     </script>
