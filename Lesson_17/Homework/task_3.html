@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="DirectiveApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_3</title>
+    <script src="../../Libraries/angular.js"></script>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("DirectiveApp", [])
+                .controller("DirectiveController", function($scope){
+                    $scope.array = [{name: "First", href: "/first.html"}, {name: "Second", href: "/second.html"}, {name: "Third", href: "/third.html"}];
+                })
+                .directive('menu', function() {
+                    return {
+                        restrict: "E",
+                        replace: true,
+                        template: '<nav class="navbar navbar-default"><div class="container-fluid"><ul class="nav navbar-nav">' +
+                        '<li ng-repeat="elem in array"><a href="{{elem.href}}">{{elem.name}}</a></li>' +
+                        '</ul></div></nav>'
+                    }
+                })
+    </script>
+</head>
+<body ng-controller="DirectiveController">
+    <menu></menu>
+</body>
+</html>
