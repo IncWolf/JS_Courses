@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Task1App">
+<html lang="en" ng-app="Task2App">
 <head>
     <meta charset="UTF-8">
     <title>Task_1</title>
     <script src="../../Libraries/angular.js"></script>
     <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
     <script>
-        angular.module("Task1App", [])
+        angular.module("Task2App", [])
                 .directive ("timer", function() {
                     return {
                         templateUrl: 'template/task_1.html',
                         restrict: 'E',
+                        scope: true,
                         controller: function($scope, $interval){
                             $scope.counter = 0;
                             $scope.startCount = function() {
@@ -21,9 +22,20 @@
                         }
                     }
                 })
+                .directive ("timerConsole", function() {
+                    return {
+                        require: 'timer',
+                        restrict: 'A',
+                        link: function(scope) {
+                            scope.$watch("counter", function() {
+                                console.log(scope.counter);
+                            })
+                        }
+                    }
+                })
     </script>
 </head>
 <body>
-    <timer></timer>
+<timer timer-console></timer>
 </body>
 </html>
