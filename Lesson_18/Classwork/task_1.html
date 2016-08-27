@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Task1App">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_1</title>
+    <script src="../../Libraries/angular.js"></script>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("Task1App", [])
+                .controller("Task1Controller", function($scope, $interval){
+                    $scope.counter = 0;
+                    $scope.startCount = function() {
+                        $interval(function() {
+                            $scope.counter++;
+                        }, 1000);
+                    }
+                })
+                .directive ("timer", function() {
+                    return {
+                        templateUrl: 'template/task_1.html',
+                        restrict: 'E',
+                        controller: 'Task1Controller'
+                    }
+                })
+    </script>
+</head>
+<body>
+    <timer></timer>
+</body>
+</html>
