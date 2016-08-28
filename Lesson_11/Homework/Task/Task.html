@@ -13,7 +13,8 @@
             $scope.position = '';
 
             $scope.addData = function () {
-                if ($scope.position === '') {
+                if ($scope.position == '') {
+                    console.log("Here");
                     $scope.data.push({name: $scope.task_name, description: $scope.task_description, date: $scope.task_date, completed: $scope.task_completed});
                 } else {
                     $scope.data[$scope.position] = {name: $scope.task_name, description: $scope.task_description, date: $scope.task_date, completed: $scope.task_completed};
@@ -48,11 +49,12 @@
             <th>Completed</th>
         </tr>
         </thead>
-        <tr ng-repeat="task in data" ng-click="editData(data.indexOf(task))">
+        <tr ng-repeat="task in data">
             <td>{{task.name}}</td>
             <td>{{task.description}}</td>
             <td>{{task.date}}</td>
             <td>{{task.completed}}</td>
+            <td><a ng-click="editData(data.indexOf(task))">Edit</a></td>
         </tr>
     </table>
 
