@@ -20,8 +20,9 @@
                             }
                         }, 1000);
                     $scope.setCacheBtn = function() {
+                        $scope.res_mes = '';
                         var now = new Date();
-                        CacheService.set($scope.id, {value: $scope.value, exp: new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes() + parseInt($scope.exp_time), now.getSeconds())});
+                        $scope.res_mes = CacheService.set($scope.id, {value: $scope.value, exp: new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes() + parseInt($scope.exp_time), now.getSeconds())});
                         $scope.cache = CacheService.get();
                     }
                 }])
@@ -31,8 +32,12 @@
                         keys: [],
                         set: function(id, value) {
                             if (angular.isDefined(id) && angular.isDefined(value)) {
-                                this.cache.put(id, value);
-                                this.keys.push(id);
+                                if (!this.cache.get(id)) {
+                                    this.cache.put(id, value);
+                                    this.keys.push(id);
+                                } else {
+                                    return 'ID is already exist'
+                                }
                             }
                         },
                         get: function() {
@@ -67,5 +72,6 @@
 </div>
 <p ng-repeat="(key, value) in cache">{{key+1}}: {{value}}</p>
 <button class="btn btn-success" ng-click="setCacheBtn()">Set Cache</button>
+<div class="error">{{res_mes}}</div>
 </body>
 </html>
