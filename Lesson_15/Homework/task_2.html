@@ -9,11 +9,12 @@
         angular.module("TimerApp", [])
                 .controller("TimerController", ['$scope', '$interval', function($scope, $interval) {
                     var counterInterval;
-                    $scope.counter = new Date(1970, 0, 1, 0, 0, 0);
+                    $scope.counter = new Date(1970, 0, 1, 0, 0, 0, 0);
                     $scope.startTimer = function () {
                         counterInterval = $interval(function() {
-                            $scope.counter = new Date(1970, 0, 1, $scope.counter.getHours(), $scope.counter.getMinutes(), $scope.counter.getSeconds()+1);
-                        }, 1000);
+                            //Оставлю так, потому что при добавлении +1 каждую милисекунду, браузер не успевает это просчитать
+                            $scope.counter = new Date(1970, 0, 1, $scope.counter.getHours(), $scope.counter.getMinutes(), $scope.counter.getSeconds(), $scope.counter.getMilliseconds()+10);
+                        }, 10);
                     };
                     $scope.stopTimer = function() {
                         if (angular.isDefined(counterInterval)) {
@@ -21,7 +22,7 @@
                         }
                     };
                     $scope.resetTimer = function() {
-                        $scope.counter = new Date(1970, 0, 1, 0, 0, 0);
+                        $scope.counter = new Date(1970, 0, 1, 0, 0, 0, 0);
                     }
                 }]);
     </script>
@@ -30,6 +31,6 @@
 <button class="btn btn-success" ng-click="startTimer()">Start</button>
 <button class="btn btn-danger" ng-click="stopTimer()">Stop</button>
 <button class="btn btn-default" ng-click="resetTimer()">Reset</button>
-<div id="output">{{counter | date: "HH:mm:ss"}}</div>
+<div id="output">{{counter | date: "HH:mm:ss:sss"}}</div>
 </body>
 </html>
