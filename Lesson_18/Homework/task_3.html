@@ -43,22 +43,25 @@
                 .directive("trans", function() {
                     return {
                         transclude: true,
-                        template: "<div class='ng-modal-dialog' ng-show='show'>" +
-                        "<div class='ng-modal-close' ng-click='hideModal()'>X</div>" +
+                        template: "<div class='ng-modal-dialog' ng-show='ctrl.show'>" +
+                        "<div class='ng-modal-close' ng-click='ctrl.hideModal()'>X</div>" +
                         "<div class='ng-modal-dialog-content' ng-transclude></div>" +
                         "</div>",
-                        link: function (scope) {
-                            scope.show = true;
-                            scope.hideModal = function() {
-                                scope.show = false;
+                        controller: function () {
+                            this.show = true;
+                            var self = this;
+                            this.hideModal = function() {
+                                self.show = false;
                             }
                         },
-                        restrict: 'A'
+                        restrict: 'A',
+                        controllerAs: 'ctrl'
                     }
                 })
     </script>
 </head>
 <body>
 <div trans><p>Все плохо</p></div>
+<div trans><p>Все хорошо</p></div>
 </body>
 </html>
