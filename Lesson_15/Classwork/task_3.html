@@ -11,15 +11,21 @@
                 .controller("CookieServiceController", ['$scope', 'setCookieService', function($scope, setCookieService) {
                     $scope.setCookieBtn = function() {
                         if (angular.isDefined($scope.id) && angular.isDefined($scope.value)) {
-                            setCookieService($scope.id, $scope.value);
+                            setCookieService.set($scope.id, $scope.value);
+                            $scope.output = setCookieService.get();
                         }
                     }
                 }])
                 .factory("setCookieService", function($cookies) {
-                    return function (id, value) {
-                        var now = new Date();
-                        var exp = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-                        $cookies.put(id, value, { expires: exp });
+                    return {
+                        set: function (id, value) {
+                            var now = new Date();
+                            var exp = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+                            $cookies.put(id, value, {expires: exp});
+                        },
+                        get: function() {
+                            return $cookies.getAll();
+                        }
                     }
                 })
     </script>
@@ -34,5 +40,6 @@
     <input type="text" id="value" ng-model="value">
 </div>
 <button class="btn btn-success" ng-click="setCookieBtn()">Set Cookie</button>
+<div>{{output}}</div>
 </body>
 </html>
