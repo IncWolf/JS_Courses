@@ -24,6 +24,8 @@ body {
 .jumbotron {
     height: 700px;
     background: url('../img/header.png');
+    position: relative;
+    margin-bottom: 0;
 }
 
 .jumb_wrapper {
@@ -45,6 +47,7 @@ body {
 }
 
 .reverse {
+    background-color: #12191d;
     color: #ffffff;
 }
 
@@ -102,10 +105,6 @@ body {
     margin:auto;
 }
 
-.jumbotron {
-    margin-bottom: 0;
-}
-
 .title {
     margin-bottom: 60px;
     margin-left: 105px;
@@ -120,11 +119,6 @@ hr {
     border: 1px solid #ffe600;
     width: 170px;
     margin-bottom: 24px;
-}
-
-.reverse {
-    background-color: #12191d;
-    color: #ffffff;
 }
 
 .description {
