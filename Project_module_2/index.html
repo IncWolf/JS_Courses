@@ -29,6 +29,16 @@
 
                 })
     </script>
+    <script>
+        window.onload = function() {
+            var left_of_before = parseInt(getComputedStyle(document.querySelector('#full_resp .with-arrow')).width)/2;
+            var left_of_after = left_of_before + 1;
+            document.styleSheets[0].addRule('#full_resp .with-arrow:before','left: ' + left_of_before + 'px');
+            document.styleSheets[0].insertRule('#full_resp .with-arrow:before { left: ' +left_of_before+ 'px }', 0);
+            document.styleSheets[0].addRule('#full_resp .with-arrow:after','left: ' + left_of_after+ 'px');
+            document.styleSheets[0].insertRule('#full_resp .with-arrow:after { left: ' +left_of_after+ 'px }', 0);
+        }
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-fixed-top">
@@ -92,7 +102,7 @@
     <div class="wrapper">
         <div class="row">
             <div class="btn-group-justified">
-                <div class="btn btn-default">START TOUR</div><div class="btn btn-default">FOR ALL DEVICES</div>
+                <div class="btn btn-default">START TOUR</div><div class="btn btn-default with-arrow">FOR ALL DEVICES</div>
             </div>
             <div class="col-md-6">
                 <img src="img/telephones.png">
@@ -107,15 +117,14 @@
 </div>
 <div class="container-fluid text-center" id="work">
     <div class="wrapper">
-        <div class="title">
-            <h5>OUR WORKS</h5>
-            <h1>WHAT WE DONE SO FAR</h1>
-            <hr>
-            <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-        </div>
         <div class="row" id="filter">
-            <div class="col-md-12 col-sm-6">
-                <a class="selected">ALL</a><div class="separator"></div><a>WEB DESIGN</a><div class="separator"></div><a>GRAPHIC DESIGN</a><div class="separator"></div><a>PHOTOGRAPHY</a><div class="separator"></div><a>ILLUSTRATION</a>
+            <div class="title">
+                <div class="large">Our Portfolio</div>
+                <hr>
+                <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+            </div>
+            <div class="col-md-12">
+                <div class="selected">ALL</div><div>WEB</div><div>PHOTOGRAPHY</div><div>GRAPHIC DESIGN</div>
             </div>
         </div>
     </div>

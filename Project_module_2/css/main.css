@@ -74,6 +74,7 @@ body {
     font-size: 15px;
     border: 1px solid #ffffff;
     padding: 15px 40px;
+    margin-top: 35px;
 }
 
 .container-fluid {
@@ -149,6 +150,39 @@ ul.point-square {
     color: #00e1ff;
 }
 
+.with-arrow {
+    position:relative;
+    border-color: #00e1ff;
+}
+
+.with-arrow:after, .with-arrow:before {
+    content: '';
+    position: absolute;
+    top: 32px;
+}
+
+.with-arrow:after {
+    border-top: 10px solid #fff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.with-arrow:before {
+    border-top: 11px solid #00e1ff;
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
+}
+
+.btn {
+    border-radius: 0;
+}
+hr {
+    border: 1px solid #00e1ff;
+    width: 170px;
+    margin-bottom: 24px;
+}
+
+
     /*------*/
 
 .nav>li>a:focus, .nav>li>a:hover {
@@ -193,12 +227,6 @@ ul.point-square {
 
 .title h5 {
     color: #515151;
-}
-
-hr {
-    border: 1px solid #ffe600;
-    width: 170px;
-    margin-bottom: 24px;
 }
 
 .description {
@@ -271,94 +299,6 @@ hr {
 .circle .icon {
     width: 35px;
     height: 35px;
-}
-
-.icon.css-icon {
-    background: transparent url('../img/icons/css3.png') no-repeat;
-    height: 36px;
-    width: 39px;
-}
-
-.icon.pen-icon {
-    background: transparent url('../img/icons/pen.png') no-repeat;
-    height: 42px;
-    width: 40px;
-}
-
-.icon.camera-icon {
-    background: transparent url('../img/icons/camera.png') no-repeat;
-    width: 39px;
-    height: 31px;
-}
-
-.icon.cog-icon {
-    background: transparent url('../img/icons/cog.png') no-repeat;
-    width: 42px;
-    height: 42px;
-}
-
-.analyse-icon {
-    background: transparent url('../img/icons/analyse.png') no-repeat;
-}
-
-.preparing-icon {
-    background: transparent url('../img/icons/preparing.png') no-repeat;
-}
-
-.working-icon {
-    background: transparent url('../img/icons/working.png') no-repeat;
-}
-
-.finalyse-icon {
-    background: transparent url('../img/icons/finalyse.png') no-repeat;
-}
-
-.testing-icon {
-    background: transparent url('../img/icons/testing.png') no-repeat;
-}
-
-.deliver-icon {
-    background: transparent url('../img/icons/deliver.png') no-repeat;
-}
-
-.clock-icon {
-    background: transparent url('../img/icons/clock.png') no-repeat;
-}
-
-.support-icon {
-    background: transparent url('../img/icons/support.png') no-repeat;
-}
-
-.thumbsup-icon {
-    background: transparent url('../img/icons/thumbs_up.png') no-repeat;
-}
-
-.clouds-icon {
-    background: transparent url('../img/icons/clouds.png') no-repeat;
-}
-
-.home-icon {
-    background: transparent url('../img/icons/home.png') no-repeat;
-}
-
-.cloud-icon {
-    background: transparent url('../img/icons/cloud.png') no-repeat;
-}
-
-.phone-icon {
-    background: transparent url('../img/icons/phone.png') no-repeat;
-}
-
-.arrowsup-icon {
-    background: transparent url('../img/icons/arrows_up.png') no-repeat 50%;
-}
-
-.arrowsleft-icon {
-    background: transparent url('../img/icons/arrow_left.png') no-repeat;
-}
-
-.arrowsright-icon {
-    background: transparent url('../img/icons/arrow_right.png') no-repeat;
 }
 
 h1 {
