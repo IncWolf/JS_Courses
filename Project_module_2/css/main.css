@@ -18,7 +18,7 @@ body {
 }
 
 .navbar-nav>li.active {
-    border-bottom: 2px solid rgb(0,255,255);
+    border-bottom: 2px solid #00e1ff;
 }
 
 .jumbotron {
@@ -38,12 +38,28 @@ body {
     font-size: 60px;
 }
 
+.large {
+    font-size: 40px;
+}
+
 .x-light {
     font-weight: 200;
 }
 
 .light {
     font-weight: 300;
+}
+
+.medium {
+    font-weight: 500;
+}
+
+.plain {
+    font-weight: 400;
+}
+
+.h-margin-40 {
+    margin-bottom: 40px;
 }
 
 .reverse {
@@ -69,7 +85,71 @@ body {
     padding: 50px 0;
 }
 
-/*------*/
+.service {
+    cursor: pointer;
+}
+
+.services_container {
+    padding: 50px 0 23px;
+}
+
+.info-block {
+    border-top: 2px solid #00e1ff;
+    position: relative;
+}
+
+ul.point-square {
+    position: relative;
+    top: -60px;
+}
+
+.point-square li {
+    border-bottom: 2px solid #00e1ff;
+    border-top: 2px solid #00e1ff;
+    list-style: none;
+    float: left;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+}
+
+.point-square li.active {
+    border-bottom-color: #ffffff;
+    border-left: 2px solid #00e1ff;
+    border-right: 2px solid #00e1ff;
+}
+
+.point-square li.first {
+    border-left: 0;
+}
+
+.point-square li.fourth{
+    border-right: 0;
+}
+
+.info_container {
+    padding: 50px 122px;
+
+}
+
+.info-block p {
+    padding: 50px 60px;
+}
+
+#full_resp {
+    background-color: #f7f7f7;
+}
+
+#full_resp .btn-group-justified {
+    padding-bottom: 80px;
+}
+
+.btn-custom.blue {
+    border-color: #00e1ff;
+    color: #00e1ff;
+}
+
+    /*------*/
 
 .nav>li>a:focus, .nav>li>a:hover {
     background: transparent;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" ng-app="ProjectApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,25 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,800" rel="stylesheet">
+    <script src="script/angular.min.js"></script>
+    <script>
+        angular.module("ProjectApp", [])
+                .controller("ServiceController", function($scope) {
+                    var services = document.querySelectorAll('.services_container div.service');
+                    var squares = document.querySelectorAll('.point-square>li');
+                    squares[0].style.left = 0;
+                    squares[squares.length - 1].style.right = 0;
+                    for (var i = 1; i<squares.length-1; i++) {
+                        squares[i].style.left = services[i].getBoundingClientRect().left - services[0].getBoundingClientRect().left + (services[i].getBoundingClientRect().right - services[i].getBoundingClientRect().left)/2-35-118+'px';
+                    }
+                    $scope.active_service = 1;
+                    $scope.changeActiveService = function(i) {
+                        $scope.active_service = i;
+                    }
 
+
+                })
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-fixed-top">
@@ -37,69 +55,52 @@
         <button type="button" class="btn btn-custom light">START TOUR</button>
     </div>
 </div>
-<div class="container-fluid text-center" id="services">
+<div class="container-fluid text-center" id="services" ng-controller="ServiceController">
     <div class="wrapper">
-        <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <div class="icon-wrapper"><span class="icon cog-icon"></span></div>
-                <h4 class="sub-heading">WEB DESIGN</h4>
-                <hr>
+        <div class="row services_container">
+            <div class="col-md-3 col-sm-6 service" ng-click="changeActiveService(1)">
+                <span class="medium">WEB DESIGN</span>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="icon-wrapper"><span class="icon cog-icon"></span></div>
-                <h4 class="sub-heading">GRAPHIC DESIGN</h4>
-                <hr>
+            <div class="col-md-3 col-sm-6 service" ng-click="changeActiveService(2)">
+                <span class="medium">GRAPHIC DESIGN</span>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="icon-wrapper"><span class="icon cog-icon"></span></div>
-                <h4 class="sub-heading">PROGRAMMING</h4>
-                <hr>
+            <div class="col-md-3 col-sm-6 service" ng-click="changeActiveService(3)">
+                <span class="medium">PROGRAMMING</span>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="icon-wrapper"><span class="icon cog-icon"></span></div>
-                <h4 class="sub-heading">DEVELOPING</h4>
-                <hr>
+            <div class="col-md-3 col-sm-6 service" ng-click="changeActiveService(4)">
+                <span class="medium">DEVELOPING</span>
+            </div>
+
+        </div>
+        <div class="row info_container">
+            <div class="info-block" ng-switch on="active_service">
+                <ul class="point-square">
+                    <li class="first" ng-class="{'active': active_service == '1'}"></li>
+                    <li class="second" ng-class="{'active': active_service == '2'}"></li>
+                    <li class="third" ng-class="{'active': active_service == '3'}"></li>
+                    <li class="fourth" ng-class="{'active': active_service == '4'}"></li>
+                </ul>
+                <p ng-switch-when="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus ante arcu, vel finibus lectus interdum sit amet. Phasellus id ante et magna consequat sodales eget eleifend mi. Duis luctus gravida urna id sodales. Aliquam erat volutpat. Proin sit amet purus at nibh dignissim aliquet. Integer condimentum accumsan suscipit. Duis porttitor dictum neque, sed dictum purus convallis non. Nullam ornare purus vitae tellus consectetur, ut blandit justo efficitur.</p>
+                <p ng-switch-when="2">Nunc pretium felis quis metus rhoncus iaculis. Quisque ornare nunc sapien, et aliquam velit volutpat nec. Pellentesque vel pulvinar tellus. Nullam eu nisl at tortor sagittis facilisis eu vitae felis. Duis nunc est, porttitor et mattis at, convallis eget felis. Duis venenatis justo ut dolor sodales, nec luctus ligula tempus. Phasellus sollicitudin dui vulputate venenatis suscipit. Sed et auctor nisi, quis fringilla ex. Donec volutpat vulputate tortor, a aliquam est vulputate vitae.</p>
+                <p ng-switch-when="3">Etiam id luctus purus. Pellentesque at mollis ex, et lobortis odio. In condimentum arcu ac neque egestas, a accumsan erat malesuada. Quisque quis magna dictum, hendrerit libero at, viverra tortor. Vivamus purus libero, suscipit in mauris id, dapibus rhoncus neque. Aenean commodo ac felis nec suscipit. Etiam laoreet consequat varius. Fusce eu sodales magna, quis rhoncus ipsum.</p>
+                <p ng-switch-when="4">Ut in hendrerit leo. Aenean vulputate mi consectetur ex vehicula, et pharetra felis iaculis. Sed consequat turpis euismod, convallis sem at, suscipit nibh. Nunc porttitor consectetur facilisis. Pellentesque erat diam, dictum vel cursus a, porttitor ut dolor. Quisque sollicitudin turpis dictum ante pulvinar scelerisque. Maecenas posuere enim et dapibus scelerisque. Morbi vel ex metus.</p>
             </div>
         </div>
-        <div class="row">Text</div>
     </div>
 </div>
-<div class="container-fluid reverse text-center" id="howwedoit">
+<div class="container-fluid" id="full_resp">
     <div class="wrapper">
-        <div class="title">
-            <h1 class="color-yel">HOW WE DO IT</h1>
-            <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
-        </div>
         <div class="row">
-            <div class="col-md-2 col-sm-6">
-                <div class="icon-wrapper"><span class="icon analyse-icon"></span></div>
-                <h4 class="sub-heading">ANALYSE</h4>
-                <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor</p>
+            <div class="btn-group-justified">
+                <div class="btn btn-default">START TOUR</div><div class="btn btn-default">FOR ALL DEVICES</div>
             </div>
-            <div class="col-md-2 col-sm-6">
-                <div class="icon-wrapper"><span class="icon preparing-icon"></span></div>
-                <h4 class="sub-heading">PREPARING</h4>
-                <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor</p>
+            <div class="col-md-6">
+                <img src="img/telephones.png">
             </div>
-            <div class="col-md-2 col-sm-6">
-                <div class="icon-wrapper"><span class="icon working-icon"></span></div>
-                <h4 class="sub-heading">WORKING</h4>
-                <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor</p>
-            </div>
-            <div class="col-md-2 col-sm-6">
-                <div class="icon-wrapper"><span class="icon finalyse-icon"></span></div>
-                <h4 class="sub-heading">FINALYSE</h4>
-                <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor</p>
-            </div>
-            <div class="col-md-2 col-sm-6">
-                <div class="icon-wrapper"><span class="icon testing-icon"></span></div>
-                <h4 class="sub-heading">TESTING</h4>
-                <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor</p>
-            </div>
-            <div class="col-md-2 col-sm-6">
-                <div class="icon-wrapper"><span class="icon deliver-icon"></span></div>
-                <h4 class="sub-heading">DELIVER</h4>
-                <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor</p>
+            <div class="col-md-6">
+                <div class="h-margin-40 large plain">Fully Responsive</div>
+                <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus ante arcu, vel finibus lectus interdum sit amet. Phasellus id ante et magna consequat sodales eget eleifend mi. Duis luctus gravida urna id sodales. Aliquam erat volutpat. Proin sit amet purus at nibh dignissim aliquet. Integer condimentum accumsan suscipit. Duis porttitor dictum neque, sed dictum purus convallis non. Nullam ornare purus vitae tellus consectetur, ut blandit justo efficitur.</p>
+                <button type="button" class="btn btn-custom light blue">GET NOW</button>
             </div>
         </div>
     </div>
