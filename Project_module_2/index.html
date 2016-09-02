@@ -28,6 +28,26 @@
 
 
                 })
+                .controller ("PhotoController", function($scope) {
+                    $scope.portfolio = [{src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'ALL'}, {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'WEB'},
+                        {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'PHOTO'}, {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'GRAPHDIS'},
+                        {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'ALL'}, {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'WEB'},
+                        {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'PHOTO'}, {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'GRAPHDIS'},
+                        {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'PHOTO'}, {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'GRAPHDIS'}];
+                    $scope.filter_value = 'ALL';
+                    $scope.setFilter = function(value) {
+                        $scope.filter_value = value;
+                    };
+                    $scope.filterFunc = function (photo) {
+                        if ($scope.filter_value == 'ALL') {
+                            return photo;
+                        } else {
+                            if (photo.category == $scope.filter_value) {
+                                return photo;
+                            }
+                        }
+                    }
+                });
     </script>
     <script>
         window.onload = function() {
@@ -44,14 +64,14 @@
 <nav class="navbar navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"><img src="img/icons/menu.png"></button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"></button>
             <a class="navbar-brand" href="#">KET</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="#">HOME</a></li>
                 <li><a href="#services">SERVICES</a></li>
-                <li><a href="#work">PORTFOLIO</a></li>
+                <li><a href="#potfolio">PORTFOLIO</a></li>
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#clients">NEWS</a></li>
                 <li><a href="#contacts">CONTACT</a></li>
@@ -115,41 +135,25 @@
         </div>
     </div>
 </div>
-<div class="container-fluid text-center" id="work">
-    <div class="wrapper">
-        <div class="row" id="filter">
-            <div class="title">
-                <div class="large">Our Portfolio</div>
-                <hr>
-                <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-            </div>
-            <div class="col-md-12">
-                <div class="selected">ALL</div><div>WEB</div><div>PHOTOGRAPHY</div><div>GRAPHIC DESIGN</div>
+<div ng-controller="PhotoController">
+    <div class="container-fluid text-center" id="portfolio">
+        <div class="wrapper">
+            <div class="row" id="filter">
+                <div class="title">
+                    <div class="large">Our Portfolio</div>
+                    <hr>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                </div>
+                <div class="col-md-12 filter_menu">
+                    <div ng-class="{'selected': filter_value == 'ALL'}" ng-click="setFilter('ALL')">ALL</div><div ng-class="{'selected': filter_value == 'WEB'}" ng-click="setFilter('WEB')">WEB</div><div ng-class="{'selected': filter_value == 'PHOTO'}" ng-click="setFilter('PHOTO')">PHOTOGRAPHY</div><div ng-class="{'selected': filter_value == 'GRAPHDIS'}" ng-click="setFilter('GRAPHDIS')">GRAPHIC DESIGN</div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container-fluid text-center">
-    <div id="photo_container">
-        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="all"></div>
-        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="web design"></div>
-        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="graphic design"></div>
-        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="photography"></div>
-        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="illustration"></div>
-        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="all"></div>
-        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="web design"></div>
-        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="graphic design"></div>
-        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="photography"></div>
-        <div class="photo-wrapper"><img src="https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG" data-category="illustration"></div>
-    </div>
-</div>
-<div class="container-fluid text-center">
-    <div class="wrapper">
-        <div class="title">
-            <h1>DO YOU LIKE OUR PORTFOLIO?</h1>
-            <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
+    <div class="container-fluid text-center">
+        <div id="photo_container">
+            <div class="photo-wrapper" ng-repeat="photo in portfolio | filter: filterFunc" mask="{{photo.category}}"><img src="{{photo.src}}"></div>
         </div>
-        <button type="button" class="btn btn-custom" id="contact">CONTACT US</button>
     </div>
 </div>
 <div class="container-fluid reverse text-center" id="proud_numbers">
@@ -196,24 +200,24 @@
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon clock-icon"></span></div>
+                <div class="icon-wrapper circle text-center js-get-bigger"></div>
                 <h4>ON TIME PROJECTS</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             </div>
             <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon support-icon"></span></div>
+                <div class="icon-wrapper circle text-center js-get-bigger"></div>
                 <h4>FULLY SUPPORT</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon thumbsup-icon"></span></div>
+                <div class="icon-wrapper circle text-center js-get-bigger"></div>
                 <h4>PROFESSIONAL EXPIERIENCE</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             </div>
             <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center js-get-bigger"><span class="icon clouds-icon"></span></div>
+                <div class="icon-wrapper circle text-center js-get-bigger"></div>
                 <h4>COMMUNICATIVE TEAM</h4>
                 <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             </div>

@@ -182,6 +182,29 @@ hr {
     margin-bottom: 24px;
 }
 
+.filter_menu>div {
+    display: inline-block;
+    padding: 17px 27px;
+    margin: 0 27px;
+}
+
+.filter_menu>div.selected {
+    border: 1px solid #00e1ff;
+}
+
+#photo_container .photo-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+#photo_container .photo-wrapper img {
+    width: 320px;
+    height: 250px;
+}
+
+#photo_container .photo-wrapper:hover img {
+    opacity: .7;
+}
 
     /*------*/
 
@@ -429,20 +452,6 @@ h1 {
     -moz-transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
     background: #fff;
-}
-
-#photo_container .photo-wrapper {
-    position:relative;
-    display:none;
-}
-
-#photo_container .photo-wrapper img {
-    width: 320px;
-    height: 250px;
-}
-
-#photo_container .photo-wrapper:hover img {
-    opacity: .7;
 }
 
 #filter a {
