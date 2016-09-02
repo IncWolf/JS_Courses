@@ -47,7 +47,35 @@
                             }
                         }
                     }
-                });
+                })
+                .directive ("smoothCounter", function($window, $interval) {
+                    return {
+                        restrict: 'A',
+                        scope: {},
+                        link: function (scope, element, attr) {
+                            scope.number = 0;
+                            function getProudNumbers() {
+                                var cycle_step = 100;
+                                var counter = function me() {
+                                    console.log('timerStart');
+                                    if(scope.number < attr.smoothCounter - (attr.smoothCounter % (3000/cycle_step))) {
+                                        scope.number = scope.number+Math.round(attr.smoothCounter/(3000/cycle_step));
+                                    } else {
+                                        scope.number = attr.smoothCounter;
+                                        $interval.cancel(me.start_counter);
+                                    }
+                                };
+                                counter.start_counter = $interval(counter, cycle_step);
+                            }
+
+                            document.body.onscroll = function() {
+                                if ($window.pageYOffset > document.getElementById('proud_numbers').getBoundingClientRect().top + $window.pageYOffset - 300 && $window.pageYOffset < document.getElementById('proud_numbers').getBoundingClientRect().top + $window.pageYOffset + 100) {
+                                    getProudNumbers();
+                                }
+                            };
+                        }
+                    }
+                })
     </script>
     <script>
         window.onload = function() {
@@ -158,68 +186,30 @@
 </div>
 <div class="container-fluid reverse text-center" id="proud_numbers">
     <div class="wrapper">
-        <div class="title">
-            <h1>WE ARE PROUD OF THESE NUMBERS</h1>
-            <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
-        </div>
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="padding-v-25 border-yellow margin-h-15px">
-                    <h4 class="numbers" data-maxval="1600">0</h4>
-                    <p class="color-yel">HAPPY CLIENTS</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="padding-v-25 border-yellow margin-h-15px">
-                    <h4 class="numbers" data-maxval="3200">0</h4>
+                    <h4 smooth-counter="3054">{{number}}</h4>
                     <p class="color-yel">COMPLETED PROJECTS</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="padding-v-25 border-yellow margin-h-15px">
-                    <h4 class="numbers" data-maxval="40">0</h4>
-                    <p class="color-yel">AWARDS</p>
+                    <h4 smooth-counter="7234873"></h4>
+                    <p class="color-yel">CLICK PRESSED</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="padding-v-25 border-yellow margin-h-15px">
-                    <h4 class="numbers" data-maxval="20000">0</h4>
-                    <p class="color-yel">COFFEE DRINKS</p>
+                    <h4 smooth-counter="4670"></h4>
+                    <p class="color-yel">MAILS SENTED & RECIEVED</p>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="container-fluid text-center" id="about">
-    <div class="wrapper">
-        <div class="title">
-            <h5>ABOUT US</h5>
-            <h1>WHO WE ARE</h1>
-            <hr>
-            <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center js-get-bigger"></div>
-                <h4>ON TIME PROJECTS</h4>
-                <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-            </div>
-            <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center js-get-bigger"></div>
-                <h4>FULLY SUPPORT</h4>
-                <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center js-get-bigger"></div>
-                <h4>PROFESSIONAL EXPIERIENCE</h4>
-                <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-            </div>
-            <div class="col-md-6 col-sm-6 text-left">
-                <div class="icon-wrapper circle text-center js-get-bigger"></div>
-                <h4>COMMUNICATIVE TEAM</h4>
-                <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            <div class="col-md-3 col-sm-6">
+                <div class="padding-v-25 border-yellow margin-h-15px">
+                    <h4 smooth-counter="939"></h4>
+                    <p class="color-yel">JOKES TOLDS</p>
+                </div>
             </div>
         </div>
     </div>
@@ -227,7 +217,8 @@
 <div class="container-fluid text-center light-gray" id="team">
     <div class="wrapper">
         <div class="title">
-            <h1>THE TEAM</h1>
+            <h1>WE ARE THE ONE</h1>
+            <hr>
             <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
         </div>
         <div class="row">
@@ -260,51 +251,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="container-fluid reverse" id="info" style="position:relative;">
-    <div class="point-arrow"></div>
-    <div class="wrapper">
-        <div class="title">
-            <h4 class="color-yel user_name"></h4>
-            <p class="description"></p>
-        </div>
-    </div>
-</div>
-<div class="container-fluid reverse text-center" id="skills">
-    <div class="wrapper">
-        <div class="title">
-            <h1>SKILLS</h1>
-            <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
-        </div>
-
-    </div>
-</div>
-<div class="container-fluid text-center" id="clients">
-    <div class="wrapper">
-        <div class="title">
-            <h5>OUR CLIENTS</h5>
-            <h1>WHO LOVE TO WORK WITH US</h1>
-            <hr>
-            <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-        </div>
-
-    </div>
-</div>
-<div class="container-fluid reverse text-center" id="rates">
-    <div class="wrapper">
-
-    </div>
-</div>
-<div class="container-fluid text-center" id="contacts">
-    <div class="wrapper">
-        <div class="title">
-            <h5>CONTACT US</h5>
-            <h1>WHERE YOU CAN FIND US</h1>
-            <hr>
-            <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-        </div>
-
     </div>
 </div>
 <div class="container-fluid reverse text-center" id="feedback">
