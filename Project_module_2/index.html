@@ -54,21 +54,26 @@
                         scope: {},
                         link: function (scope, element, attr) {
                             scope.number = 0;
-                            function getProudNumbers() {
-                                var cycle_step = 100;
-                                var counter = function me() {
-                                    console.log('timerStart');
-                                    if(scope.number < attr.smoothCounter - (attr.smoothCounter % (3000/cycle_step))) {
-                                        scope.number = scope.number+Math.round(attr.smoothCounter/(3000/cycle_step));
-                                    } else {
-                                        scope.number = attr.smoothCounter;
-                                        $interval.cancel(me.start_counter);
-                                    }
-                                };
-                                counter.start_counter = $interval(counter, cycle_step);
-                            }
+                            console.log(attr);
+                            var getProudNumbers = function wrapper() {
+                                console.log(wrapper.attr);
+//                                var cycle_step = 100;
+//                                var counter = function me() {
+//                                    if(scope.number < me.attr.smoothCounter - (me.attr.smoothCounter % (3000/cycle_step))) {
+//                                        me.element.text(scope.number);
+//                                        scope.number = scope.number+Math.round(me.attr.smoothCounter/(3000/cycle_step));
+//                                    } else {
+//                                        scope.number = me.attr.smoothCounter;
+//                                        $interval.cancel(me.start_counter);
+//                                    }
+//                                };
+//                                counter.start_counter = $interval(counter, cycle_step);
+//                                counter.max_value = attr;
+//                                counter.element = element;
+                            };
+                            getProudNumbers.attr = attr;
 
-                            document.body.onscroll = function() {
+                            $window.onscroll = function() {
                                 if ($window.pageYOffset > document.getElementById('proud_numbers').getBoundingClientRect().top + $window.pageYOffset - 300 && $window.pageYOffset < document.getElementById('proud_numbers').getBoundingClientRect().top + $window.pageYOffset + 100) {
                                     getProudNumbers();
                                 }
@@ -189,7 +194,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="padding-v-25 border-yellow margin-h-15px">
-                    <h4 smooth-counter="3054">{{number}}</h4>
+                    <h4 smooth-counter="3054"></h4>
                     <p class="color-yel">COMPLETED PROJECTS</p>
                 </div>
             </div>
