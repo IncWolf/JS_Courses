@@ -58,6 +58,10 @@ body {
     font-weight: 400;
 }
 
+.small {
+    font-size: 13px;
+}
+
 .h-margin-40 {
     margin-bottom: 40px;
 }
@@ -204,6 +208,95 @@ hr {
 
 #photo_container .photo-wrapper:hover img {
     opacity: .7;
+}
+
+.image-wrapper {
+    height: 200px;
+    background-color: #252726;
+    position:relative;
+}
+
+.image-wrapper .image-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #1c1d1e;
+    color: #ffffff;
+}
+
+.image-wrapper .image-caption h4 {
+    color: #00e1ff;
+}
+
+#team .general_information {
+    background-color: #f7f7f7;
+}
+
+#team .general_information .desc{
+    height: 105px;
+    padding: 21px 0;
+}
+
+#team .general_information .social-btns{
+    height: 56px;
+}
+
+#team .general_information .social-btns div:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#team .general_information .social-btns div{
+    display: inline-block;
+    height: inherit;
+    color: #252726;
+    float: left;
+    width: 25%;
+    font-size: 22px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#team .general_information .social-btns div.facebook:hover {
+    background-color: #36609e;
+    color: #ffffff;
+}
+
+#team .general_information .social-btns div.twitter:hover {
+    background-color: #2ca9e1;
+    color: #ffffff;
+}
+#team .general_information .social-btns div.google:hover {
+    background-color: #db5442;
+    color: #ffffff;
+}
+#team .general_information .social-btns div.dribble:hover {
+    background-color: #ee558e;
+    color: #ffffff;
+}
+
+#news .table.col-md-6 {
+    width: 50%;
+}
+
+#news .table>tbody>tr>td {
+    border-top: 0;
+    border-bottom: 1px solid #ddd;
+    padding: 17px;
+}
+
+#news .desc {
+    padding: 38px 0 45px;
+}
+
+.blue {
+    color: #00e1ff;
+}
+
+#news .table>tbody>tr>td:nth-child(1) {
+    border-bottom: 0;
 }
 
     /*------*/
@@ -367,11 +460,6 @@ h1 {
     padding-left: 102px;
 }
 
-.image-wrapper {
-    height: 250px;
-    background-color: #11343a;
-}
-
 .light-gray {
     background: #fbfbfb
 }
@@ -379,11 +467,6 @@ h1 {
 #team h4, #skills h4{
     font-size: 20px;
     margin-top: 15px;
-}
-
-#team .general_information {
-    background-color: #ffffff;
-    border-bottom: 1px solid #dfe4e5;
 }
 
 #skills .outer.circle {
@@ -582,94 +665,4 @@ h1 {
 
 #feedback button {
     margin-top: 15px;
-}
-
-@media only screen and (max-width: 992px) {
-    #clients .car-item {
-        width:992px;
-    }
-    .jumbotron .car-caption .sub-heading {
-        font-size: 34px;
-    }
-    .jumbotron {
-        height: 891px;
-    }
-}
-
-@media only screen and (max-width: 687px) {
-    #clients .car-item {
-        width:687px;
-    }
-    .jumbotron .car-caption .sub-heading {
-        font-size: 34px;
-    }
-    .jumbotron {
-        height: 891px;
-    }
-
-    .car-caption {
-        padding: 93px 166px;
-    }
-
-    .car-arrows {
-        padding: 28px 80px;
-    }
-
-    .navbar-collapse {
-        float:right;
-    }
-
-    .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
-        padding-bottom:15px;
-    }
-
-    #about .row {
-        margin-top: 0px;
-    }
-    #filter a {
-        display: block;
-    }
-}
-
-@media only screen and (max-width: 320px) {
-    .jumbotron .car-caption .sub-heading {
-        font-size: 17px;
-    }
-    .car-caption {
-        padding: 70px 71px;
-    }
-    .car-arrows {
-        padding: 0px 21px;
-    }
-    .jumbotron {
-        height: 570px;
-    }
-    .title {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .container-fluid {
-        padding-bottom: 40px;
-    }
-
-    #filter a {
-        display: block;
-    }
-
-    #team .col-xs-6 {
-        width: 100%;
-    }
-
-    #clients .car-item {
-        width: 320px;
-    }
-
-    .carousel-indicators {
-        bottom: -20px;
-    }
-
-    #contacts .col-xs-4 {
-        width:100%;
-    }
 }

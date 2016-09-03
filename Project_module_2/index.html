@@ -9,6 +9,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,800" rel="stylesheet">
     <script src="script/angular.min.js"></script>
     <script>
@@ -48,36 +49,64 @@
                         }
                     }
                 })
+                .controller ("TeamController", function($scope) {
+                    $scope.team = [{name: 'JOHN DOE', position: 'ART DIRECTOR', desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
+                        {name: 'JOHN DOE', position: 'WEB DEVELOPER', desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
+                        {name: 'JOHN DOE', position: 'PHOTOGRAPHER', desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
+                        {name: 'JOHN DOE', position: 'GRAPHIC DESIGNER', desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."}]
+                })
+                .controller ("NewsController", function($scope, $http) {
+                    $http({
+                        method: 'GET',
+                        url: 'files/data.json'
+                    }).then(function successHandler(response)
+                    {
+                        $scope.news = response.data;
+                    }, function errorHandler(response)
+                    {
+                        console.log('Error: ' + response.statusText);
+                    });
+                    $scope.filterDate = function(article) {
+                        article.date = new Date(article.date);
+                        return article;
+                    }
+                })
                 .directive ("smoothCounter", function($window, $interval) {
                     return {
                         restrict: 'A',
                         scope: {},
                         link: function (scope, element, attr) {
                             scope.number = 0;
-                            console.log(attr);
-                            function getProudNumbers() {
-                                console.log(wrapper.attr);
-//                                var cycle_step = 100;
-//                                var counter = function me() {
-//                                    if(scope.number < me.attr.smoothCounter - (me.attr.smoothCounter % (3000/cycle_step))) {
-//                                        me.element.text(scope.number);
-//                                        scope.number = scope.number+Math.round(me.attr.smoothCounter/(3000/cycle_step));
-//                                    } else {
-//                                        scope.number = me.attr.smoothCounter;
-//                                        $interval.cancel(me.start_counter);
-//                                    }
-//                                };
-//                                counter.start_counter = $interval(counter, cycle_step);
-//                                counter.max_value = attr;
-//                                counter.element = element;
+                            var getProudNumbers = function() {
+                                var cycle_step = 100;
+                                var counter = function me() {
+                                    if(scope.number < me.max_value - (me.max_value % (3000/cycle_step))) {
+                                        me.element.text(scope.number);
+                                        scope.number = scope.number+Math.round(me.max_value/(3000/cycle_step));
+                                    } else {
+                                        me.element.text(me.max_value);
+                                        $interval.cancel(me.start_counter);
+                                    }
+                                };
+                                counter.start_counter = $interval(counter, cycle_step);
+                                counter.max_value = attr.smoothCounter;
+                                counter.element = element;
                             };
 
-                            $window.onscroll = function() {
+                            $window.addEventListener("scroll", function() {
                                 if ($window.pageYOffset > document.getElementById('proud_numbers').getBoundingClientRect().top + $window.pageYOffset - 300 && $window.pageYOffset < document.getElementById('proud_numbers').getBoundingClientRect().top + $window.pageYOffset + 100) {
                                     getProudNumbers();
                                 }
-                            };
+                            });
                         }
+                    }
+                })
+                .directive("teamInfo", function() {
+                    return {
+                        restrict: 'E',
+                        templateUrl: 'template/team_member.html',
+                        scope: {team: '='},
+                        replace: true
                     }
                 })
     </script>
@@ -218,49 +247,40 @@
         </div>
     </div>
 </div>
-<div class="container-fluid text-center light-gray" id="team">
+<div class="container-fluid text-center light-gray" id="team" ng-controller="TeamController">
     <div class="wrapper">
         <div class="title">
-            <h1>WE ARE THE ONE</h1>
+            <div class="large">We are the one</div>
             <hr>
             <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
         </div>
         <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-6">
-                <div class="general_information" data-user-name="JOHN DOE" data-general="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa" data-html-css="90" data-ai-ps="73" data-js-php="55" data-photography="77">
-                    <div class="image-wrapper"></div>
-                    <h4 class="color-yel">JOHN DOE</h4>
-                    <p>CREATIVE DIRECTOR</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-6">
-                <div class="general_information" data-user-name="JOHN DOE" data-general="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem" data-html-css="45" data-ai-ps="64" data-js-php="25" data-photography="77">
-                    <div class="image-wrapper"></div>
-                    <h4 class="color-yel">JOHN DOE</h4>
-                    <p>ART DIRECTOR</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-6">
-                <div class="general_information" data-user-name="JOHN DOE" data-general="Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?" data-html-css="99" data-ai-ps="93" data-js-php="75" data-photography="67">
-                    <div class="image-wrapper"></div>
-                    <h4 class="color-yel">JOHN DOE</h4>
-                    <p>WEB DEVELOPER</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-6">
-                <div class="general_information" data-user-name="JOHN DOE" data-general="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful." data-html-css="60" data-ai-ps="93" data-js-php="65" data-photography="87">
-                    <div class="image-wrapper"></div>
-                    <h4 class="color-yel">JOHN DOE</h4>
-                    <p>PHOTOGRAPHER</p>
-                </div>
-            </div>
+            <team-info team="team"></team-info>
+        </div>
+    </div>
+</div>
+<div class="container-fluid text-center light-gray" id="news" ng-controller="NewsController">
+    <div class="wrapper">
+        <div class="title">
+            <div class="large">Check our news</div>
+            <hr>
+            <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+        </div>
+        <div class="row">
+            <table class="table col-md-6 col-md-offset-3 col-sm-6 text-left">
+                <tr ng-repeat="article in news | filter: filterDate">
+                    <td><div class="x-large blue">{{article.date | date: "dd"}}</div><div class="month small">{{article.date | date: "MMMM"}}</div></td>
+                    <td><p class="desc small light">{{article.text}}</p><div style="float:right;"><a class="blue small" href="/{{article.id}}">Read more</a></div></td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
 <div class="container-fluid reverse text-center" id="feedback">
     <div class="wrapper">
         <div class="title">
-            <h1>SEND US A MESSAGE</h1>
+            <div class="large">Contact us</div>
+            <hr>
             <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
         </div>
         <div class="row">
