@@ -1,6 +1,7 @@
 body {
     font-family: 'Raleway', sans-serif;
     font-size: 15px;
+    color: rgb(63,66,68);
 }
 
 .navbar {
@@ -67,7 +68,7 @@ body {
 }
 
 .reverse {
-    background-color: #12191d;
+    background-color: #131316;
     color: #ffffff;
 }
 
@@ -234,7 +235,7 @@ hr {
 
 #team .general_information .desc{
     height: 105px;
-    padding: 21px 0;
+    padding: 21px 28px;
 }
 
 #team .general_information .social-btns{
@@ -299,6 +300,22 @@ hr {
     border-bottom: 0;
 }
 
+.desc {
+    color: rgba(146,155,160,255);
+    font-weight: 300;
+}
+
+#proud_numbers h4 {
+    margin-top: 45px;
+    margin-bottom: 25px;
+}
+
+#team h4 {
+    font-size: 20px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
     /*------*/
 
 .nav>li>a:focus, .nav>li>a:hover {
@@ -346,9 +363,9 @@ hr {
 }
 
 .description {
-    color: #707070;
+    color: rgb(68,68,68);
     font-weight:300;
-    font-size: 16px;
+    font-size: 13px;
 }
 
 .reverse .description {
@@ -462,11 +479,6 @@ h1 {
 
 .light-gray {
     background: #fbfbfb
-}
-
-#team h4, #skills h4{
-    font-size: 20px;
-    margin-top: 15px;
 }
 
 #skills .outer.circle {
