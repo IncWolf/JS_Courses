@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/JS_Courses/Project_module_2/" />
     <title>Landing page</title>
 
     <!-- Bootstrap -->
@@ -13,114 +14,22 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,800" rel="stylesheet">
     <script src="script/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-scroll/1.0.0/angular-scroll.min.js"></script>
-    <script>
-        angular.module("ProjectApp", ["duScroll"])
-                .value('duScrollDuration', 2000)
-                .value('duScrollOffset', 102)
-                .controller("ServiceController", function($scope) {
-                    var services = document.querySelectorAll('.services_container div.service');
-                    var squares = document.querySelectorAll('.point-square>li');
-                    squares[0].style.left = 0;
-                    squares[squares.length - 1].style.right = 0;
-                    for (var i = 1; i<squares.length-1; i++) {
-                        squares[i].style.left = services[i].getBoundingClientRect().left - services[0].getBoundingClientRect().left + (services[i].getBoundingClientRect().right - services[i].getBoundingClientRect().left)/2-35-118+'px';
-                    }
-                    $scope.active_service = 1;
-                    $scope.changeActiveService = function(i) {
-                        $scope.active_service = i;
-                    }
-
-
-                })
-                .controller ("PhotoController", function($scope) {
-                    $scope.portfolio = [{src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'ALL'}, {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'WEB'},
-                        {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'PHOTO'}, {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'GRAPHDIS'},
-                        {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'ALL'}, {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'WEB'},
-                        {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'PHOTO'}, {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'GRAPHDIS'},
-                        {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'PHOTO'}, {src: 'https://i.kinja-img.com/gawker-media/image/upload/vjamorotezzukhdvpccc.JPG', category: 'GRAPHDIS'}];
-                    $scope.filter_value = 'ALL';
-                    $scope.setFilter = function(value) {
-                        $scope.filter_value = value;
-                    };
-                    $scope.filterFunc = function (photo) {
-                        if ($scope.filter_value == 'ALL') {
-                            return photo;
-                        } else {
-                            if (photo.category == $scope.filter_value) {
-                                return photo;
-                            }
-                        }
-                    }
-                })
-                .controller ("TeamController", function($scope) {
-                    $scope.team = [{name: 'JOHN DOE', position: 'ART DIRECTOR', desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-                        {name: 'JOHN DOE', position: 'WEB DEVELOPER', desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-                        {name: 'JOHN DOE', position: 'PHOTOGRAPHER', desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-                        {name: 'JOHN DOE', position: 'GRAPHIC DESIGNER', desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."}]
-                })
-                .controller ("NewsController", function($scope, $http) {
-                    $http({
-                        method: 'GET',
-                        url: 'files/data.json'
-                    }).then(function successHandler(response)
-                    {
-                        $scope.news = response.data;
-                    }, function errorHandler(response)
-                    {
-                        console.log('Error: ' + response.statusText);
-                    });
-                    $scope.filterDate = function(article) {
-                        article.date = new Date(article.date);
-                        return article;
-                    }
-                })
-                .directive ("smoothCounter", function($window, $interval) {
-                    return {
-                        restrict: 'A',
-                        scope: {},
-                        link: function (scope, element, attr) {
-                            scope.number = 0;
-                            var getProudNumbers = function() {
-                                var cycle_step = 100;
-                                var counter = function me() {
-                                    if(scope.number < me.max_value - (me.max_value % (3000/cycle_step))) {
-                                        me.element.text(scope.number);
-                                        scope.number = scope.number+Math.round(me.max_value/(3000/cycle_step));
-                                    } else {
-                                        me.element.text(me.max_value);
-                                        $interval.cancel(me.start_counter);
-                                    }
-                                };
-                                counter.start_counter = $interval(counter, cycle_step);
-                                counter.max_value = attr.smoothCounter;
-                                counter.element = element;
-                            };
-
-                            $window.addEventListener("scroll", function() {
-                                if ($window.pageYOffset > document.getElementById('proud_numbers').getBoundingClientRect().top + $window.pageYOffset - 300 && $window.pageYOffset < document.getElementById('proud_numbers').getBoundingClientRect().top + $window.pageYOffset + 100) {
-                                    getProudNumbers();
-                                }
-                            });
-                        }
-                    }
-                })
-                .directive("teamInfo", function() {
-                    return {
-                        restrict: 'E',
-                        templateUrl: 'template/team_member.html',
-                        scope: {team: '='},
-                        replace: true
-                    }
-                })
-    </script>
+    <script src="script/angular-route.js"></script>
+    <script src="script/angular-cookies.js"></script>
+    <script src="script/main.js"></script>
     <script>
         window.onload = function() {
-            var left_of_before = parseInt(getComputedStyle(document.querySelector('#full_resp .with-arrow')).width)/2;
-            var left_of_after = left_of_before + 1;
-            document.styleSheets[0].addRule('#full_resp .with-arrow:before','left: ' + left_of_before + 'px');
-            document.styleSheets[0].insertRule('#full_resp .with-arrow:before { left: ' +left_of_before+ 'px }', 0);
-            document.styleSheets[0].addRule('#full_resp .with-arrow:after','left: ' + left_of_after+ 'px');
-            document.styleSheets[0].insertRule('#full_resp .with-arrow:after { left: ' +left_of_after+ 'px }', 0);
+            if(document.querySelector('#full_resp .with-arrow')) {
+                var left_of_before = parseInt(getComputedStyle(document.querySelector('#full_resp .with-arrow')).width)/2;
+                var left_of_after = left_of_before + 1;
+                document.styleSheets[0].addRule('#full_resp .with-arrow:before','left: ' + left_of_before + 'px');
+                document.styleSheets[0].insertRule('#full_resp .with-arrow:before { left: ' +left_of_before+ 'px }', 0);
+                document.styleSheets[0].addRule('#full_resp .with-arrow:after','left: ' + left_of_after+ 'px');
+                document.styleSheets[0].insertRule('#full_resp .with-arrow:after { left: ' +left_of_after+ 'px }', 0);
+            }
+            document.querySelector('.navbar-toggle').addEventListener("click", function(e) {
+                document.querySelector('.navbar-collapse').classList.toggle('collapse');
+            })
         }
     </script>
 </head>
@@ -128,17 +37,12 @@
 <nav class="navbar navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"></button>
-            <a class="navbar-brand" href="#">KET</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"><span class="fa fa-bars"></span></button>
+            <a class="navbar-brand" href="#"><img src="img/logo.png">KET</a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
+        <div class="collapse navbar-collapse" id="myNavbar" ng-controller="NavigationController">
             <ul class="nav navbar-nav navbar-right">
-                <li du-scrollspy="header"><a href="#header" du-smooth-scroll>HOME</a></li>
-                <li du-scrollspy="services"><a href="#services" du-smooth-scroll>SERVICES</a></li>
-                <li du-scrollspy="portfolio"><a href="#portfolio" du-smooth-scroll>PORTFOLIO</a></li>
-                <li du-scrollspy="team"><a href="#team" du-smooth-scroll>ABOUT</a></li>
-                <li du-scrollspy="news"><a href="#news" du-smooth-scroll>NEWS</a></li>
-                <li du-scrollspy="feedback"><a href="#feedback" du-smooth-scroll>CONTACT</a></li>
+                <li ng-repeat="elem in menu" du-scrollspy="{{elem.id}}"><a href="#{{elem.id}}" du-smooth-scroll>{{elem.title}}</a></li>
             </ul>
         </div>
     </div>
@@ -152,17 +56,21 @@
 <div class="container-fluid text-center" id="services" ng-controller="ServiceController">
     <div class="wrapper">
         <div class="row services_container">
-            <div class="col-md-3 col-sm-6 service" ng-click="changeActiveService(1)">
-                <span class="medium">WEB DESIGN</span>
+            <div class="col-md-3 col-xs-6 service" ng-click="changeActiveService(1)">
+                <div><img src="img/monitor.png"></div>
+                <p class="medium">WEB DESIGN</p>
             </div>
-            <div class="col-md-3 col-sm-6 service" ng-click="changeActiveService(2)">
-                <span class="medium">GRAPHIC DESIGN</span>
+            <div class="col-md-3 col-xs-6 service" ng-click="changeActiveService(2)">
+                <div><img src="img/pencil.png"></div>
+                <p class="medium">GRAPHIC DESIGN</p>
             </div>
-            <div class="col-md-3 col-sm-6 service" ng-click="changeActiveService(3)">
-                <span class="medium">PROGRAMMING</span>
+            <div class="col-md-3 col-xs-6 service" ng-click="changeActiveService(3)">
+                <div><img src="img/cog.png"></div>
+                <p class="medium">PROGRAMMING</p>
             </div>
-            <div class="col-md-3 col-sm-6 service" ng-click="changeActiveService(4)">
-                <span class="medium">DEVELOPING</span>
+            <div class="col-md-3 col-xs-6 service" ng-click="changeActiveService(4)">
+                <div><img src="img/camera.png"></div>
+                <p class="medium">PHOTOGRAPHY</p>
             </div>
 
         </div>
@@ -186,12 +94,12 @@
     <div class="wrapper">
         <div class="row">
             <div class="btn-group-justified">
-                <a href="#portfolio" du-smooth-scroll class="btn btn-default medium">START TOUR</a><div class="btn btn-default with-arrow medium">FOR ALL DEVICES</div>
+                <a href="#portfolio" du-smooth-scroll class="btn btn-default medium">START TOUR</a><div class="btn btn-default with-arrow before after medium">FOR ALL DEVICES</div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-12">
                 <img src="img/telephones.png">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-12">
                 <div class="h-margin-40 large plain">Fully Responsive</div>
                 <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus ante arcu, vel finibus lectus interdum sit amet. Phasellus id ante et magna consequat sodales eget eleifend mi. Duis luctus gravida urna id sodales. Aliquam erat volutpat. Proin sit amet purus at nibh dignissim aliquet. Integer condimentum accumsan suscipit. Duis porttitor dictum neque, sed dictum purus convallis non. Nullam ornare purus vitae tellus consectetur, ut blandit justo efficitur.</p>
                 <a href="#feedback" du-smooth-scroll class="btn btn-custom light blue">GET NOW</a>
@@ -209,46 +117,25 @@
                     <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
                 </div>
                 <div class="col-md-12 filter_menu">
-                    <div ng-class="{'selected': filter_value == 'ALL'}" ng-click="setFilter('ALL')">ALL</div><div ng-class="{'selected': filter_value == 'WEB'}" ng-click="setFilter('WEB')">WEB</div><div ng-class="{'selected': filter_value == 'PHOTO'}" ng-click="setFilter('PHOTO')">PHOTOGRAPHY</div><div ng-class="{'selected': filter_value == 'GRAPHDIS'}" ng-click="setFilter('GRAPHDIS')">GRAPHIC DESIGN</div>
+                    <div ng-class="{'selected': filter_value == 'ALL'}" ng-click="setFilter('ALL')">ALL</div><div ng-class="{'selected': filter_value == 'WEB'}" ng-click="setFilter('WEB')">WEB</div><div ng-class="{'selected': filter_value == 'PHOTOGRAPHY'}" ng-click="setFilter('PHOTOGRAPHY')">PHOTOGRAPHY</div><div ng-class="{'selected': filter_value == 'GRAPHIC DESIGN'}" ng-click="setFilter('GRAPHIC DESIGN')">GRAPHIC DESIGN</div>
                 </div>
             </div>
         </div>
     </div>
     <div class="container-fluid text-center">
         <div id="photo_container">
-            <div class="photo-wrapper" ng-repeat="photo in portfolio | filter: filterFunc" mask="{{photo.category}}"><img src="{{photo.src}}"></div>
+            <div class="photo-wrapper" ng-mouseenter="show_mask=true" ng-mouseleave="show_mask=false;" ng-repeat="photo in portfolio | filter: filterFunc" mask="{{photo.category}}"><img ng-src="{{photo.src}}"><div class="mask" ng-show="show_mask"><p style="font-size:25px;">SAMPLE IMAGE</p><p style="font-size:16px;">{{photo.category}}</p></div></div>
         </div>
     </div>
 </div>
-<div class="container-fluid reverse text-center" id="proud_numbers">
+<div class="container-fluid reverse text-center" id="proud_numbers" ng-controller="ProudNumbersController">
     <div class="wrapper">
         <div class="row">
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="item in items">
                 <div class="padding-v-25 margin-h-15px">
-                    <div><img src="img/case.png"></div>
-                    <h4 class="light large" smooth-counter="3054"></h4>
-                    <p class="small medium">COMPLETED PROJECTS</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="padding-v-25 margin-h-15px">
-                    <div><img src="img/mouse.png"></div>
-                    <h4 class="light large" smooth-counter="7234873"></h4>
-                    <p class="small medium">CLICK PRESSED</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="padding-v-25 margin-h-15px">
-                    <div><img src="img/letter.png"></div>
-                    <h4 class="light large" smooth-counter="4670"></h4>
-                    <p class="small medium">MAILS SENTED & RECIEVED</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="padding-v-25 margin-h-15px">
-                    <div><img src="img/comment.png"></div>
-                    <h4 class="light large" smooth-counter="939"></h4>
-                    <p class="small medium">JOKES TOLDS</p>
+                    <div><img ng-src="{{item.icon}}"></div>
+                    <h4 class="light large" smooth-counter="{{item.max}}"></h4>
+                    <p class="small medium">{{item.title}}</p>
                 </div>
             </div>
         </div>
@@ -273,49 +160,62 @@
             <hr>
             <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
         </div>
+        <div ng-view></div>
         <div class="row">
-            <table class="table col-md-6 col-md-offset-3 col-sm-6 text-left">
+            <table class="table col-md-6 col-md-offset-3 col-sm-12 text-left">
                 <tr ng-repeat="article in news | filter: filterDate">
                     <td><div class="x-large blue">{{article.date | date: "dd"}}</div><div class="month small">{{article.date | date: "MMMM"}}</div></td>
-                    <td><p class="desc small light">{{article.text}}</p><div style="float:right;"><a class="blue small" href="/{{article.id}}">Read more</a></div></td>
+                    <td><p class="desc small light">{{article.text}}</p><div style="float:right;"><a class="blue small" href="{{article.id}}">Read more</a></div></td>
                 </tr>
             </table>
         </div>
     </div>
 </div>
-<div class="container-fluid reverse text-center" id="feedback">
+<div class="container-fluid reverse text-center" id="feedback" ng-controller="FeedbackController">
     <div class="wrapper">
         <div class="title">
             <div class="large">Contact us</div>
             <hr>
             <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
         </div>
-        <div class="row">
-            <div class="col-md-4 col-sm-6">
-                <input type="text" id="username" placeholder="Your Name">
-                <div class="error-msg">Only Latin</div>
+        <form name="contactForm" novalidate ng-submit="saveValues()">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="input-wrapper"><input type="text" placeholder="Your name here" name="userName" id="username" ng-model="user.username" ng-pattern="nameRegex"></div>
+                    <div class="error-msg" ng-show="contactForm.userName.$error.pattern && contactForm.userName.$dirty">Only Latin</div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="input-wrapper"><input type="email" placeholder="Your mail here" name="useremail" id="useremail" ng-model="user.email"></div>
+                    <div class="error-msg" ng-show="contactForm.useremail.$invalid && contactForm.useremail.$dirty">Only Latin, numbers, _ and @</div>
+                </div>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <input type="text" id="useremail" placeholder="Your Mail">
-                <div class="error-msg">Only Latin, numbers, _ and @</div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="input-wrapper"><input type="text" placeholder="Your message here" name="message" id="message" ng-model="user.message" ng-pattern="messageRegex"></div>
+                    <div class="error-msg" ng-show="contactForm.message.$invalid && contactForm.message.$dirty">Message must be 20 characters at least</div>
+                </div>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <input type="text" id="usersubject" placeholder="Subject">
-                <div class="error-msg">Only Latin and numbers</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <textarea placeholder="Enter Message Here..."></textarea>
-            </div>
-        </div>
-        <button type="button" class="btn btn-custom">SEND MESSAGE</button>
+            <input type="submit" class="btn btn-custom" value="SEND MESSAGE">
+        </form>
     </div>
 </div>
-<footer class="container-fluid text-center">
-    <p>©Copyright 2013 Smak. All Rights Reserved.</p>
-    <p>Кнопки социальных сетей</p>
-    <button type="button" class="btn btn-custom" id="up_button"><span class="icon arrowsup-icon"></span></button>
+<div class="container-fluid text-center" id="map">
+    <div class="wrapper">
+        <div class="cloud with-arrow before">
+            <p>Awesome Address 432</p>
+            <p>ourmail@sometype.com</p>
+            <p>+321(0)321 23 21</p>
+        </div>
+    </div>
+</div>
+<footer class="container-fluid reverse text-center">
+    <a href="#header" du-smooth-scroll>
+        <span class="fa-stack">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <i class="fa fa-chevron-up fa-stack-1x"></i>
+        </span>
+    </a>
+    <span>© 2014 - <span class="blue">Kat</span> All Right Reserved.</span>
 </footer>
 </body>
 </html>
