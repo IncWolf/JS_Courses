@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_3</title>
+</head>
+<body>
+<div id="output"></div>
+<script type="text/babel">
+    var Summator = React.createClass({
+        propTypes: {
+            a: React.propTypes.number,
+            b: React.propTypes.number
+        },
+        render: function() {
+//            this.res = this.props.a+this.props.b;
+            return (<div>{this.props.a+this.props.b}</div>)
+        }
+    });
+
+    ReactDOM.render(<Summator a="2" b="4" />, document.getElementById('output'));
+</script>
+</body>
+</html>
