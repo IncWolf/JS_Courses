@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Task_3</title>
+    <script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
 </head>
 <body>
 <div id="output"></div>
 <script type="text/babel">
     var Summator = React.createClass({
-        propTypes: {
-            a: React.propTypes.number,
-            b: React.propTypes.number
-        },
         render: function() {
-//            this.res = this.props.a+this.props.b;
-            return (<div>{this.props.a+this.props.b}</div>)
+            return (<div>{parseInt(this.props.a)+parseInt(this.props.b)}</div>)
         }
     });
 
