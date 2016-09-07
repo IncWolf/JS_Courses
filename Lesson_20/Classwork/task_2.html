@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_2</title>
+    <script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+    <script type="text/babel">
+        var Mode = React.createClass({
+            propTypes: {
+                a: React.PropTypes.number,
+                b: React.PropTypes.number,
+                bool: React.PropTypes.bool
+            },
+            render: function() {
+                var result;
+                if (this.props.bool == true) {
+                    result = this.props.a + this.props.b;
+                } else {
+                    result = this.props.a.toString() + this.props.b.toString();
+                }
+                return (<div>{result}</div>)
+            }
+        });
+        ReactDOM.render(<Mode a={2} b={4} bool={true} />, document.getElementById('output1'));
+        ReactDOM.render(<Mode a={1} b={3} bool={false} />, document.getElementById('output2'));
+    </script>
+</head>
+<body>
+<div id="output1"></div>
+<div id="output2"></div>
+</body>
+</html>
