@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_3</title>
+    <script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+    <style type="text/css">
+        .black {
+            background-color: #000000;
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+    </style>
+    <script type="text/babel">
+        window.styles = ["black", "red", "green"];
+        var CheckBox = React.createClass({
+            getInitialState: function() {
+                return {
+                    checked: true,
+                    i: 0
+                }
+            },
+            changeState: function () {
+                this.setState({checked: !this.state.checked});
+                this.setState({i: Math.floor(Math.random()*3)})
+            },
+            render: function() {
+                return (<div>
+                    <input type="checkbox" defaultChecked={this.state.checked} onChange={this.changeState}/>
+                    <div className={window.styles[this.state.i]} style={{width:20+'px', height: 20+'px'}}></div>
+                </div>)
+            }
+        });
+        ReactDOM.render(<CheckBox/>, document.getElementById('output'));
+    </script>
+</head>
+<body>
+<div id="output"></div>
+</body>
+</html>
