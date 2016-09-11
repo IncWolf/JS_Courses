@@ -1,7 +1,8 @@
 module.exports = {
     entry: {"Lesson_20/Homework/task1/build/bundle": "./Lesson_20/Homework/task1/jsx/main.jsx",
         "Lesson_20/Homework/task2/build/bundle": "./Lesson_20/Homework/task2/jsx/main.jsx",
-        "Lesson_20/Homework/task3/build/bundle": "./Lesson_20/Homework/task3/jsx/main.jsx"},
+        "Lesson_20/Homework/task3/build/bundle": "./Lesson_20/Homework/task3/jsx/main.jsx",
+        "Lesson_21/Classwork/task1/build/bundle": "./Lesson_21/Classwork/task1/jsx/main.jsx"},
     output: {
         filename: "[name].js"
     },
