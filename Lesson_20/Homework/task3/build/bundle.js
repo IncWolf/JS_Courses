@@ -54,49 +54,115 @@
 
 	    getInitialState: function getInitialState() {
 	        return {
-	            inputVal: 0
+	            inputVal: 0,
+	            isList: true
 	        };
 	    },
-
 	    handler: function handler(e) {
 	        this.setState({ inputVal: e.target.value });
+	    },
+	    changeMode: function changeMode() {
+	        this.setState({ isList: !this.state.isList });
 	    },
 	    render: function render() {
 	        return React.createElement(
 	            'div',
 	            null,
 	            React.createElement('input', { type: 'text', defaultValue: this.state.inputVal, onChange: this.handler }),
-	            React.createElement(Child, { quantity: this.state.inputVal })
+	            React.createElement('input', { type: 'checkbox', defaultChecked: this.state.isList, onChange: this.changeMode }),
+	            ' List Mode',
+	            React.createElement(Child, { quantity: this.state.inputVal, isList: this.state.isList })
 	        );
 	    }
 	});
 	var Child = React.createClass({
 	    displayName: 'Child',
 
+	    getInitialState: function getInitialState() {
+	        return {
+	            color: 'black'
+	        };
+	    },
+	    getRandomColor: function getRandomColor() {
+	        var h = Math.floor(Math.random() * (255 - 1) + 1);
+	        var s = Math.floor(Math.random() * (100 - 1) + 1) + '%';
+	        var l = '50%';
+	        return 'hsl(' + h + ',' + s + ',' + l + ')';
+	    },
 	    getDefaultProps: function getDefaultProps() {
 	        return {
 	            users: [{ name: "Anne Montgomery", gender: "Female" }, { name: "Annie George", gender: "Female" }, { name: "Gary Butler", gender: "Male" }, { name: "Lisa Mendoza", gender: "Female" }, { name: "Marilyn Henry", gender: "Female" }, { name: "Johnny Tucker", gender: "Male" }, { name: "Chris Jacobs", gender: "Male" }, { name: "Benjamin James", gender: "Male" }]
 	        };
 	    },
+	    componentWillReceiveProps: function componentWillReceiveProps() {
+	        this.setState({ color: this.getRandomColor() });
+	    },
 	    render: function render() {
 	        var array = [];
 	        for (var i = 0; i < this.props.users.length; i++) {
 	            if (i < this.props.quantity) {
-	                array.push(React.createElement(
-	                    'li',
-	                    { key: i },
-	                    'Name: ',
-	                    this.props.users[i].name,
-	                    ', gender: ',
-	                    this.props.users[i].gender
-	                ));
+	                if (this.props.isList) {
+	                    array.push(React.createElement(
+	                        'li',
+	                        { key: i, style: { color: this.state.color } },
+	                        'Name: ',
+	                        this.props.users[i].name,
+	                        ', gender: ',
+	                        this.props.users[i].gender
+	                    ));
+	                } else {
+	                    array.push(React.createElement(
+	                        'tr',
+	                        { key: i, style: { color: this.state.color } },
+	                        React.createElement(
+	                            'td',
+	                            null,
+	                            this.props.users[i].name
+	                        ),
+	                        React.createElement(
+	                            'td',
+	                            null,
+	                            this.props.users[i].gender
+	                        )
+	                    ));
+	                }
 	            }
 	        }
-	        return React.createElement(
-	            'ul',
-	            null,
-	            array
-	        );
+	        if (this.props.isList) {
+	            return React.createElement(
+	                'ul',
+	                null,
+	                array
+	            );
+	        } else {
+	            return React.createElement(
+	                'table',
+	                null,
+	                React.createElement(
+	                    'thead',
+	                    null,
+	                    React.createElement(
+	                        'tr',
+	                        null,
+	                        React.createElement(
+	                            'th',
+	                            null,
+	                            'Name'
+	                        ),
+	                        React.createElement(
+	                            'th',
+	                            null,
+	                            'Gender'
+	                        )
+	                    )
+	                ),
+	                React.createElement(
+	                    'tbody',
+	                    null,
+	                    array
+	                )
+	            );
+	        }
 	    }
 	});
 	ReactDOM.render(React.createElement(Parent, null), document.getElementById('output'));

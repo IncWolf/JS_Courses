@@ -57,7 +57,6 @@
 	            inputVal: 0
 	        };
 	    },
-
 	    handler: function handler(e) {
 	        this.setState({ inputVal: e.target.value });
 	    },
@@ -73,10 +72,24 @@
 	var Child = React.createClass({
 	    displayName: 'Child',
 
+	    getInitialState: function getInitialState() {
+	        return {
+	            color: 'black'
+	        };
+	    },
+	    getRandomColor: function getRandomColor() {
+	        var h = Math.floor(Math.random() * (255 - 1) + 1);
+	        var s = Math.floor(Math.random() * (100 - 1) + 1) + '%';
+	        var l = '50%';
+	        return 'hsl(' + h + ',' + s + ',' + l + ')';
+	    },
 	    getDefaultProps: function getDefaultProps() {
 	        return {
 	            users: [{ name: "Anne Montgomery", gender: "Female" }, { name: "Annie George", gender: "Female" }, { name: "Gary Butler", gender: "Male" }, { name: "Lisa Mendoza", gender: "Female" }, { name: "Marilyn Henry", gender: "Female" }, { name: "Johnny Tucker", gender: "Male" }, { name: "Chris Jacobs", gender: "Male" }, { name: "Benjamin James", gender: "Male" }]
 	        };
+	    },
+	    componentWillReceiveProps: function componentWillReceiveProps() {
+	        this.setState({ color: this.getRandomColor() });
 	    },
 	    render: function render() {
 	        var array = [];
@@ -84,7 +97,7 @@
 	            if (i < this.props.quantity) {
 	                array.push(React.createElement(
 	                    'li',
-	                    { key: i },
+	                    { key: i, style: { color: this.state.color } },
 	                    'Name: ',
 	                    this.props.users[i].name,
 	                    ', gender: ',

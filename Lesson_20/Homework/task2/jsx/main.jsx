@@ -4,23 +4,33 @@ var ReactDOM = require('react-dom');
 var Parent = React.createClass({
     getInitialState: function() {
         return {
-            inputVal: 0
+            inputVal: 0,
         }
     },
-
     handler: function(e) {
         this.setState({inputVal: e.target.value})
     },
     render: function() {
         return (
             <div>
-                <input type="text" defaultValue={this.state.inputVal} onChange={this.handler}/>
-                <Child quantity={this.state.inputVal} />
-            </div>
+            <input type="text" defaultValue={this.state.inputVal} onChange={this.handler}/>
+        <Child quantity={this.state.inputVal} />
+        </div>
         )
     }
 });
 var Child = React.createClass({
+    getInitialState: function() {
+        return {
+            color: 'black'
+        }
+    },
+    getRandomColor: function() {
+        var h = Math.floor(Math.random() * (255 - 1) + 1);
+        var s = Math.floor(Math.random() * (100 - 1) + 1) + '%';
+        var l = '50%';
+        return 'hsl(' + h + ',' + s + ',' + l + ')';
+    },
     getDefaultProps: function() {
         return {
             users: [{name:"Anne Montgomery",gender:"Female"},
@@ -33,11 +43,14 @@ var Child = React.createClass({
                 {name:"Benjamin James",gender:"Male"}]
         }
     },
+    componentWillReceiveProps: function() {
+        this.setState({color: this.getRandomColor()})
+    },
     render: function() {
         var array=[];
         for (var i=0; i<this.props.users.length; i++) {
             if (i<this.props.quantity) {
-                array.push(<li key={i}>Name: {this.props.users[i].name}, gender: {this.props.users[i].gender}</li>);
+                array.push(<li key={i} style={{color: this.state.color}}>Name: {this.props.users[i].name}, gender: {this.props.users[i].gender}</li>);
             }
         }
         return (
