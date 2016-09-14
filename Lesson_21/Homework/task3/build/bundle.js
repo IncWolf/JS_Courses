@@ -52,84 +52,123 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(34);
 
-	var Calc = React.createClass({
-	    displayName: 'Calc',
+	var Form = React.createClass({
+	    displayName: 'Form',
 
 	    getInitialState: function getInitialState() {
 	        return {
-	            a: '',
-	            b: '',
-	            output: ''
+	            nameError: 'none',
+	            emailError: 'none',
+	            telError: 'none'
 	        };
 	    },
-	    checkValue: function checkValue(e) {
-	        if (e.keyCode <= 57 && e.keyCode >= 48 || e.keyCode == 8) {
-	            if (e.target.getAttribute('id') == 'a') {
-	                if (e.keyCode != 8) {
-	                    this.setState({ a: this.state.a + String.fromCharCode(e.keyCode) });
+	    valueCheck: function valueCheck(e) {
+	        var telTest = /^([0-9 ]*)$/;
+	        var nameTest = /^([a-zA-Z ]*)$/;
+	        var emailTest = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+	        var target_id = e.target.getAttribute('id');
+	        switch (target_id) {
+	            case 'name':
+	                console.log(document.getElementById(target_id).value.search(nameTest));
+	                if (document.getElementById(target_id).value.search(nameTest) != -1) {
+	                    this.setState({ nameError: 'none' });
 	                } else {
-	                    this.setState({ a: this.state.a.slice(0, -1) });
+	                    if (!document.getElementById(target_id).value) {
+	                        this.setState({ nameError: 'none' });
+	                    } else {
+	                        this.setState({ nameError: 'block' });
+	                    }
 	                }
-	            } else {
-	                if (e.keyCode != 8) {
-	                    this.setState({ b: this.state.b + String.fromCharCode(e.keyCode) });
+	                break;
+	            case 'email':
+	                console.log(document.getElementById(target_id).value.search(emailTest));
+	                if (document.getElementById(target_id).value.search(emailTest) != -1) {
+	                    this.setState({ emailError: 'none' });
 	                } else {
-	                    this.setState({ b: this.state.b.slice(0, -1) });
+	                    if (!document.getElementById(target_id).value) {
+	                        this.setState({ emailError: 'none' });
+	                    } else {
+	                        this.setState({ emailError: 'block' });
+	                    }
 	                }
-	            }
+	                break;
+	            case 'tel':
+	                console.log(document.getElementById(target_id).value.search(telTest));
+	                if (document.getElementById(target_id).value.search(telTest) != -1) {
+	                    this.setState({ telError: 'none' });
+	                } else {
+	                    if (!document.getElementById(target_id).value) {
+	                        this.setState({ telError: 'none' });
+	                    } else {
+	                        this.setState({ telError: 'block' });
+	                    }
+	                }
+	                break;
 	        }
-	    },
-	    add: function add() {
-	        this.setState({ output: parseInt(this.state.a) + parseInt(this.state.b) });
-	    },
-	    sub: function sub() {
-	        this.setState({ output: parseInt(this.state.a) - parseInt(this.state.b) });
-	    },
-	    mul: function mul() {
-	        this.setState({ output: parseInt(this.state.a) * parseInt(this.state.b) });
-	    },
-	    divide: function divide() {
-	        this.setState({ output: parseInt(this.state.a) / parseInt(this.state.b) });
 	    },
 	    render: function render() {
 	        return React.createElement(
-	            'div',
+	            'form',
 	            null,
-	            React.createElement('input', { type: 'text', id: 'a', onKeyDown: this.checkValue, value: this.state.a }),
-	            React.createElement('input', { type: 'text', id: 'b', onKeyDown: this.checkValue, value: this.state.b }),
 	            React.createElement(
 	                'div',
 	                null,
 	                React.createElement(
-	                    'button',
-	                    { onClick: this.add },
-	                    '+'
+	                    'label',
+	                    { htmlFor: 'name' },
+	                    'Name: '
 	                ),
+	                React.createElement('input', { id: 'name', type: 'text', onInput: this.valueCheck }),
 	                React.createElement(
-	                    'button',
-	                    { onClick: this.sub },
-	                    '-'
-	                ),
-	                React.createElement(
-	                    'button',
-	                    { onClick: this.mul },
-	                    '*'
-	                ),
-	                React.createElement(
-	                    'button',
-	                    { onClick: this.divide },
-	                    '/'
+	                    'p',
+	                    { className: 'error', style: { display: this.state.nameError } },
+	                    'Only letters required'
 	                )
 	            ),
 	            React.createElement(
 	                'div',
 	                null,
-	                this.state.output
+	                React.createElement(
+	                    'label',
+	                    { htmlFor: 'name' },
+	                    'Email: '
+	                ),
+	                React.createElement('input', { id: 'email', type: 'text', onInput: this.valueCheck }),
+	                React.createElement(
+	                    'p',
+	                    { className: 'error', style: { display: this.state.emailError } },
+	                    'Only numbers required'
+	                )
+	            ),
+	            React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                    'label',
+	                    { htmlFor: 'name' },
+	                    'Tel: '
+	                ),
+	                React.createElement('input', { id: 'tel', type: 'text', onInput: this.valueCheck }),
+	                React.createElement(
+	                    'p',
+	                    { className: 'error', style: { display: this.state.telError } },
+	                    'Only numbers required'
+	                )
+	            ),
+	            React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                    'label',
+	                    { htmlFor: 'name' },
+	                    'Message: '
+	                ),
+	                React.createElement('input', { id: 'message', type: 'text' })
 	            )
 	        );
 	    }
 	});
-	ReactDOM.render(React.createElement(Calc, null), document.getElementById('output'));
+	ReactDOM.render(React.createElement(Form, null), document.getElementById('output'));
 
 /***/ },
 /* 1 */
