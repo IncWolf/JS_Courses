@@ -45,52 +45,9 @@
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * Created by IncWolf on 17.09.2016.
-	 */
-	'use strict';
+	__webpack_require__(278);
+	module.exports = __webpack_require__(279);
 
-	var _classCallCheck2 = __webpack_require__(245);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(246);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	window.onload = function () {
-	    var Person = function () {
-	        function Person() {
-	            var firstName = arguments.length <= 0 || arguments[0] === undefined ? 'John' : arguments[0];
-	            var lastName = arguments.length <= 1 || arguments[1] === undefined ? 'Doe' : arguments[1];
-	            var age = arguments.length <= 2 || arguments[2] === undefined ? 0 : arguments[2];
-	            var gender = arguments.length <= 3 || arguments[3] === undefined ? 'Male' : arguments[3];
-	            (0, _classCallCheck3.default)(this, Person);
-
-	            this.firstName = firstName;
-	            this.lastName = lastName;
-	            this.age = age;
-	            this.gender = gender;
-	        }
-
-	        (0, _createClass3.default)(Person, [{
-	            key: 'sayHi',
-	            value: function sayHi() {
-	                return "Hello, my name is " + this.fullName;
-	            }
-	        }, {
-	            key: 'fullName',
-	            get: function get() {
-	                return this.firstName + ' ' + this.lastName;
-	            }
-	        }]);
-	        return Person;
-	    }();
-	    document.write(new Person('Mark').fullName);
-	    document.write(new Person('Mark', 'Ramsey', 10).sayHi());
-	};
 
 /***/ },
 
@@ -420,6 +377,76 @@
 	var $export = __webpack_require__(185);
 	// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
 	$export($export.S + $export.F * !__webpack_require__(195), 'Object', {defineProperty: __webpack_require__(191).f});
+
+/***/ },
+
+/***/ 278:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _person = __webpack_require__(279);
+
+	document.write(new _person.Person('Mark').fullName); /**
+	                                                      * Created by IncWolf on 17.09.2016.
+	                                                      */
+
+	document.write(new _person.Person('Mark', 'Ramsey', 10).sayHi());
+
+/***/ },
+
+/***/ 279:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.Person = undefined;
+
+	var _classCallCheck2 = __webpack_require__(245);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(246);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * Created by IncWolf on 17.09.2016.
+	 */
+	var Person = exports.Person = function () {
+	    function Person() {
+	        var firstName = arguments.length <= 0 || arguments[0] === undefined ? 'John' : arguments[0];
+	        var lastName = arguments.length <= 1 || arguments[1] === undefined ? 'Doe' : arguments[1];
+	        var age = arguments.length <= 2 || arguments[2] === undefined ? 0 : arguments[2];
+	        var gender = arguments.length <= 3 || arguments[3] === undefined ? 'Male' : arguments[3];
+	        (0, _classCallCheck3.default)(this, Person);
+
+	        this.firstName = firstName;
+	        this.lastName = lastName;
+	        this.age = age;
+	        this.gender = gender;
+	    }
+
+	    (0, _createClass3.default)(Person, [{
+	        key: 'sayHi',
+	        value: function sayHi() {
+	            return "Hello, my name is " + this.fullName;
+	        }
+	    }, {
+	        key: 'fullName',
+	        get: function get() {
+	            return this.firstName + ' ' + this.lastName;
+	        }
+	    }]);
+	    return Person;
+	}();
+
+	;
 
 /***/ }
 

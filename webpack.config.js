@@ -11,7 +11,9 @@ module.exports = {
         "Lesson_22/Classwork/task1/build/bundle": "./Lesson_22/Classwork/task1/jsx/main.jsx",
         "Lesson_22/Classwork/task2/build/bundle": "./Lesson_22/Classwork/task2/js/main.js",
         "Lesson_22/Classwork/task3/build/bundle": "./Lesson_22/Classwork/task3/jsx/main.jsx",
-        "Lesson_22/Homework/task1/build/bundle": "./Lesson_22/Homework/task1/js/main.js"},
+        "Lesson_22/Homework/task1/build/bundle": ["./Lesson_22/Homework/task1/jsx/main.jsx", "./Lesson_22/Homework/task1/jsx/person.jsx"],
+        "Lesson_22/Homework/task2/build/bundle": ["./Lesson_22/Homework/task2/jsx/main.jsx"],
+        "Lesson_22/Homework/task3/build/bundle": "./Lesson_22/Homework/task3/jsx/main.jsx"},
     output: {
         filename: "[name].js"
     },
