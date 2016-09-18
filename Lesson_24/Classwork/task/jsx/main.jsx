@@ -36,9 +36,11 @@ class Home extends React.Component {
 ReactDOM.render(
     <Router history={hashHistory}>
         <Route component={Main}>
+            {/*Установка домашней страницей компонент Home для задачи 2*/}
             <Route path='/' component={Home}/>
             <Route path="view1" component={View1} />
             <Route path="view2" component={View2} />
+            {/*Установка Home компонентом для любого запроса пути, который не входит в конфигурацию для задачи 3*/}
             <Route path="*" component={Home}/>
         </Route>
     </Router>, document.getElementById('output'));
