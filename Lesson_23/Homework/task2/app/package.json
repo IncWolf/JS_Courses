@@ -1,0 +1,22 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "browserify": "^13.1.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babelify": "^7.3.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "browserify -t [ babelify --presets [ es2015 react ] ] ./src/usersList.jsx -o build/bundle.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
