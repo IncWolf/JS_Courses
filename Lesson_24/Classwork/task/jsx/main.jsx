@@ -25,17 +25,20 @@ class Main extends React.Component {
         )
     }
 }
+// Для задачи #2
 class Home extends React.Component {
     render() {
         return (
             <h3>This is the homepage</h3>
         )}
 }
+
 ReactDOM.render(
     <Router history={hashHistory}>
-        <Route path='/' component={Main}>
-            <IndexRoute component={Home}/>
+        <Route component={Main}>
+            <Route path='/' component={Home}/>
             <Route path="view1" component={View1} />
             <Route path="view2" component={View2} />
+            <Route path="*" component={Home}/>
         </Route>
     </Router>, document.getElementById('output'));

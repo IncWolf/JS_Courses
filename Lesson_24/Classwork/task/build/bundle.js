@@ -128,6 +128,8 @@
 	    }]);
 	    return Main;
 	}(React.Component);
+	// Для задачи #2
+
 
 	var Home = function (_React$Component2) {
 	    (0, _inherits3.default)(Home, _React$Component2);
@@ -155,10 +157,11 @@
 	    { history: hashHistory },
 	    React.createElement(
 	        Route,
-	        { path: '/', component: Main },
-	        React.createElement(IndexRoute, { component: Home }),
+	        { component: Main },
+	        React.createElement(Route, { path: '/', component: Home }),
 	        React.createElement(Route, { path: 'view1', component: View1 }),
-	        React.createElement(Route, { path: 'view2', component: View2 })
+	        React.createElement(Route, { path: 'view2', component: View2 }),
+	        React.createElement(Route, { path: '*', component: Home })
 	    )
 	), document.getElementById('output'));
 
@@ -28785,7 +28788,7 @@
 	            return React.createElement(
 	                'h3',
 	                null,
-	                'View 2'
+	                'View 1'
 	            );
 	        }
 	    }]);
