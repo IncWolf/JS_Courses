@@ -17,15 +17,18 @@ class Add extends React.Component {
 
         //привязка контекста
         this.createItem = this.createItem.bind(this);
-        // this.updateTasks = this.updateTasks.bind(this);
-        // this.removeItemHandler = this.removeItemHandler.bind(this);
     }
+
     createItem() {
-        var item = {}
+        var item = {name: document.getElementById('name').value, complete: document.getElementById('complete').checked}
+        TodoActions.createItem(item);
     }
     render() {
         return (<form>
-            <label for="name">Name: </label>
+            <div><Link to="/">
+                <button>Back</button>
+            </Link></div>
+            <label htmlFor="name">Name: </label>
             <input type="text" id="name" />
             <input type="checkbox" id="complete"/> Complete
             <div><button onClick={this.createItem}>Add</button></div>

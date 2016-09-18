@@ -51,16 +51,15 @@ class ToDoStore extends EventEmitter {
     handleActions(action) {
         switch(action.type) {
             case "CREATE_ITEM": {
-                console.log('Item created')
-
-                this.emit('CHANGE')
+                console.log('Item created');
                 this.createItem(action.item);
+                this.emit('CHANGE');
                 break;
             }
             case "REMOVE_ITEM": {
-                console.log('Item removed')
-                this.emit('CHANGE');
+                console.log('Item removed');
                 this.removeItem(action.id);
+                this.emit('CHANGE');
                 break;
             }
         }

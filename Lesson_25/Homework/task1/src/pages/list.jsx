@@ -8,20 +8,18 @@ var TodoActions = require('../actions/toDoActions');
 
 class List extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.removeHandler = this.removeHandler.bind(this);
     }
-
+    removeHandler(e) {
+        TodoActions.removeItem(e.target.dataset.id);
+    }
     render() {
         // создание списка заданий на основе props
         return(
             <ul>
                 {this.props.items.map((item) => {
-                    return <li key={item.id}>{item.name} &nbsp;
-                        <div>
-                            <button data-id={item.id} onClick={this.props.removeHandler}>Delete</button>
-                        </div>
-                    </li>
-
+                    return <li key={item.id}>{item.name} &nbsp; {item.complete?'Complete':'Not complete'}&nbsp;<button data-id={item.id} onClick={this.removeHandler}>Delete</button></li>
                 })}
             </ul>
         )}
