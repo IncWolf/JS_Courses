@@ -2,7 +2,7 @@
  * Created by IncWolf on 18.09.2016.
  */
 var React = require('react');
-//var Link = require('react-router').Link;
+var Link = require('react-router').Link;
 
 // импорт хранилища данных (store)
 var TodoStore = require('../stores/toDoStore');
@@ -16,19 +16,18 @@ var TodoActions = require('../actions/toDoActions');
 
 class App extends React.Component {
     constructor() {
-        super()
+        super();
         this.state = {
             tasks: TodoStore.getAll()
         }
     }
     render() {
-        return(<div className="panel">
-                <div className="panel well">
-                    <h2>Tasks</h2>
-                    <label>Table mode &nbsp; <input type="checkbox" checked={this.state.tableMode} onChange={this.changeHandler}/></label>
-                    <div className="margin"><Link to="/edit"><button className="btn btn-sm btn-warning">Edit</button></Link></div>
+        return(<div>
+                <div>
+                    <h2>TO DO LIST</h2>
+                    <div><Link to="/add"><button>Add</button></Link></div>
                 </div>
-                <List showDetails={false} items={this.state.tasks}/> }
+                <List items={this.state.tasks}/> }
             </div>
         )}
 }
