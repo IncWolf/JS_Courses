@@ -58,10 +58,9 @@ class App extends React.Component{
     }
 
     divide() {
-        appActions.devide();
+        appActions.divide();
     }
     checkValue(e) {
-        console.log(e);
         appActions.checkValue(e);
     }
 

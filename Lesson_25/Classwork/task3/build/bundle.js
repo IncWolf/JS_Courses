@@ -23767,7 +23767,7 @@
 	    }, {
 	        key: 'divide',
 	        value: function divide() {
-	            appActions.devide();
+	            appActions.divide();
 	        }
 	    }, {
 	        key: 'checkValue',
@@ -23864,32 +23864,30 @@
 
 	        var _this = (0, _possibleConstructorReturn3.default)(this, (AppStore.__proto__ || (0, _getPrototypeOf2.default)(AppStore)).call(this));
 
-	        _this.state = {
-	            a: '',
-	            b: ''
-	        };
+	        _this.a = '';
+	        _this.b = '';
 	        return _this;
 	    }
 
 	    (0, _createClass3.default)(AppStore, [{
 	        key: 'add',
 	        value: function add() {
-	            return parseInt(this.state.a) + parseInt(this.state.b);
+	            return parseInt(this.a) + parseInt(this.b);
 	        }
 	    }, {
 	        key: 'sub',
 	        value: function sub() {
-	            return parseInt(this.state.a) - parseInt(this.state.b);
+	            return parseInt(this.a) - parseInt(this.b);
 	        }
 	    }, {
 	        key: 'mul',
 	        value: function mul() {
-	            return parseInt(this.state.a) * parseInt(this.state.b);
+	            return parseInt(this.a) * parseInt(this.b);
 	        }
 	    }, {
 	        key: 'divide',
 	        value: function divide() {
-	            return parseInt(this.state.a) / parseInt(this.state.b);
+	            return parseInt(this.a) / parseInt(this.b);
 	        }
 	    }, {
 	        key: 'setValue',
@@ -23897,15 +23895,15 @@
 	            if (e.keyCode <= 57 && e.keyCode >= 48 || e.keyCode == 8) {
 	                if (e.target.getAttribute('id') == 'a') {
 	                    if (e.keyCode != 8) {
-	                        this.setState({ a: this.state.a + String.fromCharCode(e.keyCode) });
+	                        this.a = this.a + String.fromCharCode(e.keyCode);
 	                    } else {
-	                        this.setState({ a: this.state.a.slice(0, -1) });
+	                        this.a = this.a.slice(0, -1);
 	                    }
 	                } else {
 	                    if (e.keyCode != 8) {
-	                        this.setState({ b: this.state.b + String.fromCharCode(e.keyCode) });
+	                        this.b = this.b + String.fromCharCode(e.keyCode);
 	                    } else {
-	                        this.setState({ b: this.state.b.slice(0, -1) });
+	                        this.b = this.b.slice(0, -1);
 	                    }
 	                }
 	            }
@@ -23913,12 +23911,12 @@
 	    }, {
 	        key: 'getA',
 	        value: function getA() {
-	            return this.state.a;
+	            return this.a;
 	        }
 	    }, {
 	        key: 'getB',
 	        value: function getB() {
-	            return this.state.b;
+	            return this.b;
 	        }
 	    }, {
 	        key: 'handleActions',
@@ -23927,17 +23925,17 @@
 	            switch (action.type) {
 	                case "ADD":
 	                    {
-	                        this.emit('stop');
+	                        this.emit('add');
 	                        break;
 	                    }
 	                case "MUL":
 	                    {
-	                        this.emit('start');
+	                        this.emit('mul');
 	                        break;
 	                    }
 	                case "DIVIDE":
 	                    {
-	                        this.emit('reset');
+	                        this.emit('divide');
 	                        break;
 	                    }
 	                case "SUB":
@@ -23947,8 +23945,8 @@
 	                    }
 	                case "VALUE":
 	                    {
-	                        this.emit('value');
 	                        this.setValue(action.e);
+	                        this.emit('value');
 	                        break;
 	                    }
 	            }
@@ -23991,7 +23989,7 @@
 	exports.add = add;
 	exports.mul = mul;
 	exports.sub = sub;
-	exports.devide = devide;
+	exports.divide = divide;
 	exports.checkValue = checkValue;
 
 	var _dispatcher = __webpack_require__(360);
@@ -24013,13 +24011,12 @@
 	    _dispatcher2.default.dispatch({ type: 'SUB' });
 	}
 
-	function devide() {
+	function divide() {
 	    _dispatcher2.default.dispatch({ type: 'DIVIDE' });
 	}
 
 	function checkValue(e) {
-	    _dispatcher2.default.dispatch({ type: 'VALUE' });
-	    e;
+	    _dispatcher2.default.dispatch({ type: 'VALUE', e: e });
 	}
 
 /***/ }

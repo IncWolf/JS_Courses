@@ -7,61 +7,59 @@ import dispatcher from '../dispatcher'
 class AppStore extends EventEmitter {
     constructor() {
         super();
-        this.state = {
-            a: '',
-            b: ''
-        }
+        this.a = '';
+        this.b = '';
     }
 
     add() {
-        return parseInt(this.state.a) + parseInt(this.state.b)
+        return parseInt(this.a) + parseInt(this.b)
     }
     sub() {
-        return parseInt(this.state.a) - parseInt(this.state.b)
+        return parseInt(this.a) - parseInt(this.b)
     }
     mul() {
-        return parseInt(this.state.a) * parseInt(this.state.b)
+        return parseInt(this.a) * parseInt(this.b)
     }
     divide() {
-        return parseInt(this.state.a) / parseInt(this.state.b)
+        return parseInt(this.a) / parseInt(this.b)
     }
     setValue(e) {
         if ((e.keyCode <= 57 && e.keyCode >= 48) || e.keyCode == 8) {
             if (e.target.getAttribute('id') == 'a') {
                 if (e.keyCode != 8) {
-                    this.setState({a: this.state.a+String.fromCharCode(e.keyCode)});
+                    this.a = this.a+String.fromCharCode(e.keyCode);
                 } else {
-                    this.setState({a: this.state.a.slice(0, -1)});
+                    this.a = this.a.slice(0, -1);
                 }
             } else {
                 if (e.keyCode != 8) {
-                    this.setState({b: this.state.b+String.fromCharCode(e.keyCode)});
+                    this.b = this.b+String.fromCharCode(e.keyCode);
                 } else {
-                    this.setState({b: this.state.b.slice(0, -1)});
+                    this.b = this.b.slice(0, -1);
                 }
             }
         }
     }
     getA() {
-        return this.state.a;
+        return this.a;
     }
     getB() {
-        return this.state.b;
+        return this.b;
     }
 
     handleActions(action) {
 
         switch (action.type) {
             case "ADD": {
-                this.emit('stop')
+                this.emit('add')
                 break;
             }
             case "MUL": {
-                this.emit('start')
+                this.emit('mul')
                 break;
             }
             case "DIVIDE": {
-                this.emit('reset')
+                this.emit('divide')
                 break;
             }
             case "SUB": {
@@ -69,8 +67,8 @@ class AppStore extends EventEmitter {
                 break;
             }
             case "VALUE": {
-                this.emit('value');
                 this.setValue(action.e);
+                this.emit('value');
                 break;
             }
         }

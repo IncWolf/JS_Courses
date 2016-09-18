@@ -15,11 +15,10 @@ export function sub() {
     dispatcher.dispatch({ type: 'SUB'})
 }
 
-export function devide() {
+export function divide() {
     dispatcher.dispatch({ type: 'DIVIDE'})
 }
 
 export function checkValue(e) {
-    dispatcher.dispatch({ type: 'VALUE'})
-    e
+    dispatcher.dispatch({ type: 'VALUE', e})
 }
