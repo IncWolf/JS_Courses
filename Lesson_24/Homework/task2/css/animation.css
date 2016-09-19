@@ -1,0 +1,30 @@
+.test-appear {
+    opacity: 0.01;
+}
+
+.test-appear.test-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+}
+
+.test-enter {
+    position: absolute;
+    opacity: 0.05;
+}
+
+.test-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.test-leave {
+    position: absolute;
+    opacity: 0.1;
+
+}
+
+.test-leave-active {
+    position: absolute;
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}

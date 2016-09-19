@@ -16,7 +16,7 @@ class Add extends React.Component {
         super();
 
         //привязка контекста
-        this.createItem = this.createItem.bind(this);
+        //this.createItem = this.createItem.bind(this);
     }
 
     createItem() {

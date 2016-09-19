@@ -46,14 +46,31 @@
 
 	'use strict';
 
-	/**
-	 * Created by Incy on 18.09.2016.
-	 */
-	// загрузка модулей ReactJS
+	var _getPrototypeOf = __webpack_require__(241);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(245);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(246);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(250);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(270);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(34);
 
-	// загрузка компонентов маршрутизации react-router
 	var router = __webpack_require__(281);
 
 	var Router = router.Router;
@@ -62,20 +79,67 @@
 	var IndexRoute = router.IndexRoute;
 	var hashHistory = router.hashHistory;
 
-	// загрузка модулей с React компонентами
-	var App = __webpack_require__(376);
-	var Add = __webpack_require__(381);
+	var ListView = __webpack_require__(346);
+	var TableView = __webpack_require__(347);
 
-	// конфигурация маршрутизации
+	var users = [{ first_name: "Matthew", last_name: "Phillips", email: "mphillips0@myspace.com", gender: "Male", ip_address: "14.241.172.154", id: 23468 }, { first_name: "Larry", last_name: "Weaver", email: "lweaver1@slideshare.net", gender: "Male", ip_address: "126.139.9.128", id: 89078 }, { first_name: "Barbara", last_name: "Tucker", email: "btucker2@cbc.ca", gender: "Female", ip_address: "92.195.229.16", id: 56435 }, { first_name: "Jonathan", last_name: "Cook", email: "jcook3@fc2.com", gender: "Male", ip_address: "187.79.225.71", id: 78908 }, { first_name: "Jean", last_name: "Flores", email: "jflores4@last.fm", gender: "Female", ip_address: "222.197.158.249, id:67653" }, { first_name: "Kimberly", last_name: "Nelson", email: "knelson5@nifty.com", gender: "Female", ip_address: "111.174.89.57", id: 83425 }, { first_name: "Willie", last_name: "Banks", email: "wbanks6@abc.net.au", gender: "Male", ip_address: "97.0.19.154", id: 99873 }, { first_name: "Michael", last_name: "King", email: "mking7@w3.org", gender: "Male", ip_address: "149.114.62.6", id: 34239 }];
+
+	var Main = function (_React$Component) {
+	    (0, _inherits3.default)(Main, _React$Component);
+
+	    function Main() {
+	        (0, _classCallCheck3.default)(this, Main);
+	        return (0, _possibleConstructorReturn3.default)(this, (Main.__proto__ || (0, _getPrototypeOf2.default)(Main)).apply(this, arguments));
+	    }
+
+	    (0, _createClass3.default)(Main, [{
+	        key: 'render',
+	        value: function render() {
+	            return React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                    'div',
+	                    null,
+	                    React.createElement(
+	                        Link,
+	                        { to: { pathname: '/listView' } },
+	                        React.createElement(
+	                            'button',
+	                            null,
+	                            'ListView'
+	                        )
+	                    ),
+	                    React.createElement(
+	                        Link,
+	                        { to: { pathname: '/tableView' } },
+	                        React.createElement(
+	                            'button',
+	                            null,
+	                            'TableView'
+	                        )
+	                    )
+	                ),
+	                React.createElement(
+	                    'div',
+	                    null,
+	                    this.props.children
+	                )
+	            );
+	        }
+	    }]);
+	    return Main;
+	}(React.Component);
+
 	ReactDOM.render(React.createElement(
-	  Router,
-	  { history: hashHistory },
-	  React.createElement(
-	    Route,
-	    { path: '/' },
-	    React.createElement(IndexRoute, { component: App }),
-	    React.createElement(Route, { path: 'add', component: Add })
-	  )
+	    Router,
+	    { history: hashHistory },
+	    React.createElement(
+	        Route,
+	        { path: '/', component: Main },
+	        React.createElement(Route, { path: 'listView', component: ListView, users: users }),
+	        React.createElement(Route, { path: 'tableView', component: TableView, users: users })
+	    )
 	), document.getElementById('output'));
 
 /***/ },
@@ -28657,649 +28721,7 @@
 /***/ },
 /* 344 */,
 /* 345 */,
-/* 346 */,
-/* 347 */,
-/* 348 */,
-/* 349 */,
-/* 350 */,
-/* 351 */,
-/* 352 */,
-/* 353 */,
-/* 354 */,
-/* 355 */,
-/* 356 */,
-/* 357 */,
-/* 358 */,
-/* 359 */,
-/* 360 */,
-/* 361 */,
-/* 362 */
-/***/ function(module, exports) {
-
-	// Copyright Joyent, Inc. and other Node contributors.
-	//
-	// Permission is hereby granted, free of charge, to any person obtaining a
-	// copy of this software and associated documentation files (the
-	// "Software"), to deal in the Software without restriction, including
-	// without limitation the rights to use, copy, modify, merge, publish,
-	// distribute, sublicense, and/or sell copies of the Software, and to permit
-	// persons to whom the Software is furnished to do so, subject to the
-	// following conditions:
-	//
-	// The above copyright notice and this permission notice shall be included
-	// in all copies or substantial portions of the Software.
-	//
-	// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-	// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-	// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-	// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-	// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-	// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-	function EventEmitter() {
-	  this._events = this._events || {};
-	  this._maxListeners = this._maxListeners || undefined;
-	}
-	module.exports = EventEmitter;
-
-	// Backwards-compat with node 0.10.x
-	EventEmitter.EventEmitter = EventEmitter;
-
-	EventEmitter.prototype._events = undefined;
-	EventEmitter.prototype._maxListeners = undefined;
-
-	// By default EventEmitters will print a warning if more than 10 listeners are
-	// added to it. This is a useful default which helps finding memory leaks.
-	EventEmitter.defaultMaxListeners = 10;
-
-	// Obviously not all Emitters should be limited to 10. This function allows
-	// that to be increased. Set to zero for unlimited.
-	EventEmitter.prototype.setMaxListeners = function(n) {
-	  if (!isNumber(n) || n < 0 || isNaN(n))
-	    throw TypeError('n must be a positive number');
-	  this._maxListeners = n;
-	  return this;
-	};
-
-	EventEmitter.prototype.emit = function(type) {
-	  var er, handler, len, args, i, listeners;
-
-	  if (!this._events)
-	    this._events = {};
-
-	  // If there is no 'error' event listener then throw.
-	  if (type === 'error') {
-	    if (!this._events.error ||
-	        (isObject(this._events.error) && !this._events.error.length)) {
-	      er = arguments[1];
-	      if (er instanceof Error) {
-	        throw er; // Unhandled 'error' event
-	      } else {
-	        // At least give some kind of context to the user
-	        var err = new Error('Uncaught, unspecified "error" event. (' + er + ')');
-	        err.context = er;
-	        throw err;
-	      }
-	    }
-	  }
-
-	  handler = this._events[type];
-
-	  if (isUndefined(handler))
-	    return false;
-
-	  if (isFunction(handler)) {
-	    switch (arguments.length) {
-	      // fast cases
-	      case 1:
-	        handler.call(this);
-	        break;
-	      case 2:
-	        handler.call(this, arguments[1]);
-	        break;
-	      case 3:
-	        handler.call(this, arguments[1], arguments[2]);
-	        break;
-	      // slower
-	      default:
-	        args = Array.prototype.slice.call(arguments, 1);
-	        handler.apply(this, args);
-	    }
-	  } else if (isObject(handler)) {
-	    args = Array.prototype.slice.call(arguments, 1);
-	    listeners = handler.slice();
-	    len = listeners.length;
-	    for (i = 0; i < len; i++)
-	      listeners[i].apply(this, args);
-	  }
-
-	  return true;
-	};
-
-	EventEmitter.prototype.addListener = function(type, listener) {
-	  var m;
-
-	  if (!isFunction(listener))
-	    throw TypeError('listener must be a function');
-
-	  if (!this._events)
-	    this._events = {};
-
-	  // To avoid recursion in the case that type === "newListener"! Before
-	  // adding it to the listeners, first emit "newListener".
-	  if (this._events.newListener)
-	    this.emit('newListener', type,
-	              isFunction(listener.listener) ?
-	              listener.listener : listener);
-
-	  if (!this._events[type])
-	    // Optimize the case of one listener. Don't need the extra array object.
-	    this._events[type] = listener;
-	  else if (isObject(this._events[type]))
-	    // If we've already got an array, just append.
-	    this._events[type].push(listener);
-	  else
-	    // Adding the second element, need to change to array.
-	    this._events[type] = [this._events[type], listener];
-
-	  // Check for listener leak
-	  if (isObject(this._events[type]) && !this._events[type].warned) {
-	    if (!isUndefined(this._maxListeners)) {
-	      m = this._maxListeners;
-	    } else {
-	      m = EventEmitter.defaultMaxListeners;
-	    }
-
-	    if (m && m > 0 && this._events[type].length > m) {
-	      this._events[type].warned = true;
-	      console.error('(node) warning: possible EventEmitter memory ' +
-	                    'leak detected. %d listeners added. ' +
-	                    'Use emitter.setMaxListeners() to increase limit.',
-	                    this._events[type].length);
-	      if (typeof console.trace === 'function') {
-	        // not supported in IE 10
-	        console.trace();
-	      }
-	    }
-	  }
-
-	  return this;
-	};
-
-	EventEmitter.prototype.on = EventEmitter.prototype.addListener;
-
-	EventEmitter.prototype.once = function(type, listener) {
-	  if (!isFunction(listener))
-	    throw TypeError('listener must be a function');
-
-	  var fired = false;
-
-	  function g() {
-	    this.removeListener(type, g);
-
-	    if (!fired) {
-	      fired = true;
-	      listener.apply(this, arguments);
-	    }
-	  }
-
-	  g.listener = listener;
-	  this.on(type, g);
-
-	  return this;
-	};
-
-	// emits a 'removeListener' event iff the listener was removed
-	EventEmitter.prototype.removeListener = function(type, listener) {
-	  var list, position, length, i;
-
-	  if (!isFunction(listener))
-	    throw TypeError('listener must be a function');
-
-	  if (!this._events || !this._events[type])
-	    return this;
-
-	  list = this._events[type];
-	  length = list.length;
-	  position = -1;
-
-	  if (list === listener ||
-	      (isFunction(list.listener) && list.listener === listener)) {
-	    delete this._events[type];
-	    if (this._events.removeListener)
-	      this.emit('removeListener', type, listener);
-
-	  } else if (isObject(list)) {
-	    for (i = length; i-- > 0;) {
-	      if (list[i] === listener ||
-	          (list[i].listener && list[i].listener === listener)) {
-	        position = i;
-	        break;
-	      }
-	    }
-
-	    if (position < 0)
-	      return this;
-
-	    if (list.length === 1) {
-	      list.length = 0;
-	      delete this._events[type];
-	    } else {
-	      list.splice(position, 1);
-	    }
-
-	    if (this._events.removeListener)
-	      this.emit('removeListener', type, listener);
-	  }
-
-	  return this;
-	};
-
-	EventEmitter.prototype.removeAllListeners = function(type) {
-	  var key, listeners;
-
-	  if (!this._events)
-	    return this;
-
-	  // not listening for removeListener, no need to emit
-	  if (!this._events.removeListener) {
-	    if (arguments.length === 0)
-	      this._events = {};
-	    else if (this._events[type])
-	      delete this._events[type];
-	    return this;
-	  }
-
-	  // emit removeListener for all listeners on all events
-	  if (arguments.length === 0) {
-	    for (key in this._events) {
-	      if (key === 'removeListener') continue;
-	      this.removeAllListeners(key);
-	    }
-	    this.removeAllListeners('removeListener');
-	    this._events = {};
-	    return this;
-	  }
-
-	  listeners = this._events[type];
-
-	  if (isFunction(listeners)) {
-	    this.removeListener(type, listeners);
-	  } else if (listeners) {
-	    // LIFO order
-	    while (listeners.length)
-	      this.removeListener(type, listeners[listeners.length - 1]);
-	  }
-	  delete this._events[type];
-
-	  return this;
-	};
-
-	EventEmitter.prototype.listeners = function(type) {
-	  var ret;
-	  if (!this._events || !this._events[type])
-	    ret = [];
-	  else if (isFunction(this._events[type]))
-	    ret = [this._events[type]];
-	  else
-	    ret = this._events[type].slice();
-	  return ret;
-	};
-
-	EventEmitter.prototype.listenerCount = function(type) {
-	  if (this._events) {
-	    var evlistener = this._events[type];
-
-	    if (isFunction(evlistener))
-	      return 1;
-	    else if (evlistener)
-	      return evlistener.length;
-	  }
-	  return 0;
-	};
-
-	EventEmitter.listenerCount = function(emitter, type) {
-	  return emitter.listenerCount(type);
-	};
-
-	function isFunction(arg) {
-	  return typeof arg === 'function';
-	}
-
-	function isNumber(arg) {
-	  return typeof arg === 'number';
-	}
-
-	function isObject(arg) {
-	  return typeof arg === 'object' && arg !== null;
-	}
-
-	function isUndefined(arg) {
-	  return arg === void 0;
-	}
-
-
-/***/ },
-/* 363 */,
-/* 364 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright (c) 2014-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 */
-
-	module.exports.Dispatcher = __webpack_require__(365);
-
-
-/***/ },
-/* 365 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright (c) 2014-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule Dispatcher
-	 * 
-	 * @preventMunge
-	 */
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	var invariant = __webpack_require__(366);
-
-	var _prefix = 'ID_';
-
-	/**
-	 * Dispatcher is used to broadcast payloads to registered callbacks. This is
-	 * different from generic pub-sub systems in two ways:
-	 *
-	 *   1) Callbacks are not subscribed to particular events. Every payload is
-	 *      dispatched to every registered callback.
-	 *   2) Callbacks can be deferred in whole or part until other callbacks have
-	 *      been executed.
-	 *
-	 * For example, consider this hypothetical flight destination form, which
-	 * selects a default city when a country is selected:
-	 *
-	 *   var flightDispatcher = new Dispatcher();
-	 *
-	 *   // Keeps track of which country is selected
-	 *   var CountryStore = {country: null};
-	 *
-	 *   // Keeps track of which city is selected
-	 *   var CityStore = {city: null};
-	 *
-	 *   // Keeps track of the base flight price of the selected city
-	 *   var FlightPriceStore = {price: null}
-	 *
-	 * When a user changes the selected city, we dispatch the payload:
-	 *
-	 *   flightDispatcher.dispatch({
-	 *     actionType: 'city-update',
-	 *     selectedCity: 'paris'
-	 *   });
-	 *
-	 * This payload is digested by `CityStore`:
-	 *
-	 *   flightDispatcher.register(function(payload) {
-	 *     if (payload.actionType === 'city-update') {
-	 *       CityStore.city = payload.selectedCity;
-	 *     }
-	 *   });
-	 *
-	 * When the user selects a country, we dispatch the payload:
-	 *
-	 *   flightDispatcher.dispatch({
-	 *     actionType: 'country-update',
-	 *     selectedCountry: 'australia'
-	 *   });
-	 *
-	 * This payload is digested by both stores:
-	 *
-	 *   CountryStore.dispatchToken = flightDispatcher.register(function(payload) {
-	 *     if (payload.actionType === 'country-update') {
-	 *       CountryStore.country = payload.selectedCountry;
-	 *     }
-	 *   });
-	 *
-	 * When the callback to update `CountryStore` is registered, we save a reference
-	 * to the returned token. Using this token with `waitFor()`, we can guarantee
-	 * that `CountryStore` is updated before the callback that updates `CityStore`
-	 * needs to query its data.
-	 *
-	 *   CityStore.dispatchToken = flightDispatcher.register(function(payload) {
-	 *     if (payload.actionType === 'country-update') {
-	 *       // `CountryStore.country` may not be updated.
-	 *       flightDispatcher.waitFor([CountryStore.dispatchToken]);
-	 *       // `CountryStore.country` is now guaranteed to be updated.
-	 *
-	 *       // Select the default city for the new country
-	 *       CityStore.city = getDefaultCityForCountry(CountryStore.country);
-	 *     }
-	 *   });
-	 *
-	 * The usage of `waitFor()` can be chained, for example:
-	 *
-	 *   FlightPriceStore.dispatchToken =
-	 *     flightDispatcher.register(function(payload) {
-	 *       switch (payload.actionType) {
-	 *         case 'country-update':
-	 *         case 'city-update':
-	 *           flightDispatcher.waitFor([CityStore.dispatchToken]);
-	 *           FlightPriceStore.price =
-	 *             getFlightPriceStore(CountryStore.country, CityStore.city);
-	 *           break;
-	 *     }
-	 *   });
-	 *
-	 * The `country-update` payload will be guaranteed to invoke the stores'
-	 * registered callbacks in order: `CountryStore`, `CityStore`, then
-	 * `FlightPriceStore`.
-	 */
-
-	var Dispatcher = (function () {
-	  function Dispatcher() {
-	    _classCallCheck(this, Dispatcher);
-
-	    this._callbacks = {};
-	    this._isDispatching = false;
-	    this._isHandled = {};
-	    this._isPending = {};
-	    this._lastID = 1;
-	  }
-
-	  /**
-	   * Registers a callback to be invoked with every dispatched payload. Returns
-	   * a token that can be used with `waitFor()`.
-	   */
-
-	  Dispatcher.prototype.register = function register(callback) {
-	    var id = _prefix + this._lastID++;
-	    this._callbacks[id] = callback;
-	    return id;
-	  };
-
-	  /**
-	   * Removes a callback based on its token.
-	   */
-
-	  Dispatcher.prototype.unregister = function unregister(id) {
-	    !this._callbacks[id] ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.unregister(...): `%s` does not map to a registered callback.', id) : invariant(false) : undefined;
-	    delete this._callbacks[id];
-	  };
-
-	  /**
-	   * Waits for the callbacks specified to be invoked before continuing execution
-	   * of the current callback. This method should only be used by a callback in
-	   * response to a dispatched payload.
-	   */
-
-	  Dispatcher.prototype.waitFor = function waitFor(ids) {
-	    !this._isDispatching ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.waitFor(...): Must be invoked while dispatching.') : invariant(false) : undefined;
-	    for (var ii = 0; ii < ids.length; ii++) {
-	      var id = ids[ii];
-	      if (this._isPending[id]) {
-	        !this._isHandled[id] ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.waitFor(...): Circular dependency detected while ' + 'waiting for `%s`.', id) : invariant(false) : undefined;
-	        continue;
-	      }
-	      !this._callbacks[id] ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatcher.waitFor(...): `%s` does not map to a registered callback.', id) : invariant(false) : undefined;
-	      this._invokeCallback(id);
-	    }
-	  };
-
-	  /**
-	   * Dispatches a payload to all registered callbacks.
-	   */
-
-	  Dispatcher.prototype.dispatch = function dispatch(payload) {
-	    !!this._isDispatching ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Dispatch.dispatch(...): Cannot dispatch in the middle of a dispatch.') : invariant(false) : undefined;
-	    this._startDispatching(payload);
-	    try {
-	      for (var id in this._callbacks) {
-	        if (this._isPending[id]) {
-	          continue;
-	        }
-	        this._invokeCallback(id);
-	      }
-	    } finally {
-	      this._stopDispatching();
-	    }
-	  };
-
-	  /**
-	   * Is this Dispatcher currently dispatching.
-	   */
-
-	  Dispatcher.prototype.isDispatching = function isDispatching() {
-	    return this._isDispatching;
-	  };
-
-	  /**
-	   * Call the callback stored with the given id. Also do some internal
-	   * bookkeeping.
-	   *
-	   * @internal
-	   */
-
-	  Dispatcher.prototype._invokeCallback = function _invokeCallback(id) {
-	    this._isPending[id] = true;
-	    this._callbacks[id](this._pendingPayload);
-	    this._isHandled[id] = true;
-	  };
-
-	  /**
-	   * Set up bookkeeping needed when dispatching.
-	   *
-	   * @internal
-	   */
-
-	  Dispatcher.prototype._startDispatching = function _startDispatching(payload) {
-	    for (var id in this._callbacks) {
-	      this._isPending[id] = false;
-	      this._isHandled[id] = false;
-	    }
-	    this._pendingPayload = payload;
-	    this._isDispatching = true;
-	  };
-
-	  /**
-	   * Clear bookkeeping used for dispatching.
-	   *
-	   * @internal
-	   */
-
-	  Dispatcher.prototype._stopDispatching = function _stopDispatching() {
-	    delete this._pendingPayload;
-	    this._isDispatching = false;
-	  };
-
-	  return Dispatcher;
-	})();
-
-	module.exports = Dispatcher;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ },
-/* 366 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule invariant
-	 */
-
-	"use strict";
-
-	/**
-	 * Use invariant() to assert state which your program assumes to be true.
-	 *
-	 * Provide sprintf-style format (only %s is supported) and arguments
-	 * to provide information about what broke and what you were
-	 * expecting.
-	 *
-	 * The invariant message will be stripped in production, but the invariant
-	 * will remain to ensure logic does not differ in production.
-	 */
-
-	var invariant = function (condition, format, a, b, c, d, e, f) {
-	  if (process.env.NODE_ENV !== 'production') {
-	    if (format === undefined) {
-	      throw new Error('invariant requires an error message argument');
-	    }
-	  }
-
-	  if (!condition) {
-	    var error;
-	    if (format === undefined) {
-	      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-	    } else {
-	      var args = [a, b, c, d, e, f];
-	      var argIndex = 0;
-	      error = new Error('Invariant Violation: ' + format.replace(/%s/g, function () {
-	        return args[argIndex++];
-	      }));
-	    }
-
-	    error.framesToPop = 1; // we don't care about invariant's own frame
-	    throw error;
-	  }
-	};
-
-	module.exports = invariant;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ },
-/* 367 */,
-/* 368 */,
-/* 369 */,
-/* 370 */,
-/* 371 */,
-/* 372 */,
-/* 373 */,
-/* 374 */,
-/* 375 */,
-/* 376 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29330,342 +28752,40 @@
 	 * Created by IncWolf on 18.09.2016.
 	 */
 	var React = __webpack_require__(1);
-	var Link = __webpack_require__(281).Link;
 
-	// импорт хранилища данных (store)
-	var TodoStore = __webpack_require__(377);
+	var ListView = function (_React$Component) {
+	    (0, _inherits3.default)(ListView, _React$Component);
 
-	// импорт React-компонентов
-	//var Table = require('./table.jsx');
-	var List = __webpack_require__(379);
-
-	// импорт действий toDoActions
-	var TodoActions = __webpack_require__(380);
-
-	var App = function (_React$Component) {
-	    (0, _inherits3.default)(App, _React$Component);
-
-	    function App() {
-	        (0, _classCallCheck3.default)(this, App);
-
-	        var _this = (0, _possibleConstructorReturn3.default)(this, (App.__proto__ || (0, _getPrototypeOf2.default)(App)).call(this));
-
-	        _this.state = {
-	            tasks: TodoStore.getAll()
-	        };
-	        return _this;
+	    function ListView(props) {
+	        (0, _classCallCheck3.default)(this, ListView);
+	        return (0, _possibleConstructorReturn3.default)(this, (ListView.__proto__ || (0, _getPrototypeOf2.default)(ListView)).call(this, props));
 	    }
 
-	    (0, _createClass3.default)(App, [{
-	        key: 'componentWillMount',
-	        value: function componentWillMount() {
-	            var _this2 = this;
-
-	            TodoStore.on('CHANGE', function () {
-	                _this2.setState({ tasks: TodoStore.getAll() });
-	            });
-	        }
-	    }, {
+	    (0, _createClass3.default)(ListView, [{
 	        key: 'render',
 	        value: function render() {
-	            return React.createElement(
-	                'div',
-	                null,
-	                React.createElement(
-	                    'div',
-	                    null,
-	                    React.createElement(
-	                        'h2',
-	                        null,
-	                        'TO DO LIST'
-	                    ),
-	                    React.createElement(
-	                        'div',
-	                        null,
-	                        React.createElement(
-	                            Link,
-	                            { to: '/add' },
-	                            React.createElement(
-	                                'button',
-	                                null,
-	                                'Add'
-	                            )
-	                        )
-	                    )
-	                ),
-	                React.createElement(List, { items: this.state.tasks })
-	            );
-	        }
-	    }]);
-	    return App;
-	}(React.Component);
-
-	module.exports = App;
-
-/***/ },
-/* 377 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _getPrototypeOf = __webpack_require__(241);
-
-	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-	var _classCallCheck2 = __webpack_require__(245);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(246);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	var _possibleConstructorReturn2 = __webpack_require__(250);
-
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-	var _inherits2 = __webpack_require__(270);
-
-	var _inherits3 = _interopRequireDefault(_inherits2);
-
-	var _events = __webpack_require__(362);
-
-	var _dispatcher = __webpack_require__(378);
-
-	var _dispatcher2 = _interopRequireDefault(_dispatcher);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * Created by Incy on 18.09.2016.
-	 */
-	var ToDoStore = function (_EventEmitter) {
-	    (0, _inherits3.default)(ToDoStore, _EventEmitter);
-
-	    function ToDoStore() {
-	        (0, _classCallCheck3.default)(this, ToDoStore);
-
-	        var _this = (0, _possibleConstructorReturn3.default)(this, (ToDoStore.__proto__ || (0, _getPrototypeOf2.default)(ToDoStore)).call(this));
-
-	        _this.tasks = [{
-	            id: '' + Date.now(),
-	            name: 'Clean the house',
-	            complete: false
-
-	        }, {
-	            id: '' + Date.now() + 1,
-	            name: 'Watch TV',
-	            complete: true
-	        }];
-	        return _this;
-	    }
-
-	    (0, _createClass3.default)(ToDoStore, [{
-	        key: 'createItem',
-	        value: function createItem(item) {
-	            this.tasks.push({
-	                id: '' + Date.now(),
-	                name: item.name,
-	                complete: item.complete
-	            });
-	        }
-
-	        // удалить элемент
-
-	    }, {
-	        key: 'removeItem',
-	        value: function removeItem(id) {
-
-	            var newData = [];
-	            for (var i = 0; i < this.tasks.length; i++) {
-
-	                if (this.tasks[i].id === id) {
-	                    continue;
-	                }
-	                newData.push(this.tasks[i]);
-	            }
-	            this.tasks = newData;
-	        }
-
-	        // получить все элементы
-
-	    }, {
-	        key: 'getAll',
-	        value: function getAll() {
-	            return this.tasks;
-	        }
-
-	        // обработка actions
-
-	    }, {
-	        key: 'handleActions',
-	        value: function handleActions(action) {
-	            switch (action.type) {
-	                case "CREATE_ITEM":
-	                    {
-	                        console.log('Item created');
-	                        this.createItem(action.item);
-	                        this.emit('CHANGE');
-	                        break;
-	                    }
-	                case "REMOVE_ITEM":
-	                    {
-	                        console.log('Item removed');
-	                        this.removeItem(action.id);
-	                        this.emit('CHANGE');
-	                        break;
-	                    }
-	            }
-	        }
-	    }]);
-	    return ToDoStore;
-	}(_events.EventEmitter);
-
-	var todoStore = new ToDoStore();
-	_dispatcher2.default.register(todoStore.handleActions.bind(todoStore));
-
-	module.exports = todoStore;
-
-/***/ },
-/* 378 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _flux = __webpack_require__(364);
-
-	exports.default = new _flux.Dispatcher(); /**
-	                                           * Created by Incy on 18.09.2016.
-	                                           */
-
-/***/ },
-/* 379 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _getPrototypeOf = __webpack_require__(241);
-
-	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-	var _classCallCheck2 = __webpack_require__(245);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(246);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	var _possibleConstructorReturn2 = __webpack_require__(250);
-
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-	var _inherits2 = __webpack_require__(270);
-
-	var _inherits3 = _interopRequireDefault(_inherits2);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * Created by Incy on 18.09.2016.
-	 */
-	var React = __webpack_require__(1);
-
-	// импорт действий toDoActions
-	var TodoActions = __webpack_require__(380);
-
-	var List = function (_React$Component) {
-	    (0, _inherits3.default)(List, _React$Component);
-
-	    function List(props) {
-	        (0, _classCallCheck3.default)(this, List);
-
-	        var _this = (0, _possibleConstructorReturn3.default)(this, (List.__proto__ || (0, _getPrototypeOf2.default)(List)).call(this, props));
-
-	        _this.removeHandler = _this.removeHandler.bind(_this);
-	        return _this;
-	    }
-
-	    (0, _createClass3.default)(List, [{
-	        key: 'removeHandler',
-	        value: function removeHandler(e) {
-	            TodoActions.removeItem(e.target.dataset.id);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this2 = this;
-
-	            // создание списка заданий на основе props
 	            return React.createElement(
 	                'ul',
 	                null,
-	                this.props.items.map(function (item) {
+	                this.props.route.users.map(function (user, i) {
 	                    return React.createElement(
 	                        'li',
-	                        { key: item.id },
-	                        item.name,
-	                        '   ',
-	                        item.complete ? 'Complete' : 'Not complete',
-	                        ' ',
-	                        React.createElement(
-	                            'button',
-	                            { 'data-id': item.id, onClick: _this2.removeHandler },
-	                            'Delete'
-	                        )
+	                        { key: i },
+	                        user.first_name,
+	                        ' ',
+	                        user.last_name
 	                    );
 	                })
 	            );
 	        }
 	    }]);
-	    return List;
+	    return ListView;
 	}(React.Component);
 
-	module.exports = List;
+	module.exports = ListView;
 
 /***/ },
-/* 380 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.createItem = createItem;
-	exports.removeItem = removeItem;
-
-	var _dispatcher = __webpack_require__(378);
-
-	var _dispatcher2 = _interopRequireDefault(_dispatcher);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// создать элемент
-	function createItem(item) {
-	    _dispatcher2.default.dispatch({
-	        type: 'CREATE_ITEM',
-	        item: item
-	    });
-	}
-
-	// удалить элемент
-	/**
-	 * Created by Incy on 18.09.2016.
-	 */
-	function removeItem(id) {
-	    _dispatcher2.default.dispatch({
-	        type: 'REMOVE_ITEM',
-	        id: id
-	    });
-	}
-
-/***/ },
-/* 381 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29693,80 +28813,79 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
-	 * Created by Incy on 18.09.2016.
+	 * Created by IncWolf on 18.09.2016.
 	 */
 	var React = __webpack_require__(1);
-	var Link = __webpack_require__(281).Link;
-	var TodoStore = __webpack_require__(377);
 
-	// импорт React-компонентов
-	var List = __webpack_require__(379);
+	var TableView = function (_React$Component) {
+	    (0, _inherits3.default)(TableView, _React$Component);
 
-	// импорт действий toDoActions
-	var TodoActions = __webpack_require__(380);
-
-	var Add = function (_React$Component) {
-	    (0, _inherits3.default)(Add, _React$Component);
-
-	    function Add() {
-	        (0, _classCallCheck3.default)(this, Add);
-
-	        //привязка контекста
-	        var _this = (0, _possibleConstructorReturn3.default)(this, (Add.__proto__ || (0, _getPrototypeOf2.default)(Add)).call(this));
-
-	        _this.createItem = _this.createItem.bind(_this);
-	        return _this;
+	    function TableView(props) {
+	        (0, _classCallCheck3.default)(this, TableView);
+	        return (0, _possibleConstructorReturn3.default)(this, (TableView.__proto__ || (0, _getPrototypeOf2.default)(TableView)).call(this, props));
 	    }
 
-	    (0, _createClass3.default)(Add, [{
-	        key: 'createItem',
-	        value: function createItem() {
-	            var item = { name: document.getElementById('name').value, complete: document.getElementById('complete').checked };
-	            TodoActions.createItem(item);
-	        }
-	    }, {
+	    (0, _createClass3.default)(TableView, [{
 	        key: 'render',
 	        value: function render() {
 	            return React.createElement(
-	                'form',
+	                'table',
 	                null,
 	                React.createElement(
-	                    'div',
+	                    'thead',
 	                    null,
 	                    React.createElement(
-	                        Link,
-	                        { to: '/' },
+	                        'tr',
+	                        null,
 	                        React.createElement(
-	                            'button',
+	                            'th',
 	                            null,
-	                            'Back'
+	                            'First name'
+	                        ),
+	                        React.createElement(
+	                            'th',
+	                            null,
+	                            'Last Name'
+	                        ),
+	                        React.createElement(
+	                            'th',
+	                            null,
+	                            'Gender'
 	                        )
 	                    )
 	                ),
 	                React.createElement(
-	                    'label',
-	                    { htmlFor: 'name' },
-	                    'Name: '
-	                ),
-	                React.createElement('input', { type: 'text', id: 'name' }),
-	                React.createElement('input', { type: 'checkbox', id: 'complete' }),
-	                ' Complete',
-	                React.createElement(
-	                    'div',
+	                    'tbody',
 	                    null,
-	                    React.createElement(
-	                        'button',
-	                        { onClick: this.createItem },
-	                        'Add'
-	                    )
+	                    this.props.route.users.map(function (user, i) {
+	                        return React.createElement(
+	                            'tr',
+	                            { key: i },
+	                            React.createElement(
+	                                'td',
+	                                null,
+	                                user.first_name
+	                            ),
+	                            React.createElement(
+	                                'td',
+	                                null,
+	                                user.last_name
+	                            ),
+	                            React.createElement(
+	                                'td',
+	                                null,
+	                                user.gender
+	                            )
+	                        );
+	                    })
 	                )
 	            );
 	        }
 	    }]);
-	    return Add;
+	    return TableView;
 	}(React.Component);
 
-	module.exports = Add;
+	module.exports = TableView;
 
 /***/ }
 /******/ ]);

@@ -18,13 +18,18 @@ class App extends React.Component {
         super();
         this.state = {
             tasks: TodoStore.getAll()
-        }
+        };
+        this.searchTasks = this.searchTasks.bind(this);
+        this.refreshTable = this.refreshTable.bind(this);
+    }
+    refreshTable() {
+        this.setState({tasks: TodoStore.getAll()})
+    }
+    searchTasks() {
+        TodoActions.searchItems(document.getElementById('search_string').value);
     }
     componentWillMount() {
-        TodoStore.on('CHANGE', () => {
-                this.setState({tasks: TodoStore.getAll()})
-            }
-        );
+        TodoStore.on('CHANGE', this.refreshTable);
     }
     render() {
         return(<div>
@@ -33,6 +38,10 @@ class App extends React.Component {
                     <div><Link to="/add"><button>Add</button></Link></div>
                 </div>
                 <List items={this.state.tasks}/>
+                <div>
+                    <input type="text" id="search_string" />
+                    <button onClick={this.searchTasks}>Search</button>
+                </div>
             </div>
         )}
 }
