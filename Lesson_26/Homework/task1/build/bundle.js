@@ -57,8 +57,8 @@
 	var Provider = __webpack_require__(172).Provider;
 	var createStore = __webpack_require__(179).createStore;
 
-	var toDoReducer = __webpack_require__(209);
-	var App = __webpack_require__(210);
+	var toDoReducer = __webpack_require__(212);
+	var App = __webpack_require__(213);
 
 	var store = createStore(toDoReducer);
 
@@ -21619,15 +21619,15 @@
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _isPlainObject = __webpack_require__(181);
+	var _isPlainObject = __webpack_require__(193);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _hoistNonReactStatics = __webpack_require__(194);
+	var _hoistNonReactStatics = __webpack_require__(197);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	var _invariant = __webpack_require__(195);
+	var _invariant = __webpack_require__(198);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -22050,23 +22050,23 @@
 
 	var _createStore2 = _interopRequireDefault(_createStore);
 
-	var _combineReducers = __webpack_require__(189);
+	var _combineReducers = __webpack_require__(188);
 
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 
-	var _bindActionCreators = __webpack_require__(191);
+	var _bindActionCreators = __webpack_require__(190);
 
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 
-	var _applyMiddleware = __webpack_require__(192);
+	var _applyMiddleware = __webpack_require__(191);
 
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 
-	var _compose = __webpack_require__(193);
+	var _compose = __webpack_require__(192);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
-	var _warning = __webpack_require__(190);
+	var _warning = __webpack_require__(189);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -22103,7 +22103,7 @@
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _symbolObservable = __webpack_require__(186);
+	var _symbolObservable = __webpack_require__(185);
 
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 
@@ -22360,8 +22360,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var getPrototype = __webpack_require__(182),
-	    isHostObject = __webpack_require__(184),
-	    isObjectLike = __webpack_require__(185);
+	    isObjectLike = __webpack_require__(184);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -22415,8 +22414,7 @@
 	 * // => true
 	 */
 	function isPlainObject(value) {
-	  if (!isObjectLike(value) ||
-	      objectToString.call(value) != objectTag || isHostObject(value)) {
+	  if (!isObjectLike(value) || objectToString.call(value) != objectTag) {
 	    return false;
 	  }
 	  var proto = getPrototype(value);
@@ -22469,32 +22467,6 @@
 /***/ function(module, exports) {
 
 	/**
-	 * Checks if `value` is a host object in IE < 9.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
-	 */
-	function isHostObject(value) {
-	  // Many host objects are `Object` objects that can coerce to strings
-	  // despite having improperly defined `toString` methods.
-	  var result = false;
-	  if (value != null && typeof value.toString != 'function') {
-	    try {
-	      result = !!(value + '');
-	    } catch (e) {}
-	  }
-	  return result;
-	}
-
-	module.exports = isHostObject;
-
-
-/***/ },
-/* 185 */
-/***/ function(module, exports) {
-
-	/**
 	 * Checks if `value` is object-like. A value is object-like if it's not `null`
 	 * and has a `typeof` result of "object".
 	 *
@@ -22519,21 +22491,21 @@
 	 * // => false
 	 */
 	function isObjectLike(value) {
-	  return !!value && typeof value == 'object';
+	  return value != null && typeof value == 'object';
 	}
 
 	module.exports = isObjectLike;
 
 
 /***/ },
-/* 186 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(187);
+	module.exports = __webpack_require__(186);
 
 
 /***/ },
-/* 187 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -22542,7 +22514,7 @@
 		value: true
 	});
 
-	var _ponyfill = __webpack_require__(188);
+	var _ponyfill = __webpack_require__(187);
 
 	var _ponyfill2 = _interopRequireDefault(_ponyfill);
 
@@ -22561,7 +22533,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 188 */
+/* 187 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22589,7 +22561,7 @@
 	};
 
 /***/ },
-/* 189 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -22603,7 +22575,7 @@
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _warning = __webpack_require__(190);
+	var _warning = __webpack_require__(189);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -22737,7 +22709,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 190 */
+/* 189 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22767,7 +22739,7 @@
 	}
 
 /***/ },
-/* 191 */
+/* 190 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22823,7 +22795,7 @@
 	}
 
 /***/ },
-/* 192 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22834,7 +22806,7 @@
 
 	exports['default'] = applyMiddleware;
 
-	var _compose = __webpack_require__(193);
+	var _compose = __webpack_require__(192);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
@@ -22886,7 +22858,7 @@
 	}
 
 /***/ },
-/* 193 */
+/* 192 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -22929,7 +22901,149 @@
 	}
 
 /***/ },
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var getPrototype = __webpack_require__(194),
+	    isObjectLike = __webpack_require__(196);
+
+	/** `Object#toString` result references. */
+	var objectTag = '[object Object]';
+
+	/** Used for built-in method references. */
+	var funcProto = Function.prototype,
+	    objectProto = Object.prototype;
+
+	/** Used to resolve the decompiled source of functions. */
+	var funcToString = funcProto.toString;
+
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+
+	/** Used to infer the `Object` constructor. */
+	var objectCtorString = funcToString.call(Object);
+
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objectToString = objectProto.toString;
+
+	/**
+	 * Checks if `value` is a plain object, that is, an object created by the
+	 * `Object` constructor or one with a `[[Prototype]]` of `null`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.8.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 * }
+	 *
+	 * _.isPlainObject(new Foo);
+	 * // => false
+	 *
+	 * _.isPlainObject([1, 2, 3]);
+	 * // => false
+	 *
+	 * _.isPlainObject({ 'x': 0, 'y': 0 });
+	 * // => true
+	 *
+	 * _.isPlainObject(Object.create(null));
+	 * // => true
+	 */
+	function isPlainObject(value) {
+	  if (!isObjectLike(value) || objectToString.call(value) != objectTag) {
+	    return false;
+	  }
+	  var proto = getPrototype(value);
+	  if (proto === null) {
+	    return true;
+	  }
+	  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+	  return (typeof Ctor == 'function' &&
+	    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
+	}
+
+	module.exports = isPlainObject;
+
+
+/***/ },
 /* 194 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var overArg = __webpack_require__(195);
+
+	/** Built-in value references. */
+	var getPrototype = overArg(Object.getPrototypeOf, Object);
+
+	module.exports = getPrototype;
+
+
+/***/ },
+/* 195 */
+/***/ function(module, exports) {
+
+	/**
+	 * Creates a unary function that invokes `func` with its argument transformed.
+	 *
+	 * @private
+	 * @param {Function} func The function to wrap.
+	 * @param {Function} transform The argument transform.
+	 * @returns {Function} Returns the new function.
+	 */
+	function overArg(func, transform) {
+	  return function(arg) {
+	    return func(transform(arg));
+	  };
+	}
+
+	module.exports = overArg;
+
+
+/***/ },
+/* 196 */
+/***/ function(module, exports) {
+
+	/**
+	 * Checks if `value` is object-like. A value is object-like if it's not `null`
+	 * and has a `typeof` result of "object".
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 * @example
+	 *
+	 * _.isObjectLike({});
+	 * // => true
+	 *
+	 * _.isObjectLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObjectLike(_.noop);
+	 * // => false
+	 *
+	 * _.isObjectLike(null);
+	 * // => false
+	 */
+	function isObjectLike(value) {
+	  return value != null && typeof value == 'object';
+	}
+
+	module.exports = isObjectLike;
+
+
+/***/ },
+/* 197 */
 /***/ function(module, exports) {
 
 	/**
@@ -22985,7 +23099,7 @@
 
 
 /***/ },
-/* 195 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -23043,9 +23157,6 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 196 */,
-/* 197 */,
-/* 198 */,
 /* 199 */,
 /* 200 */,
 /* 201 */,
@@ -23056,7 +23167,10 @@
 /* 206 */,
 /* 207 */,
 /* 208 */,
-/* 209 */
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23066,13 +23180,14 @@
 	/**
 	 * Created by galushkasergiy on 19.09.16.
 	 */
-	var data = ['{"id":1,"name":"Betty Knight","gender":"Female"}', '{"id":2,"name":"Laura Cook","gender":"Female"}', '{"id":3,"name":"Donald Martinez","gender":"Male"}', '{"id":4,"name":"Joseph Flores","gender":"Male"}', '{"id":5,"name":"Adam Gonzales","gender":"Male"}', '{"id":6,"name":"Stephen Arnold","gender":"Male"}', '{"id":7,"name":"George Thomas","gender":"Male"}', '{"id":8,"name":"Emily Garza","gender":"Female"}', '{"id":9,"name":"Roy Cox","gender":"Male"}', '{"id":10,"name":"Timothy Hill","gender":"Male"}'];
+	var data = ['{"id":1,"title":"Wash hands","complete":"true"}', '{"id":2,"title":"Clean teeth","complete":"true"}', '{"id":3,"title":"Go to sleep","complete":"false"}'];
 
 	var tasks = [];
 	for (var i = 0; i < data.length; i++) {
 	    tasks[i] = JSON.parse(data[i]);
-	};
-	var tableMode = true;
+	    tasks[i].complete == 'true' ? tasks[i].complete = true : tasks[i].complete = false;
+	}
+	var tableMode = false;
 	var toDoReducer = function toDoReducer() {
 	    var state = arguments.length <= 0 || arguments[0] === undefined ? { tasks: tasks, tableMode: tableMode } : arguments[0];
 	    var action = arguments[1];
@@ -23080,16 +23195,25 @@
 	    // обработка событий
 	    switch (action.type) {
 	        // создание пользователя
-	        case 'CREATE_USER':
+	        case 'CREATE_TASK':
 	            {
-
-	                var newUser = action.payload;
-	                var newState = state.concat(action.payload);
-
-	                return newState;
+	                state.tasks = state.tasks.concat(action.payload);
+	                return _extends({}, state);
 	                break;
 	            }
 	        // удаление пользователя
+	        case 'DELETE_TASK':
+	            {
+	                var newState = [];
+	                for (var i = 0; i < state.tasks.length; i++) {
+	                    if (parseInt(state.tasks[i].id) === parseInt(action.payload)) {
+	                        continue;
+	                    }
+	                    newState.push(state.tasks[i]);
+	                }
+	                state.tasks = newState;
+	                return _extends({}, state);
+	            }
 	        case 'CHANGE_MODE':
 	            {
 	                return _extends({}, state, { tableMode: action.payload });
@@ -23104,7 +23228,7 @@
 	module.exports = toDoReducer;
 
 /***/ },
-/* 210 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23123,8 +23247,10 @@
 	var React = __webpack_require__(1);
 	var bindActionCreators = __webpack_require__(179).bindActionCreators;
 	var connect = __webpack_require__(172).connect;
-
-	var actions = __webpack_require__(211);
+	var List = __webpack_require__(214);
+	var Table = __webpack_require__(215);
+	var AddNoteComponent = __webpack_require__(216);
+	var actions = __webpack_require__(217);
 
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
@@ -23134,7 +23260,9 @@
 
 	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
-	        _this.clickHandler = _this.changeModeHandler.bind(_this);
+	        _this.changeModeHandler = _this.changeModeHandler.bind(_this);
+	        _this.addTaskHandler = _this.addTaskHandler.bind(_this);
+	        _this.removeTaskHandler = _this.removeTaskHandler.bind(_this);
 	        return _this;
 	    }
 
@@ -23144,12 +23272,26 @@
 	            this.props.changeMode(e.target.checked);
 	        }
 	    }, {
+	        key: 'addTaskHandler',
+	        value: function addTaskHandler() {
+	            this.props.addTask('' + Date.now(), document.getElementById('title').value, document.getElementById('complete').checked);
+	        }
+	    }, {
+	        key: 'removeTaskHandler',
+	        value: function removeTaskHandler(e) {
+	            this.props.removeTask(e.target.dataset.id);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var changeHandler = this.changeModeHandler.bind(this);
+	            var clickHandler = this.addTaskHandler.bind(this);
+	            var deleteHandler = this.removeTaskHandler.bind(this);
 	            return React.createElement(
 	                'div',
 	                null,
+	                this.props.state.tableMode ? React.createElement(Table, { items: this.props.state.tasks, deleteHandler: deleteHandler }) : React.createElement(List, { items: this.props.state.tasks, deleteHandler: deleteHandler }),
+	                React.createElement(AddNoteComponent, { clickHandler: clickHandler }),
 	                React.createElement(
 	                    'div',
 	                    null,
@@ -23180,14 +23322,229 @@
 	// связывание функции действия deleteUser со свойством React компонента deleteUser
 	function matchDispatchToProps(dispatch) {
 	    return bindActionCreators({
-	        changeMode: actions.changeMode
+	        changeMode: actions.changeMode,
+	        addTask: actions.addTask,
+	        removeTask: actions.removeTask
 	    }, dispatch);
 	}
 
 	module.exports = connect(mapStateToProps, matchDispatchToProps)(App);
 
 /***/ },
-/* 211 */
+/* 214 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	 * Created by galushkasergiy on 19.09.16.
+	 */
+	var React = __webpack_require__(1);
+
+	var List = function (_React$Component) {
+	    _inherits(List, _React$Component);
+
+	    function List(props) {
+	        _classCallCheck(this, List);
+
+	        return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, props));
+	    }
+
+	    _createClass(List, [{
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            return React.createElement(
+	                'ul',
+	                null,
+	                this.props.items.map(function (item) {
+	                    return React.createElement(
+	                        'li',
+	                        { key: item.id },
+	                        item.title,
+	                        ' ',
+	                        item.complete ? 'YES' : 'NO',
+	                        ' ',
+	                        React.createElement(
+	                            'a',
+	                            { 'data-id': item.id, onClick: _this2.props.deleteHandler },
+	                            'DELETE'
+	                        )
+	                    );
+	                })
+	            );
+	        }
+	    }]);
+
+	    return List;
+	}(React.Component);
+
+	module.exports = List;
+
+/***/ },
+/* 215 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	 * Created by galushkasergiy on 19.09.16.
+	 */
+	var React = __webpack_require__(1);
+
+	var Table = function (_React$Component) {
+	    _inherits(Table, _React$Component);
+
+	    function Table(props) {
+	        _classCallCheck(this, Table);
+
+	        return _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this, props));
+	    }
+
+	    _createClass(Table, [{
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            return React.createElement(
+	                'table',
+	                null,
+	                React.createElement(
+	                    'thead',
+	                    null,
+	                    React.createElement(
+	                        'tr',
+	                        null,
+	                        React.createElement(
+	                            'th',
+	                            null,
+	                            'Id'
+	                        ),
+	                        React.createElement(
+	                            'th',
+	                            null,
+	                            'Title'
+	                        ),
+	                        React.createElement(
+	                            'th',
+	                            null,
+	                            'Complete'
+	                        )
+	                    )
+	                ),
+	                React.createElement(
+	                    'tbody',
+	                    null,
+	                    this.props.items.map(function (item) {
+	                        return React.createElement(
+	                            'tr',
+	                            { key: item.id },
+	                            React.createElement(
+	                                'td',
+	                                null,
+	                                item.id
+	                            ),
+	                            React.createElement(
+	                                'td',
+	                                null,
+	                                item.title
+	                            ),
+	                            React.createElement(
+	                                'td',
+	                                null,
+	                                item.complete ? 'YES' : 'NO'
+	                            ),
+	                            React.createElement(
+	                                'td',
+	                                null,
+	                                ' ',
+	                                React.createElement(
+	                                    'a',
+	                                    { 'data-id': item.id, onClick: _this2.props.deleteHandler },
+	                                    'DELETE'
+	                                )
+	                            )
+	                        );
+	                    })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Table;
+	}(React.Component);
+
+	module.exports = Table;
+
+/***/ },
+/* 216 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	 * Created by Incy on 19.09.2016.
+	 */
+	var React = __webpack_require__(1);
+
+	var AddForm = function (_React$Component) {
+	    _inherits(AddForm, _React$Component);
+
+	    function AddForm() {
+	        _classCallCheck(this, AddForm);
+
+	        return _possibleConstructorReturn(this, (AddForm.__proto__ || Object.getPrototypeOf(AddForm)).apply(this, arguments));
+	    }
+
+	    _createClass(AddForm, [{
+	        key: "render",
+	        value: function render() {
+	            return React.createElement(
+	                "div",
+	                null,
+	                React.createElement("input", { type: "text", id: "title" }),
+	                React.createElement("input", { type: "checkbox", id: "complete" }),
+	                React.createElement(
+	                    "button",
+	                    { onClick: this.props.clickHandler },
+	                    "Add new task"
+	                )
+	            );
+	        }
+	    }]);
+
+	    return AddForm;
+	}(React.Component);
+
+	module.exports = AddForm;
+
+/***/ },
+/* 217 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23202,6 +23559,18 @@
 	    return {
 	        type: 'CHANGE_MODE',
 	        payload: state
+	    };
+	};
+	var addTask = exports.addTask = function addTask(id, title, complete) {
+	    return {
+	        type: 'CREATE_TASK',
+	        payload: [{ id: id, title: title, complete: complete }]
+	    };
+	};
+	var removeTask = exports.removeTask = function removeTask(id) {
+	    return {
+	        type: 'DELETE_TASK',
+	        payload: id
 	    };
 	};
 
