@@ -1,23 +1,9 @@
 module.exports = {
-    entry: {"Lesson_20/Homework/task1/build/bundle": "./Lesson_20/Homework/task1/jsx/main.jsx",
-        "Lesson_20/Homework/task2/build/bundle": "./Lesson_20/Homework/task2/jsx/main.jsx",
-        "Lesson_20/Homework/task3/build/bundle": "./Lesson_20/Homework/task3/jsx/main.jsx",
-        "Lesson_21/Classwork/task1/build/bundle": "./Lesson_21/Classwork/task1/jsx/main.jsx",
-        "Lesson_21/Classwork/task2/build/bundle": "./Lesson_21/Classwork/task2/jsx/main.jsx",
-        "Lesson_21/Classwork/task3/build/bundle": "./Lesson_21/Classwork/task3/jsx/main.jsx",
-        "Lesson_21/Homework/task1/build/bundle": "./Lesson_21/Homework/task1/jsx/main.jsx",
-        "Lesson_21/Homework/task2/build/bundle": "./Lesson_21/Homework/task2/jsx/main.jsx",
-        "Lesson_21/Homework/task3/build/bundle": "./Lesson_21/Homework/task3/jsx/main.jsx",
-        "Lesson_22/Classwork/task1/build/bundle": "./Lesson_22/Classwork/task1/jsx/main.jsx",
-        "Lesson_22/Classwork/task2/build/bundle": "./Lesson_22/Classwork/task2/js/main.js",
-        "Lesson_22/Classwork/task3/build/bundle": "./Lesson_22/Classwork/task3/jsx/main.jsx",
-        "Lesson_22/Homework/task1/build/bundle": ["./Lesson_22/Homework/task1/jsx/main.jsx", "./Lesson_22/Homework/task1/jsx/person.jsx"],
-        "Lesson_22/Homework/task2/build/bundle": ["./Lesson_22/Homework/task2/jsx/main.jsx"],
-        "Lesson_22/Homework/task3/build/bundle": "./Lesson_22/Homework/task3/jsx/main.jsx",
-        "Lesson_24/Classwork/task1/build/bundle": "./Lesson_24/Classwork/task1/jsx/main.jsx",
+    entry: {
         "Lesson_25/Classwork/task1/build/bundle": "./Lesson_25/Classwork/task1/src/main.jsx",
         "Lesson_25/Classwork/task2/build/bundle": "./Lesson_25/Classwork/task2/src/main.jsx",
-        "Lesson_25/Classwork/task3/build/bundle": "./Lesson_25/Classwork/task3/src/main.jsx"},
+        "Lesson_25/Classwork/task3/build/bundle": "./Lesson_25/Classwork/task3/src/main.jsx",
+        "Lesson_25/Homework/task1/build/bundle": "./Lesson_25/Homework/task1/src/main.jsx"},
     output: {
         filename: "[name].js"
     },
@@ -29,8 +15,7 @@ module.exports = {
                 loader: "babel-loader",
                 query:
                 {
-                    presets: ['es2015', 'react'],
-                    plugins: ["transform-async-to-generator", "syntax-async-functions", "transform-runtime"]
+                    presets: ['es2015', 'react']
                 }
             }
 
