@@ -25,7 +25,7 @@ var users = [{first_name:"Matthew",last_name:"Phillips",email:"mphillips0@myspac
 
 class Main extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
     render() {
         return (
