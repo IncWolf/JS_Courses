@@ -7,6 +7,7 @@ class User extends Person {
         super(props[0], props[1], props[2], props[3]);
         this.signUpDate = signUpDate;
         this.id = id;
+        this.sayHi = super.sayHi.bind(this);
     }
 }
 

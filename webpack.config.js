@@ -1,9 +1,6 @@
 module.exports = {
     entry: {
-        "Lesson_26/Classwork/task1/build/bundle": "./Lesson_26/Classwork/task1/src/main.jsx",
-        "Lesson_26/Classwork/task2/build/bundle": "./Lesson_26/Classwork/task2/src/main.jsx",
-        "Lesson_26/Classwork/task3/build/bundle": "./Lesson_26/Classwork/task3/src/main.jsx",
-        "Lesson_26/Homework/task1/build/bundle": "./Lesson_26/Homework/task1/src/main.jsx"},
+        "Lesson_22/Homework/task3/build/bundle": "./Lesson_22/Homework/task3/jsx/main.jsx"},
     output: {
         filename: "[name].js"
     },
@@ -15,8 +12,8 @@ module.exports = {
                 loader: "babel-loader",
                 query:
                 {
-                    presets: ['es2015', 'react'],
-                    plugins: ['transform-object-rest-spread']
+                    presets: ['es2015', 'react', "stage-0"],
+                    plugins: ['transform-object-rest-spread', "syntax-async-functions", "transform-runtime"]
                 }
             }
 

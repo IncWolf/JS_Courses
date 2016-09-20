@@ -12,6 +12,8 @@ export class Person {
         return `${this.firstName} ${this.lastName}`;
     };
     sayHi() {
-        return "Hello, my name is " + this.fullName;
+        //return "Hello, my name is " + this.fullName; // для выполнения задания 1
+
+        alert ("Hello, my name is " + this.fullName); // для выполнения задания 3
     }
 };
