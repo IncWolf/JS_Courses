@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compose</title>
+    <script>
+        var compose = function(arg) {
+            var result = arg;
+            if (!arguments[1]) {
+                return alert(result);
+            } else {
+                for (var i=1; i<arguments.length; i++) {
+                    result = arguments[i].call(null, result);
+                }
+            }
+            return alert(result);
+        };
+        var doubleTheValue = function(val) { return val * 2; };
+        var addOneToTheValue = function(val) { return val + 1; };
+        compose(5, doubleTheValue); //должно вернуться значение 10
+        compose(5, doubleTheValue, addOneToTheValue); // должно вернуться значение  11
+        compose(5); // 5
+    </script>
+</head>
+<body>
+
+</body>
+</html>

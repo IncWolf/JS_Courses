@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задача 2</title>
+</head>
+<body>
+<script>
+    var arr = [1, 90, 789, 56, 45, 34, 678, 78, -90, -6, 5, 3, 6];
+    document.write("Пузырьковая сортировка массива:<br />"+arr+"<br />");
+    for (var j = 0, len = arr.length - 1; j < len; j++) {
+        var swapped = false;
+        var i = 0;
+        while (i < len) {
+            if (arr[i] > arr[i + 1]) {
+                var c = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = c;
+                swapped = true;
+                document.write(arr+"<br />");
+            }
+            i++;
+        }
+        if(!swapped)
+            break;
+    }
+</script>
+</body>
+</html>

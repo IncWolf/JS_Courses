@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="DirectiveApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_3</title>
+    <script src="../../Libraries/angular.js"></script>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("DirectiveApp", [])
+                .controller("DirectiveController", function($scope){
+                    $scope.textRegex = /^.{3,20}$/;
+                    $scope.passwordRegex = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+                    $scope.fail_pass = false;
+                    $scope.check = function(password){
+                        if($scope.passwordRegex.test(password)) {
+                            $scope.fail_pass = false;
+                        } else {
+                            $scope.fail_pass = true;
+                        }
+                    }
+                })
+                .directive('loginForm', function() {
+                    return {
+                        template: '<form name="form" novalidate>' +
+                        '<label for="username">Username:</label><div class="form-group"><input type="text" id="username" name="username" ng-model="user.name" ng-pattern="textRegex"><p ng-show="form.username.$error.pattern && form.username.$dirty">Username must be 3 characters at least and no more than 20 characters</p></div>' +
+                        '<label for="login">Login:</label><div class="form-group"><input type="text" id="login" name="login" ng-model="user.login" ng-pattern="textRegex"><p ng-show="form.login.$error.pattern && form.login.$dirty">Login must be 3 characters at least and no more than 20 characters</p></div>' +
+                        '<label for="pass">Password:</label><div class="form-group"><input type="password" name="pass" ng-model="user.pass" ng-change="check(user.pass)" id="pass"><div ng-show="fail_pass"><ul><li>The password length must be greater than or equal to 8</li><li>The password must contain one or more uppercase characters</li><li>The password must contain one or more lowercase characters</li><li>The password must contain one or more numeric values</li><li>The password must contain one or more special characters</li></ul></div></div>' +
+                        '<label for="email">Email:</label><div class="form-group"><input type="email" ng-model="user.email" name="email" id="email"><p ng-show="form.email.$invalid && form.email.$dirty">Invalid Email</p></div>'
+                    }
+                })
+    </script>
+</head>
+<body ng-controller="DirectiveController">
+<div class="panel">
+    <div login-form class="well"></div>
+</div>
+</body>
+</html>

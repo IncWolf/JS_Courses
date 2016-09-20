@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Join Argiments</title>
+    <script>
+        function joinArgs() {
+            var args = [].slice.call(arguments);
+            alert(args.join('*'));
+        }
+        joinArgs(1,2,3);
+        joinArgs('hello', 'world', '!');
+    </script>
+</head>
+<body>
+
+</body>
+</html>

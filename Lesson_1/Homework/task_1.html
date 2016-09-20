@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задача 1</title>
+    <script>
+        var array = [1,2,31,24,-67,5,3,555,79,-4,21,33,89,-90];
+        function find(arr, value) {
+            var res;
+            arr.forEach(function (item, i) {
+                if (value == item) {
+                    res = i;
+                }
+            });
+            if(res) {return res;} else {return -1;}
+        }
+        document.write("Порядковый номер элемента -67: "+find(array, -67)+"<br />");
+        document.write("Порядковый номер элемента -91: "+find(array, -91));
+    </script>
+</head>
+<body>
+</body>
+</html>

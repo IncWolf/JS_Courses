@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sum and Args</title>
+    <script>
+        var arr = [];
+        arr.push(2);
+        arr.push(3);
+        arr.push(4);
+        var sumArgs = function() {
+            var sum = 0;
+            for(var i=0; i<arguments.length;i++) {
+                sum+=arguments[i];
+            }
+            return alert(sum);
+        };
+        sumArgs.apply(null, arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

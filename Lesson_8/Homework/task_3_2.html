@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_3_2</title>
+    <style type="text/css">
+        .button {width:50px; text-align:center; border: 1px solid; margin: 5px; display: inline-block; font-size: 20px; padding: 15px 0; cursor: pointer;}
+    </style>
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('buttons').addEventListener('click', function(e) {
+                if(e.target.className = 'button') {
+                    var a = parseInt(document.getElementById('a').value);
+                    var b = parseInt(document.getElementById('b').value);
+                    var result = 0;
+                    switch (e.target.getAttribute('id')) {
+                        case 'plus':
+                            result = a+b;
+                            document.getElementById('output').innerHTML += a+"+"+b+"="+result+"<br />";
+                            break;
+                        case 'minus':
+                            result = a-b;
+                            document.getElementById('output').innerHTML += a+"-"+b+"="+result+"<br />";
+                            break;
+                        case 'umnog':
+                            result = a*b;
+                            document.getElementById('output').innerHTML += a+"*"+b+"="+result+"<br />";
+                            break;
+                        case 'del':
+                            result = a/b;
+                            document.getElementById('output').innerHTML += a+"/"+b+"="+result+"<br />";
+                            break;
+                        case 'vanish':
+                            document.getElementById('a').value = '';
+                            document.getElementById('b').value = '';
+                            document.getElementById('output').innerHTML += "Clear<br />";
+                            break;
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="text" id="a">
+<input type="text" id="b">
+<div id="buttons">
+    <div class="button" id="plus">+</div>
+    <div class="button" id="minus">-</div>
+    <div class="button" id="umnog">*</div>
+    <div class="button" id="del">/</div>
+    <div class="button" id="vanish">C</div>
+</div>
+<div id="output"></div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartSum</title>
+    <script>
+        var smartSum = function() {
+            var sum = 0;
+            for(var i=0; i<arguments.length;i++) {
+                if (Number(arguments[i])) {
+                    sum+=arguments[i];
+                }
+            }
+            function func() {
+                for(var j=0; j<arguments.length;j++) {
+                    if (Number(arguments[j])) {
+                        sum+=arguments[j];
+                    }
+                }
+                return func;
+            }
+            func.toString = function() {
+                return sum;
+            };
+            return func;
+        };
+        alert(smartSum(3)); // 3;
+        alert(smartSum(undefined, 2)); // 2
+        alert(smartSum(1, 2));  // 3;
+        alert(smartSum(1, 3)(2)); // 6;
+        alert(smartSum(1, 2)(3, 4, 5)(6)(7, 10)); // 38;
+    </script>
+</head>
+<body>
+
+</body>
+</html>

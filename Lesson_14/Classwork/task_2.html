@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CounterApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_2. Provider</title>
+    <script src="../../Libraries/angular.js"></script>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("CounterApp", [])
+                .provider("countClick", function() {
+                    return {
+                        $get: function() {
+                            var c = 1;
+                            return function () {
+                                console.log("Count: "+c++);
+                            }
+                        }
+                    }
+                })
+                .controller("CounterController", ['$scope', 'countClick', function($scope, countClick) {
+                    $scope.clickOnBtn = function() {
+                        countClick();
+                    }
+                }]);
+    </script>
+</head>
+<body ng-controller="CounterController">
+<button class="btn btn-default" ng-click="clickOnBtn()">Click me!</button>
+</body>
+</html>

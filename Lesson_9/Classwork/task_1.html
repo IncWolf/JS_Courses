@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>События клавиатуры </title>
+    <script>
+        window.onload = function () {
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.keyCode == 65) {
+                    alert('Данные выбраны');
+                }
+                if (e.ctrlKey && e.keyCode == 83) {
+                    alert('Данные сохранены');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+Какие-то данные над которыми надо провести манипуляции
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <script>
+        function Calculator() {
+            this.read = function() {
+                this.a = parseInt(prompt("Введите а: ", "0"));
+                this.b = parseInt(prompt("Введите b: ", "0"));
+            };
+            this.sum = function() {
+                return this.a+this.b;
+            };
+            this.mul = function() {
+                return this.a*this.b;
+            }
+        }
+        var calculator = new Calculator();
+        calculator.read();
+        alert( "Сумма=" + calculator.sum() );
+        alert( "Произведение=" + calculator.mul() );
+    </script>
+</head>
+<body>
+
+</body>
+</html>

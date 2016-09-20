@@ -1,0 +1,5 @@
+<p style="text-transform: capitalize;">{{field}}</p>
+<hr>
+<div ng-repeat="item in table_values">
+    <p ng-repeat="(key, value) in item" ng-if="field == key">{{value}}</p>
+</div>

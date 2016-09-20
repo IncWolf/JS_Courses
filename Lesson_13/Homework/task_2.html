@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TenDivsApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_2</title>
+    <script src="../../Libraries/angular.js"></script>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <script>
+        angular.module("TenDivsApp", [])
+                .controller("TenDivsController", function($scope) {
+                    $scope.filterString = '';
+                    $scope.items = [{text: "cat", show: true}, {text: "dog", show: true}, {text: "cat", show: true}, {text: "cat", show: true}, {text: "dog", show: true},
+                        {text: "bird", show: true}, {text: "bird", show: true}, {text: "elephant", show: true}, {text: "camel", show: true}, {text: "camel", show: true}];
+                    $scope.filterBtn = function() {
+                        $scope.filterString = $scope.filterTxt;
+                    };
+                    $scope.filterFunc = function (item) {
+                        console.log($scope.filterString);
+                        if (!$scope.filterString) {
+                            item.show = true;
+                        } else {
+                            item.show = $scope.filterString == item.text;
+                        }
+                        return item;
+                    };
+                })
+    </script>
+</head>
+<body ng-controller="TenDivsController">
+    <div class="panel">
+        <div class="panel-body">
+            <div ng-repeat="item in items | filter: filterFunc" ng-show="item.show">{{item.text}}</div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" ng-model="filterTxt">
+        </div>
+        <button class="btn-default btn" ng-click="filterBtn()">Filter</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Выделение</title>
+    <script>
+        window.onload = function () {
+            document.body.addEventListener("click", function(e) {
+                if(e.target.tagName == 'LI') {
+                    if (document.createRange) {
+                        var rng = document.createRange();
+                        rng.selectNode(e.target);
+                        var sel = window.getSelection();
+                        sel.removeAllRanges();
+                        sel.addRange(rng);
+                    } else {
+                        var rng = document.body.createTextRange();
+                        rng.moveToElementText(e.target);
+                        rng.select();
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<ul>
+    <li>Первый элемент</li>
+    <li>Второй элемент</li>
+    <li>Третий элемент</li>
+</ul>
+</body>
+</html>

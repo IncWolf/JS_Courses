@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Task2App">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_2</title>
+    <script src="../../Libraries/angular.js"></script>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+    <script>
+        angular.module("Task2App", [])
+                .directive("getList", function() {
+                    return {
+                        priority: 1,
+                        link: function(scope, elem) {
+                            var n = Math.random()*10;
+                            var ul = angular.element('<ul>');
+                            for (i=0; i<n; i++) {
+                                ul.append(angular.element('<li>').text('Item '+(i+1)));
+                            }
+                            elem.append(ul);
+                        },
+                        restrict: 'A'
+                    }
+                })
+                .directive("getColoredOdd", function() {
+                    return {
+                        priority: 2,
+                        restrict: 'A',
+                        link: function(scope, elem) {
+                            var lis = elem.children().children();
+                            console.log(lis);
+                            for (i=0; i< lis.length; i++) {
+                                if(i%2 == 1) {
+                                    lis[i].className="red";
+                                }
+                            }
+                        }
+                    }
+                })
+    </script>
+</head>
+<body>
+    <div get-list get-colored-odd></div>
+</body>
+</html>

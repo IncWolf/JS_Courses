@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String Counter</title>
+
+    <script>
+        var strCount = function(obj) {
+            var string_counter = 0;
+            for (var prop in obj) {
+                if (typeof obj[prop] == 'string') {
+                    string_counter++;
+                } else {
+                    if (typeof obj[prop] == 'object' && obj[prop] != null) {
+                        for (var i = 0; i < obj[prop].length; i++) {
+                            if (typeof obj[prop][i] == 'string') {
+                                string_counter++;
+                            }
+                        }
+                    }
+                }
+            }
+            return string_counter;
+        };
+        document.write(strCount({ first: "1", second: "2", third: false, fourth: ["anytime",2,3,4], fifth: null }));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Работа с DOM</title>
+</head>
+<body>
+
+<div id="widget" data-widget-name="menu">Выберите жанр</div>
+
+<script>
+    var div_obj = document.getElementById('widget'); // Получение объекта для div-елемента
+    var data_value = div_obj.dataset.widgetName; // Получение значения из пользовательского атрибута widget-name
+</script>
+</body>
+</html>

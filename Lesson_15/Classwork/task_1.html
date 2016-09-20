@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ScrollApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>AnchorScroll</title>
+        <script src="../../Libraries/angular.js"></script>
+        <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+        <style>
+            .navbar-nav > li {
+                margin: 0 5px;
+                cursor: pointer;
+            }
+        </style>
+        <script>
+            angular.module("ScrollApp", [])
+                    .controller ("ScrollController", ['$scope', '$location', '$anchorScroll', function($scope, $location, $anchorScroll) {
+                        $scope.items = [{id: 'text1', title: 'Text1'}, {id: 'text2', title: 'Text2'}, {id: 'text3', title: 'Text3'}, {id: 'text4', title: 'Text4'}];
+                        $scope.scrollToId = function(id) {
+                            $location.hash(id);
+                        }
+                    }]);
+        </script>
+    </head>
+    <body ng-controller="ScrollController">
+        <nav class="navbar navbar-fixed-top">
+            <div class="container">
+                <div id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-repeat="item in items" ng-click="scrollToId(item.id)">{{item.title}}</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="wrapper" ng-repeat="item in items">
+                <h1 id={{item.id}}>{{item.title}}</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida sapien tortor, non sollicitudin nulla aliquet id. Vivamus pellentesque, turpis quis bibendum pretium, nisi lectus maximus orci, in feugiat nisl lacus non nulla. Nullam accumsan bibendum est. Integer ac quam a felis lacinia hendrerit nec ac eros. Donec porta, ante et vulputate auctor, orci libero volutpat quam, convallis efficitur nisi tellus at leo. Donec eu pretium mi, quis porttitor dui. Morbi vel placerat elit, sit amet tristique dui.
+
+                    Vivamus gravida velit a risus ullamcorper auctor. Vivamus efficitur hendrerit ligula, non faucibus diam condimentum suscipit. Suspendisse dapibus sapien id nunc vehicula iaculis. Nam finibus, magna ac accumsan malesuada, nisi urna mattis sapien, ut convallis mauris elit eu quam. Etiam pellentesque viverra placerat. Suspendisse pretium interdum felis, eget iaculis massa fermentum quis. Integer lobortis ex vitae accumsan laoreet. Vestibulum quam tellus, imperdiet in urna at, commodo placerat felis. Nulla tristique elementum gravida. Suspendisse nunc justo, tincidunt id consequat congue, hendrerit quis mauris. Vivamus eu lacinia metus, quis varius felis. Etiam vestibulum arcu et ultrices rhoncus. Nunc blandit sollicitudin sem, sit amet blandit felis aliquam non. Aliquam nec fermentum risus.
+
+                    Proin sed convallis orci. Suspendisse arcu odio, auctor sed dapibus ut, congue ac ex. Mauris auctor fringilla justo, et dapibus tellus venenatis eget. Aenean vitae rhoncus quam, fermentum convallis dui. Sed placerat non sapien vel mattis. Donec eu aliquam augue. Etiam eget aliquet metus.
+
+                    Nam quis nulla tellus. Nulla eget massa imperdiet tortor semper dapibus. Morbi vulputate ligula ut risus hendrerit, a commodo orci porta. Nullam mattis sagittis venenatis. Maecenas vitae pellentesque purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+
+                    Donec tincidunt blandit velit non pellentesque. Donec massa augue, imperdiet ac eleifend et, vulputate nec urna. Nullam congue, purus quis faucibus bibendum, nisl leo posuere lectus, eu dictum enim dolor consectetur diam. Maecenas odio orci, mollis quis nisl quis, pharetra dapibus est. Suspendisse potenti. Duis a pulvinar nisl, nec pharetra ipsum. Integer vel est eget justo pharetra vestibulum non eget turpis. Ut dapibus, ipsum quis faucibus ornare, metus velit rutrum risus, non rhoncus felis libero sit amet felis.</p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="ProjectApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/JS_Courses/Project_module_2/" />
+    <!--Сменить адресс base на '/', если залито на продакшн-->
+    <title>Landing page</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,800" rel="stylesheet">
+    <script src="script/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-scroll/1.0.0/angular-scroll.min.js"></script>
+    <script src="script/angular-route.js"></script>
+    <script src="script/angular-cookies.js"></script>
+    <script src="script/main.js"></script>
+    <script>
+        window.onload = function() {
+            if(document.querySelector('#full_resp .with-arrow')) {
+                var left_of_before = parseInt(getComputedStyle(document.querySelector('#full_resp .with-arrow')).width)/2;
+                var left_of_after = left_of_before + 1;
+                document.styleSheets[0].addRule('#full_resp .with-arrow:before','left: ' + left_of_before + 'px');
+                document.styleSheets[0].insertRule('#full_resp .with-arrow:before { left: ' +left_of_before+ 'px }', 0);
+                document.styleSheets[0].addRule('#full_resp .with-arrow:after','left: ' + left_of_after+ 'px');
+                document.styleSheets[0].insertRule('#full_resp .with-arrow:after { left: ' +left_of_after+ 'px }', 0);
+            }
+            document.querySelector('.navbar-toggle').addEventListener("click", function(e) {
+                document.querySelector('.navbar-collapse').classList.toggle('collapse');
+            })
+        }
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"><span class="fa fa-bars"></span></button>
+            <a class="navbar-brand" href="#"><img src="img/logo.png">KET</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar" ng-controller="NavigationController">
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-repeat="elem in menu" du-scrollspy="{{elem.id}}"><a href="#{{elem.id}}" du-smooth-scroll>{{elem.title}}</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="jumbotron reverse text-center" id="header">
+    <div class="jumb_wrapper">
+        <h4 class="x-large x-light">WE MAKE WEBSITES</h4>
+        <a href="#portfolio" du-smooth-scroll class="btn btn-custom light">START TOUR</a>
+    </div>
+</div>
+<div class="container-fluid text-center" id="services" ng-controller="ServiceController">
+    <div class="wrapper">
+        <div class="row services_container">
+            <div class="col-md-3 col-xs-6 service" ng-click="changeActiveService(1)">
+                <div><img src="img/monitor.png"></div>
+                <p class="medium">WEB DESIGN</p>
+            </div>
+            <div class="col-md-3 col-xs-6 service" ng-click="changeActiveService(2)">
+                <div><img src="img/pencil.png"></div>
+                <p class="medium">GRAPHIC DESIGN</p>
+            </div>
+            <div class="col-md-3 col-xs-6 service" ng-click="changeActiveService(3)">
+                <div><img src="img/cog.png"></div>
+                <p class="medium">PROGRAMMING</p>
+            </div>
+            <div class="col-md-3 col-xs-6 service" ng-click="changeActiveService(4)">
+                <div><img src="img/camera.png"></div>
+                <p class="medium">PHOTOGRAPHY</p>
+            </div>
+
+        </div>
+        <div class="row info_container">
+            <div class="info-block" ng-switch on="active_service">
+                <ul class="point-square">
+                    <li class="first" ng-class="{'active': active_service == '1'}"></li>
+                    <li class="second" ng-class="{'active': active_service == '2'}"></li>
+                    <li class="third" ng-class="{'active': active_service == '3'}"></li>
+                    <li class="fourth" ng-class="{'active': active_service == '4'}"></li>
+                </ul>
+                <p class="desc" ng-switch-when="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus ante arcu, vel finibus lectus interdum sit amet. Phasellus id ante et magna consequat sodales eget eleifend mi. Duis luctus gravida urna id sodales. Aliquam erat volutpat. Proin sit amet purus at nibh dignissim aliquet. Integer condimentum accumsan suscipit. Duis porttitor dictum neque, sed dictum purus convallis non. Nullam ornare purus vitae tellus consectetur, ut blandit justo efficitur.</p>
+                <p class="desc" ng-switch-when="2">Nunc pretium felis quis metus rhoncus iaculis. Quisque ornare nunc sapien, et aliquam velit volutpat nec. Pellentesque vel pulvinar tellus. Nullam eu nisl at tortor sagittis facilisis eu vitae felis. Duis nunc est, porttitor et mattis at, convallis eget felis. Duis venenatis justo ut dolor sodales, nec luctus ligula tempus. Phasellus sollicitudin dui vulputate venenatis suscipit. Sed et auctor nisi, quis fringilla ex. Donec volutpat vulputate tortor, a aliquam est vulputate vitae.</p>
+                <p class="desc" ng-switch-when="3">Etiam id luctus purus. Pellentesque at mollis ex, et lobortis odio. In condimentum arcu ac neque egestas, a accumsan erat malesuada. Quisque quis magna dictum, hendrerit libero at, viverra tortor. Vivamus purus libero, suscipit in mauris id, dapibus rhoncus neque. Aenean commodo ac felis nec suscipit. Etiam laoreet consequat varius. Fusce eu sodales magna, quis rhoncus ipsum.</p>
+                <p class="desc" ng-switch-when="4">Ut in hendrerit leo. Aenean vulputate mi consectetur ex vehicula, et pharetra felis iaculis. Sed consequat turpis euismod, convallis sem at, suscipit nibh. Nunc porttitor consectetur facilisis. Pellentesque erat diam, dictum vel cursus a, porttitor ut dolor. Quisque sollicitudin turpis dictum ante pulvinar scelerisque. Maecenas posuere enim et dapibus scelerisque. Morbi vel ex metus.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" id="full_resp">
+    <div class="wrapper">
+        <div class="row">
+            <div class="btn-group-justified">
+                <a href="#portfolio" du-smooth-scroll class="btn btn-default medium">START TOUR</a><div class="btn btn-default with-arrow before after medium">FOR ALL DEVICES</div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <img src="img/telephones.png">
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="h-margin-40 large plain">Fully Responsive</div>
+                <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus ante arcu, vel finibus lectus interdum sit amet. Phasellus id ante et magna consequat sodales eget eleifend mi. Duis luctus gravida urna id sodales. Aliquam erat volutpat. Proin sit amet purus at nibh dignissim aliquet. Integer condimentum accumsan suscipit. Duis porttitor dictum neque, sed dictum purus convallis non. Nullam ornare purus vitae tellus consectetur, ut blandit justo efficitur.</p>
+                <a href="#feedback" du-smooth-scroll class="btn btn-custom light blue">GET NOW</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-controller="PhotoController">
+    <div class="container-fluid text-center" id="portfolio">
+        <div class="wrapper">
+            <div class="row" id="filter">
+                <div class="title">
+                    <div class="large">Our Portfolio</div>
+                    <hr>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                </div>
+                <div class="col-md-12 filter_menu">
+                    <div ng-class="{'selected': filter_value == 'ALL'}" ng-click="setFilter('ALL')">ALL</div><div ng-class="{'selected': filter_value == 'WEB'}" ng-click="setFilter('WEB')">WEB</div><div ng-class="{'selected': filter_value == 'PHOTOGRAPHY'}" ng-click="setFilter('PHOTOGRAPHY')">PHOTOGRAPHY</div><div ng-class="{'selected': filter_value == 'GRAPHIC DESIGN'}" ng-click="setFilter('GRAPHIC DESIGN')">GRAPHIC DESIGN</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-center">
+        <div id="photo_container">
+            <div class="photo-wrapper" ng-mouseenter="show_mask=true" ng-mouseleave="show_mask=false;" ng-repeat="photo in portfolio | filter: filterFunc" mask="{{photo.category}}"><img ng-src="{{photo.src}}"><div class="mask" ng-show="show_mask"><p style="font-size:25px;">SAMPLE IMAGE</p><p style="font-size:16px;">{{photo.category}}</p></div></div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid reverse text-center" id="proud_numbers" ng-controller="ProudNumbersController">
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="item in items">
+                <div class="padding-v-25 margin-h-15px">
+                    <div><img ng-src="{{item.icon}}"></div>
+                    <h4 class="light large" smooth-counter="{{item.max}}"></h4>
+                    <p class="small medium">{{item.title}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid text-center light-gray" id="team" ng-controller="TeamController">
+    <div class="wrapper">
+        <div class="title">
+            <div class="large">We are the one</div>
+            <hr>
+            <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+        </div>
+        <div class="row">
+            <team-info team="team"></team-info>
+        </div>
+    </div>
+</div>
+<div class="container-fluid text-center light-gray" id="news" ng-controller="NewsController">
+    <div class="wrapper">
+        <div class="title">
+            <div class="large">Check our news</div>
+            <hr>
+            <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+        </div>
+        <div ng-view></div>
+        <div class="row">
+            <table class="table col-md-6 col-md-offset-3 col-sm-12 text-left">
+                <tr ng-repeat="article in news | filter: filterDate">
+                    <td><div class="x-large blue">{{article.date | date: "dd"}}</div><div class="month small">{{article.date | date: "MMMM"}}</div></td>
+                    <td><p class="desc small light">{{article.text}}</p><div style="float:right;"><a class="blue small" href="{{article.id}}">Read more</a></div></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container-fluid reverse text-center" id="feedback" ng-controller="FeedbackController">
+    <div class="wrapper">
+        <div class="title">
+            <div class="large">Contact us</div>
+            <hr>
+            <p class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
+        </div>
+        <form name="contactForm" novalidate ng-submit="saveValues()">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="input-wrapper"><input type="text" placeholder="Your name here" name="userName" id="username" ng-model="user.username" ng-pattern="nameRegex"></div>
+                    <div class="error-msg" ng-show="contactForm.userName.$error.pattern && contactForm.userName.$dirty">Only Latin</div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="input-wrapper"><input type="email" placeholder="Your mail here" name="useremail" id="useremail" ng-model="user.email"></div>
+                    <div class="error-msg" ng-show="contactForm.useremail.$invalid && contactForm.useremail.$dirty">Only Latin, numbers, _ and @</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="input-wrapper"><input type="text" placeholder="Your message here" name="message" id="message" ng-model="user.message" ng-pattern="messageRegex"></div>
+                    <div class="error-msg" ng-show="contactForm.message.$invalid && contactForm.message.$dirty">Message must be 20 characters at least</div>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-custom" value="SEND MESSAGE">
+        </form>
+    </div>
+</div>
+<div class="container-fluid text-center" id="map">
+    <div class="wrapper">
+        <div class="cloud with-arrow before">
+            <p>Awesome Address 432</p>
+            <p>ourmail@sometype.com</p>
+            <p>+321(0)321 23 21</p>
+        </div>
+    </div>
+</div>
+<footer class="container-fluid reverse text-center">
+    <a href="#header" du-smooth-scroll>
+        <span class="fa-stack">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <i class="fa fa-chevron-up fa-stack-1x"></i>
+        </span>
+    </a>
+    <span>© 2014 - <span class="blue">Kat</span> All Right Reserved.</span>
+</footer>
+</body>
+</html>

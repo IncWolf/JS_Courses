@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Task1App">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_2</title>
+    <link href="../../Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <script src="../../Libraries/angular.js"></script>
+    <script>
+        var model = [
+            { name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
+            { name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
+            { name: "D Item", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5 },
+            { name: "C Item", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10 }];
+        angular.module("Task1App", []).controller("Task1Controller", function($scope) {
+            $scope.table_values = model;
+            $scope.summary = {
+                name: false,
+                price: false,
+                category: false,
+                count: false,
+                tax: false,
+                expiration: false
+            }
+        });
+    </script>
+</head>
+<body ng-controller="Task1Controller">
+<table class="table">
+    <thead>
+        <th>Category</th>
+        <th>Count</th>
+        <th>Expiration</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Tax</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in table_values">
+            <td ng-repeat="(key,value) in item" ng-switch on="summary.{{key}}"><div ng-switch-when="true">{{value}}</div></td>
+        </tr>
+    </tbody>
+</table>
+<div>
+    <label class="checkbox-inline"><input type="checkbox" value="" ng-model="summary.category">Category</label>
+    <label class="checkbox-inline"><input type="checkbox" value="" ng-model="summary.count">Count</label>
+    <label class="checkbox-inline"><input type="checkbox" value="" ng-model="summary.expiration">Expiration</label>
+    <label class="checkbox-inline"><input type="checkbox" value="" ng-model="summary.name">Name</label>
+    <label class="checkbox-inline"><input type="checkbox" value="" ng-model="summary.price">Price</label>
+    <label class="checkbox-inline"><input type="checkbox" value="" ng-model="summary.tax">Tax</label>
+</div>
+</body>
+</html>

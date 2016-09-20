@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Task_3</title>
+        <script>
+            function setCoord() {
+                var x = document.getElementById('xcoord').value;
+                var y = document.getElementById('ycoord').value;
+                if (!x || !y) {
+                    alert("Поля обязательны для заполнения");
+                    return false;
+                }
+                var element = document.getElementById('elem');
+                element.style.position = 'absolute';
+                element.style.left = x+'px';
+                element.style.top = y+'px';
+            }
+        </script>
+    </head>
+    <body>
+        X: <input type="text" id="xcoord">
+        Y: <input type="text" id="ycoord">
+        <button onClick="setCoord()">Set</button>
+        <div id="elem" style="width: 50px; height: 50px; border: 1px solid black;"></div>
+    </body>
+</html>
